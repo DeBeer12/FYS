@@ -1,0 +1,218 @@
+/*main:       #d81e05;              */
+/*active:     rgba(0,0,0,.15)       */
+/*light:      #DD3F2A               */
+
+.nav-bar{
+    width: 100%;
+    height: 50px;
+    background-color: #d81e05;
+}
+
+/* ul */
+.nav-bar__links{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-bar__links{
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+    }
+}
+
+/*single li*/
+.nav-bar__link{
+    position: relative;
+    list-style-type: none;
+    height: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-bar__link{
+        background-color: #d81e05;
+    }
+    .nav-bar__link:first-of-type{
+        margin-top: 50px;
+    }
+}
+
+
+
+/* link in li*/
+.nav-bar__link a{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+    @media only screen and (max-width: 900px) {
+        .nav-bar__link a{
+            justify-content: right;
+        }
+    }
+
+    .nav-bar__link a:before{
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: 1px;
+        background-color: #DD3F2A;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .nav-bar__link a:hover{
+        background-color: rgba(0,0,0,.15);
+    }
+
+/*  ul in li for dropdown */
+.nav-bar__nest-links{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: #d81e05;
+    margin-top: 50px;
+    min-width: 100%;
+    width: max-content;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-bar__nest-links{
+        position: relative;
+        margin-top: 0;
+    }
+    .nav-bar__nest-link{
+        display: block !important;
+    }
+}
+
+
+
+
+/*dropdown icon*/
+.nav-bar__nest-link-icon{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+}
+
+/* default dropdown hidden */
+.nav-bar__nest-link{
+    display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-bar__link{
+        display: none;
+    }
+    .nav-bar__links.active .nav-bar__link{
+        display: block;
+    }
+}
+
+
+
+/* show dropdown when hover */
+.nav-bar__link:hover .nav-bar__nest-link{
+    display: block;
+    list-style-type: none;
+    height: 100%;
+
+}
+
+/* nested link a */
+.nav-bar__nest-link a{
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+    justify-content: end;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-bar__nest-link a{
+        margin-left: 40px;
+    }
+}
+
+.ham{
+    display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .ham {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50px;
+        height: 50px;
+
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: transform 400ms;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .hamRotate.active {
+        transform: rotate(45deg);
+    }
+    .hamRotate180.active {
+        transform: rotate(180deg);
+    }
+    .line {
+        fill:none;
+        transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+        stroke: white;
+        stroke-width:5.5;
+        stroke-linecap:round;
+    }
+
+    .ham8 .top {
+        stroke-dasharray: 40 160;
+    }
+    .ham8 .middle {
+        stroke-dasharray: 40 142;
+        transform-origin: 50%;
+        transition: transform 400ms;
+    }
+    .ham8 .bottom {
+        stroke-dasharray: 40 85;
+        transform-origin: 50%;
+        transition: transform 400ms, stroke-dashoffset 400ms;
+    }
+    .ham8.active .top {
+        stroke-dashoffset: -64px;
+    }
+    .ham8.active .middle {
+        /*//stroke-dashoffset: -20px;*/
+        transform: rotate(90deg);
+    }
+    .ham8.active .bottom {
+        stroke-dashoffset: -64px;
+    }
+}
+
+
