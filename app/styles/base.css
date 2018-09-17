@@ -1,14 +1,41 @@
-html,body{
+html,
+body {
     width: 100%;
     min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
+}
+
+.risico,
+.alternatieven,
+.planning {
+    padding-top: 15px;
+}
+
+.alternatieven .orderedlist li ul li {
+    margin-left: 40px;
+}
+
+.planning table.planning-table tr td {
+    min-width: 18px;
+}
+
+.planning table.planning-table tr td.marked {
+    background-color: #00ff00;
+    text-align: center;
+}
+
+.planning table.planning-table,
+.planning table.planning-table tr th,
+.planning table.planning-table tr td {
+    border: 1px solid black;
 }
