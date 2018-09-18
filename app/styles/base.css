@@ -25,9 +25,19 @@ a {
     padding-top: 15px;
 }
 
+div .introduction {
+    padding-bottom: 15px;
+}
+
+
+/* Alternatieven pagina */
+
 .alternatieven .orderedlist li ul li {
     margin-left: 40px;
 }
+
+
+/* Planning pagina */
 
 .planning table.planning-table tr td {
     min-width: 18px;
@@ -43,3 +53,6 @@ a {
 .planning table.planning-table tr td {
     border: 1px solid black;
 }
+
+
+/*  */
