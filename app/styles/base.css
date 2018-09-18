@@ -17,7 +17,11 @@ a {
 
 .risico,
 .alternatieven,
-.planning {
+.planning,
+.aanpak,
+.aanleiding,
+.samenvatting,
+.verwachte_resultaten {
     padding-top: 15px;
 }
 
