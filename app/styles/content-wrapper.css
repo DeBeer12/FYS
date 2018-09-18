@@ -1,9 +1,15 @@
+/**
+Default content wrapper to align items
+ */
 .content-wrapper{
     display: block;
     width: 90%;
     margin: 0 auto;
 }
 
+/**
+Content wrapper that takes up full size
+ */
 .content-wrapper--full{
     display: block;
     width: 90%;
@@ -11,6 +17,9 @@
     height: 100%;
 }
 
+/**
+Used to align content center in content wrapper
+ */
 .content-wrapper.center{
     display: flex;
     justify-items: center;
