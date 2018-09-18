@@ -11,6 +11,13 @@
     height: 100%;
 }
 
+.content-wrapper.center{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 @media only screen and (min-width: 1200px) {
     .content-wrapper{
         display: block;
