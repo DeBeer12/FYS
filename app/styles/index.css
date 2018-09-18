@@ -1,0 +1,25 @@
+div.container{
+    margin-left: 440px;
+    margin-right: 440px;
+    background-color: #f5f5f5;
+    padding: 25px 22px 25px 22px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.inner-container {
+    width: 322px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px;
+}
+div.inner-container-last {
+    width: 322px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    display: inline-block;
+}
+
+div.inner-container-text{
+    padding: 10px;
+}
