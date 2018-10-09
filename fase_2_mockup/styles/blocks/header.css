@@ -1,0 +1,16 @@
+.main-header{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.main-header__logo{
+    height: 90%;
+    width: auto;
+}
+.main-header__logo:hover{
+    transform: scale(1.05);
+    transition: all .1s;
+}
+
