@@ -1,3 +1,11 @@
+html{
+    display: none;
+}
+
+html.visible{
+    display: block;
+}
+
 html,
 body {
     width: 100%;
@@ -37,6 +45,9 @@ div .introduction {
     padding-bottom: 15px;
 }
 
+.hidden{
+    display: none;
+}
 
 /* Alternatieven pagina */
 
