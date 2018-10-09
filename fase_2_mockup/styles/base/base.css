@@ -1,11 +1,3 @@
-html{
-    display: none;
-}
-
-html.visible{
-    display: block;
-}
-
 html,
 body {
     width: 100%;
