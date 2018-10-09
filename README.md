@@ -3,4 +3,4 @@
 Fasten your seatbelts project van team 1
 
 Teamleden:
-Jesse, Bob, Danny & Mike
+Jesse, Bob, Danny, Mike & Richard
