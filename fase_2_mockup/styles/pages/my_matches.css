@@ -1,6 +1,7 @@
 div.container {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     /* height: 100%; */
     /* margin-left: 440px; */
     /* margin-right: 440px; */
@@ -16,6 +17,7 @@ div.match {
     max-height: 80px;
     border-radius: 4px;
     margin: 0px 10%;
+    margin-top: 10px;
 }
 
 div.match div.match_picture {
@@ -46,7 +48,7 @@ div.match div.match_info p.match_date {
 div.match div.match_tags_container {
     float: left;
     max-width: 45%;
-    margin: 0px 5px;
+    margin: 0px 35px;
 }
 
 div.match div.match_tags_container ul.match_tags {
@@ -61,7 +63,8 @@ div.match div.match_tags_container ul.match_tags li.match_tag {
 
 div.match div.match_icons {
     float: right; 
-    padding: 15px 10px;
+    padding: 25px 10px;
+    /* font-size: 1em; */
 }
 
 div.match div.match_icons #chat_with_match:hover,
