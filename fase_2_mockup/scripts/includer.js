@@ -34,10 +34,10 @@ $( document ).ready(function () {
     includeHTML();
 
     setTimeout(function (){
-
         $("html").css("display", "block");
-
     }, 200);
+
+
 
 });
 
