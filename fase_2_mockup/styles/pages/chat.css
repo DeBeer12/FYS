@@ -1,0 +1,46 @@
+html,
+body {
+    padding-bottom: 3px !important;
+}
+
+div.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* height: 100%; */
+    /* margin-left: 440px; */
+    /* margin-right: 440px; */
+    background-color: #f5f5f5;
+    padding: 25px 22px 25px 22px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 100%;
+}
+
+div.chat {
+    width: 80%;
+    min-height: 100%;
+    margin: 0px 10%;
+}
+
+div.chat div.message_container {
+    border: 1px solid #000;
+}
+
+div.chat div.message_container p.chat_message {
+    border: 1px solid rgb(158, 158, 158);
+    text-align: right;
+    padding: 5px 2px;
+}
+
+div.chat div.input_container {
+    margin-top: 10px;
+}
+
+div.chat i.chat_submit {
+    /* min-width: 8%; */
+    /* float: right; */
+}
+
+div.chat input.chat_input {
+    width: 90%;
+}

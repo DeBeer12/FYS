@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Corendon!</title>
 
-    <link rel="stylesheet" href="styles/pages/my_matches.css">
+    <link rel="stylesheet" href="styles/pages/chat.css">
     <link rel="stylesheet" href="styles/base/base.css">
     <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
     <!-- <link rel="stylesheet" href="styles/margin-presets.css"> -->
@@ -43,27 +43,16 @@
     </nav>
 
     <div class="container content-wrapper">
-        <!-- <div class="match">
-            <div class="match_picture">
-                <img src="images/img_avatar.png" alt="Match Picture">
-            </div>            
-            <div class="match_info">
-                <p class="match_name">John Doe</p>
-                <p class="match_age">21 Jaar</p>
-                <p class="match_date">1 week geleden gematched</p>
+        <div class="chat">
+            <div class="message_container">
             </div>
-            <div class="match_tags_container">
-                <ul class="match_tags">
-                    Vakanties gepland:
-                    <li class="match_tag">Lorem ipsum</li>
-                    <li class="match_tag">Lorem ipsum</li>
-                </ul>
+            <div class="input_container">
+                <!-- <label> -->
+                <input type="text" class="chat_input" name="chat_input">
+                <i id="chat_with_match" class="far fa-comment chat_submit" onclick="submit()"></i>
+                <!-- </label> -->
             </div>
-            <div class="match_icons">
-                <i id="chat_with_match" class="fas fa-2x fa-comments"></i>
-                <i id="delete_match" class="fas fa-2x fa-trash"></i>
-            </div>
-        </div> -->
+        </div>
     </div>
 
 </body>
@@ -71,4 +60,4 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="scripts/my_matches.js"></script>
+<script src="scripts/chat.js"></script>
