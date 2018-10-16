@@ -1,0 +1,132 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0px;
+}
+
+body h1{
+    color:red;
+}
+
+/* USER SLIDER */
+.user-slider{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #E1E5EC;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: 0 6px 6px -6px #777;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #E1E5EC;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.flex-wrapper{
+    display:flex;
+    flex-direction: row;
+}
+
+.user-card-wrapper{
+    width: 33%;
+    height: 200px;
+    display: flex;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin: 15px;
+    position: relative;
+}
+
+.user-image-container{
+    width: 150px;
+    height: 200px;
+    display: flex;
+}
+
+.user-text-container{
+    width: 300px;
+    height: 200px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-title{
+    float: left;
+    font-size: 18px;
+}
+
+.user-text{
+    float: left;
+    margin-top: 25px;
+}
+
+
+.user-button{
+    border-top: 1px solid grey;
+    padding: 15px 0px 15px 0px;
+    float: left;
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+    width: 50%;
+}
+/* END SLIDER*/
+
+
+/* HOME BUTTONS */
+.button-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.button{
+    width: 400px;
+    height: 40px;
+    background-color: #d81e05;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.button:hover{
+    background-color: #B81A04;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .button-wrapper{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button{
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+}
+/* EINDE HOME BUTTONS */
+
+
+/* PREFACE TEXT */
+.preface{
+    margin-top:35px;
+}
+/* END PREFACE TEXT */
+
+
