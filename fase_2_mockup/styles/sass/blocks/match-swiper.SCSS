@@ -1,0 +1,104 @@
+$defaut-width: 550px;
+
+.match-swiper-wrapper{
+
+  min-height: 600px;
+  width: $defaut-width;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+  padding: 25px;
+  transition: transform 1s , background-color .2s;
+
+  transform-origin: 50% 200%;
+  transform: rotate(90deg);
+
+  &.js-active{
+      transform: rotate(0deg);
+  }
+
+  &.js-old{
+    position: absolute;
+    left: 0;
+    right: 0;
+    //transform: rotate(-90deg);
+  }
+
+
+  .profile-picture{
+    width: $defaut-width;
+    height: $defaut-width;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .intro-text{
+    width: $defaut-width;
+    cursor: pointer;
+
+    h2{
+      font-size: 28px;
+    }
+
+    h3{
+      font-size: 18px;
+    }
+
+    .more-info-toggle span{
+      font-size: 14px;
+    }
+  }
+
+
+
+  .more-info{
+    width: $defaut-width;
+    display: none;
+  }
+
+  .actions-wrapper{
+    width: $defaut-width;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .action-button{
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #ffc61d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .2s;
+
+      &:hover{
+        transform: scale(1.05);
+      }
+
+      .fa{
+        color: white;
+      }
+
+      &.error{
+        background-color: #DD3F2A;
+      }
+
+      &.warning{
+        background-color: #ffc61d;
+      }
+
+      &.succes{
+        background-color: limegreen;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,64 @@
+.match-swiper-wrapper {
+  min-height: 600px;
+  width: 550px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  transition: transform 1s , background-color .2s;
+  transform-origin: 50% 200%;
+  transform: rotate(90deg); }
+  .match-swiper-wrapper.js-active {
+    transform: rotate(0deg); }
+  .match-swiper-wrapper.js-old {
+    position: absolute;
+    left: 0;
+    right: 0; }
+  .match-swiper-wrapper .profile-picture {
+    width: 550px;
+    height: 550px;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; }
+  .match-swiper-wrapper .intro-text {
+    width: 550px;
+    cursor: pointer; }
+    .match-swiper-wrapper .intro-text h2 {
+      font-size: 28px; }
+    .match-swiper-wrapper .intro-text h3 {
+      font-size: 18px; }
+    .match-swiper-wrapper .intro-text .more-info-toggle span {
+      font-size: 14px; }
+  .match-swiper-wrapper .more-info {
+    width: 550px;
+    display: none; }
+  .match-swiper-wrapper .actions-wrapper {
+    width: 550px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .match-swiper-wrapper .actions-wrapper .action-button {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #ffc61d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .2s; }
+      .match-swiper-wrapper .actions-wrapper .action-button:hover {
+        transform: scale(1.05); }
+      .match-swiper-wrapper .actions-wrapper .action-button .fa {
+        color: white; }
+      .match-swiper-wrapper .actions-wrapper .action-button.error {
+        background-color: #DD3F2A; }
+      .match-swiper-wrapper .actions-wrapper .action-button.warning {
+        background-color: #ffc61d; }
+      .match-swiper-wrapper .actions-wrapper .action-button.succes {
+        background-color: limegreen; }
