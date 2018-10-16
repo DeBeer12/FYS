@@ -48,34 +48,32 @@
     </nav>
 
 
-        <div class="flex-wrapper">
-
-            <div class="user-card-wrapper user-card-wrapper-display-none" id="carousel-item-template">
-                <div class="user-image-container">
-                    <img src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
+    <div class="flex-wrapper">
+        <div class="user-card-wrapper user-card-wrapper-display-none" id="carousel-item-template">
+            <div class="user-image-container">
+                <img src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
+            </div>
+            <div class="user-text-container">
+                <div class="user-title">
+                    {{name}}
                 </div>
-                <div class="user-text-container">
-                    <div class="user-title">
-                        {{name}}
-                    </div>
-                    <div class="user-text">
-                        {{description}}
-                    </div>
-                    <div class="user-button">
-                        <a class="button-match" href="javascript:;">Match nu</a>
-                        <a style="float:right" class="button-match" href="javascript:;">Negeer</a>
-                    </div>
+                <div class="user-text">
+                    {{description}}
+                </div>
+                <div class="user-buttons">
+                    <a class="user-button-1" id="matchItem">Match nu</a>
+                    <a class="user-button-2" id="removeItem">Negeren</a>
                 </div>
             </div>
-
         </div>
+    </div>
 
     <div class="content-wrapper">
         <div class="button-wrapper">
-            <a href="javascript:;" class="button">
+            <a href="javascript:;" class="button" id="relevante-button">
                 Relevante Matches
             </a>
-            <a href="javascript:;" class="button">
+            <a href="javascript:;" class="button" id="matches-button">
                 Mijn Matches
             </a>
         </div>
@@ -95,7 +93,7 @@
             </div>
         </div>
         <div class="preface-item">
-            <img class="preface-image" src="images/airplaine.jpg" style="width: 100%; height: 450px">
+            <img class="preface-image" src="images/airplaine.jpg">
         </div>
     </div>
 
