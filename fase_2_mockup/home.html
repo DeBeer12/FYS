@@ -16,6 +16,9 @@
 
     <link rel="stylesheet" href="styles/pages/home.css">
 
+    <link rel="icon" type="images/png" href="images/favicon-32x32.png" sizes="16x16" />
+
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 
@@ -47,63 +50,27 @@
 
         <div class="flex-wrapper">
 
-            <div class="user-card-wrapper">
+            <div class="user-card-wrapper user-card-wrapper-display-none" id="carousel-item-template">
                 <div class="user-image-container">
                     <img src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
                 </div>
                 <div class="user-text-container">
                     <div class="user-title">
-                        Mike
+                        {{ name }}
                     </div>
                     <div class="user-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
+                        {{ description}}
                     </div>
                     <div class="user-button">
-                        <a href="javascript:;">Match nu</a>
+                        <a class="button-match" href="javascript:;">Match nu</a>
+                        <a style="float:right" class="button-match" href="javascript:;">Negeer</a>
                     </div>
                 </div>
             </div>
 
-            <div class="user-card-wrapper">
-                <div class="user-image-container">
-                    <img src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
-                </div>
-                <div class="user-text-container">
-                    <div class="user-title">
-                        Mike
-                    </div>
-                    <div class="user-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </div>
-                    <div class="user-button">
-                        <a href="javascript:;">Match nu</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="user-card-wrapper">
-                <div class="user-image-container">
-                    <img src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
-                </div>
-                <div class="user-text-container">
-                    <div class="user-title">
-                        Mike
-                    </div>
-                    <div class="user-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </div>
-                    <div class="user-button">
-                        <a href="javascript:;">Match nu</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
     <div class="content-wrapper">
-
         <div class="button-wrapper">
             <a href="javascript:;" class="button">
                 Relevante Matches
@@ -112,25 +79,29 @@
                 Mijn Matches
             </a>
         </div>
+    </div>
 
-        <div class="preface">
-            <h1>Corendon info</h1>
-            <hr>
-            <p>
-                <img src="images/airplane_in_hand.jpg" width="15%" height="15%" align="right">
-                Op vakantie gaan betekent wat ons betreft gewoon lekker genieten en genieten schrijven we bij Corendon met de hoofdletter G.
-                Het is onze taak om jouw vakantiedromen waar te maken.
-                Die opdracht nemen we heel serieus. Niet voor niets hebben wij voor elke doelgroep een passende vakantie.
-                Of je nu met kids naar een gezinsvriendelijk 4Kids of Aquafun hotel wilt of juist liever met z'n tweetjes naar een Only Adult accommodatie.
-                Super-de-luxe, All Inclusive of juist de vrijheid van een comfortabel appartement? Bij Corendon wordt er naar je geluisterd.
-
-            </p>
+    <div class="preface-wrapper">
+        <div class="preface-item">
+            <div class="preface-text-center">
+                <h1>Corendon info</h1>
+                <p>
+                    Op vakantie gaan betekent wat ons betreft gewoon lekker genieten en genieten schrijven we bij Corendon met de hoofdletter G.
+                    Het is onze taak om jouw vakantiedromen waar te maken.
+                    Die opdracht nemen we heel serieus. Niet voor niets hebben wij voor elke doelgroep een passende vakantie.
+                    Of je nu met kids naar een gezinsvriendelijk 4Kids of Aquafun hotel wilt of juist liever met z'n tweetjes naar een Only Adult accommodatie.
+                    Super-de-luxe, All Inclusive of juist de vrijheid van een comfortabel appartement? Bij Corendon wordt er naar je geluisterd.
+                </p>
+            </div>
         </div>
-
+        <div class="preface-item">
+            <img class="preface-image" src="images/airplaine.jpg" style="width: 100%; height: 450px">
+        </div>
     </div>
 
 </body>
 
 </html>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="scripts/home.js" type="javascript"></script>
