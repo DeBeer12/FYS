@@ -3,6 +3,10 @@ body {
     padding-bottom: 3px !important;
 }
 
+h2.title {
+    margin: 0px 10%;
+}
+
 div.container {
     display: flex;
     justify-content: space-between;
