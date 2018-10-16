@@ -55,11 +55,33 @@
 .edit-image{
 	display: block;
 	margin: 5px auto 0 auto;
+	cursor: pointer;
 }
 
 .save-image{
 	display: block;
 	margin: 5px auto 0 auto;
+	cursor: pointer;
+}
+
+.profile textarea,.profile .save-image{
+	display: none;
+}
+
+.profile.hide textarea,.profile.hide .save-image{
+	display: block;
+}
+
+.profile p,.profile .edit-image{
+	display: block;
+}
+
+.profile.hide p,.profile.hide .edit-image{
+	display: none;
+}
+
+.profile textarea{
+	margin-top: 5px; 
 }
 
 @media screen and (max-width: 600px) {
