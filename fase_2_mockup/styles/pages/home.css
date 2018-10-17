@@ -1,0 +1,174 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body h1{
+    color:red;
+}
+
+/* USER SLIDER */
+
+.user-slider{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #E1E5EC;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: 0 6px 6px -6px #777;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #E1E5EC;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.flex-wrapper{
+    display:flex;
+    flex-direction: row;
+}
+
+.user-card-wrapper{
+    width: 33%;
+    height: 200px;
+    display: flex;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin: 15px;
+    position: relative;
+}
+
+.user-card-wrapper-display-none{
+    display: none;
+}
+
+.user-image-container{
+    width: 150px;
+    height: 200px;
+    display: flex;
+}
+
+.user-text-container{
+    width: 300px;
+    height: 200px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-title{
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user-text{
+    float: left;
+    margin-top: 20px;
+}
+
+.user-buttons{
+    border-top: 1px solid grey;
+    padding: 15px 0px 15px 0px;
+    float: left;
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+}
+.user-button-1{
+    background-color: #d81e05;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+.user-button-2{
+    background-color: #ffc61d;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* END SLIDER*/
+
+
+/* HOME BUTTONS */
+
+.button-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.button{
+    width: 400px;
+    height: 40px;
+    background-color: #d81e05;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.button:hover{
+    background-color: #B81A04;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .button-wrapper{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button{
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+}
+
+/* EINDE HOME BUTTONS */
+
+
+/* PREFACE TEXT */
+
+.preface-wrapper{
+    display: flex;
+    /*width: 100%;*/
+    height: 450px;
+    margin: 35px 15px 0px 15px;
+}
+
+.preface-item{
+    float: left;
+    width: 50%;
+    max-height: 100%;
+    object-fit: cover;
+    background-color: #f5f5f5;
+}
+
+.preface-text-center{
+   padding: 7rem;
+}
+
+.preface-image{
+    width: 100%;
+    height: 450px
+}
+
+/* END PREFACE TEXT */
+
+
