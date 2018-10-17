@@ -10,42 +10,42 @@ var users = [{
     name: "Gebruiker 1",
     description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
     connected_date: new Date("6/6/2018"),
-    vacation: ["Malibu", "Oslo"],
+    vacations: ["Malibu", "Oslo"],
 }, {
     id: "2",
     age: 18,
     name: "Gebruiker 2",
     description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
     connected_date: new Date("6/6/2018"),
-    vacation: ["Bath", "Parijs"],
+    vacations: ["Bath", "Parijs"],
 }, {
     id: "3",
     age: 18,
     name: "Gebruiker 3",
     description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
     connected_date: new Date("6/6/2018"),
-    vacation: ["Barcelona", "Dubrovnik"],
+    vacations: ["Barcelona", "Dubrovnik"],
 }, {
     id: "4",
     age: 18,
     name: "Gebruiker 4",
     description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
     connected_date: new Date("6/6/2018"),
-    vacation: ["Cuzco", "Luxor"],
+    vacations: ["Cuzco", "Luxor"],
 }, {
     id: "5",
     age: 18,
     name: "Gebruiker 5",
     description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
     connected_date: new Date("6/6/2018"),
-    vacation: ["Rome", "Florence"],
+    vacations: ["Rome", "Florence"],
 }, {
     id: "6",
     age: 18,
     name: "Gebruiker 6",
     description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
     connected_date: new Date("6/6/2018"),
-    vacation: ["Rome", "Florence"],
+    vacations: ["Rome", "Florence"],
 }, ];
 
 // console.log(users, $('div#match_template').parent().html())
@@ -81,8 +81,8 @@ $(document).ready(function () {
         new_match_item = new_match_item.replace("{{name}}", users[i].name)
             .replace("{{age}}", users[i].age + " Jaar")
             .replace("{{connected_date}}", format_date(users[i].connected_date))
-            .replace("{{vacation1}}", users[i].vacation[0])
-            .replace("{{vacation2}}", users[i].vacation[1])
+            .replace("{{vacation1}}", users[i].vacations[0])
+            .replace("{{vacation2}}", users[i].vacations[1])
             .replace("id=\"match_template\"", "id=\"match_" + users[i].id + "\"")
             .replaceAll("'{{id}}'", users[i].id);
         // console.log(new_match_item);
