@@ -14,7 +14,8 @@
     <!-- <link rel="stylesheet" href="styles/keyframes.css"> -->
     <link rel="stylesheet" href="styles/base/typography.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
 
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="16x16" />
 </head>
@@ -29,50 +30,51 @@
     <nav class="nav-bar">
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
-              <li class="nav-bar__link"><a href="home.html">Home</a></li>
-              <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
-              <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
-              <li class="nav-bar__link"><a href="chat.html">Chat</a></li>
-              <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
+                <li class="nav-bar__link"><a href="home.html">Home</a></li>
+                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
+                <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
+                <li class="nav-bar__link"><a href="chat.html">Chat</a></li>
+                <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
 
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
-                    <path class="line top"
-                          d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
+                    <path class="line top" d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
                     <path class="line middle" d="m 30,50 h 40"></path>
-                    <path class="line bottom"
-                          d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path>
+                    <path class="line bottom" d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path>
                 </svg>
             </ul>
         </div>
     </nav>
 
     <div class="container content-wrapper">
-        <!-- <div class="match">
-            <div class="match_picture">
-                <img src="images/img_avatar.png" alt="Match Picture">
+        <div id="match_container" class="matches">
+            <div id="match_template" class="match match_template">
+                <div class="match_picture">
+                    <img src="images/img_avatar.png" alt="Match Picture"> </div>
+                <div class="match_info">
+                    <p class="match_name">{{name}}</p>
+                    <p class="match_age">{{age}}</p>
+                    <p class="match_date">{{connected_date}}</p>
+                </div>
+                <div class="match_tags_container">
+                    <ul class="match_tags"> Vakanties gepland:
+                        <li class="match_tag">{{vacation1}}</li>
+                        <li class="match_tag">{{vacation2}}</li>
+                    </ul>
+                </div>
+                <div class="match_icons">
+                    <a href="chat.html" title="Chat with match {{id}}">
+                        <i id="chat_with_match" class="fas fa-2x fa-comments">
+                        </i>
+                    </a>
+                    <i id="delete_match" onclick="deleteMatch('{{id}}')" class="fas fa-2x fa-trash"></i>
+                </div>
             </div>
-            <div class="match_info">
-                <p class="match_name">John Doe</p>
-                <p class="match_age">21 Jaar</p>
-                <p class="match_date">1 week geleden gematched</p>
-            </div>
-            <div class="match_tags_container">
-                <ul class="match_tags">
-                    Vakanties gepland:
-                    <li class="match_tag">Lorem ipsum</li>
-                    <li class="match_tag">Lorem ipsum</li>
-                </ul>
-            </div>
-            <div class="match_icons">
-                <i id="chat_with_match" class="fas fa-2x fa-comments"></i>
-                <i id="delete_match" class="fas fa-2x fa-trash"></i>
-            </div>
-        </div> -->
+        </div>
     </div>
-
 </body>
 
 </html>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 <script src="scripts/my_matches.js"></script>

@@ -15,6 +15,9 @@ div.container {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     height: 100%;
 }
+div.match_template {
+    display: none;
+}
 
 div.match {
     border: 3px solid #8e8e8e;
@@ -22,8 +25,7 @@ div.match {
     height: 80px;
     max-height: 80px;
     border-radius: 4px;
-    margin: 0px 10%;
-    margin-top: 10px;
+    margin: 10px 10% 0px 10%;
 }
 
 div.match div.match_picture {
