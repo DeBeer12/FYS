@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Corendon!</title>
 
+    <link rel="stylesheet" href="styles/sass/match-swiper.css">
     <link rel="stylesheet" href="styles/base/base.css">
     <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
     <link rel="stylesheet" href="styles/base/margin-presets.css">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body style="padding-bottom: 0">
 
 <div class="main-header content-wrapper">
     <a class="main-header" href="index.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
@@ -26,12 +27,11 @@
 <nav class="nav-bar">
     <div class="content-wrapper--full">
         <ul class="nav-bar__links">
-              <li class="nav-bar__link"><a href="home.html">Home</a></li>
-              <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
-              <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
-              <li class="nav-bar__link"><a href="chat.html">Chat</a></li>
-              <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
-
+            <li class="nav-bar__link"><a href="index.html">Home</a></li>
+            <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
+            <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
+            <li class="nav-bar__link"><a href="chat.html">Chat</a></li>
+            <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
             <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                 <path class="line top"
                       d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -44,110 +44,443 @@
 </nav>
 
 
-<div class="content-wrapper">
+<div class="content-wrapper--full-width js-overflow" style="overflow: hidden">
 
-    <div class="match-block mt2">
 
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
+    <div class="match-swiper-wrapper mt3 js-active">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
             </div>
-
-        </div>
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
             </div>
-
-        </div>
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
             </div>
-
         </div>
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
             </div>
-
-        </div>
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
             </div>
-
         </div>
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
-            </div>
-
-        </div>
-        <div class="match-block__single-block">
-            <img class="match-block__photo" src="images/dannyhaha.png">
-            <h2 class="match-block__title">Danny Huigen</h2>
-
-            <div class="match-block__rate-wrapper">
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-down fa-2x"></i>
-                </div>
-                <div class="match-block__rate">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                </div>
-            </div>
-
-        </div>
-
     </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="match-swiper-wrapper mt3 ">
+        <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+        <div class="intro-text mt2 js-more-info-toggle">
+            <div class="main-text">
+                <h2>Danny Huigen</h2>
+            </div>
+            <div class="sub-text">
+                <h3>Een malse man die op vakantie kan</h3>
+            </div>
+            <div class="more-info-toggle">
+                <span>Meer informatie</span>
+            </div>
+        </div>
+        <div class="more-info mt2 js-more-info">
+            <p>
+                Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+            </p>
+        </div>
+        <div class="actions-wrapper mt2">
+            <div class="action-button error js-dislike">
+                <i class="fa fa-3x fa-thumbs-down"></i>
+            </div>
+            <div class="action-button succes js-like">
+                <i class="fa fa-3x fa-thumbs-up"></i>
+            </div>
+        </div>
+    </div>
+
+
 
 </div>
 
@@ -158,3 +491,4 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="../scripts/navigation.js"></script>
+<script src="scripts/matching.js"></script>

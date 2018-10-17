@@ -7,6 +7,14 @@ Default content wrapper to align items
     margin: 0 auto;
 }
 
+.content-wrapper--full-width{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+}
+
 /**
 Content wrapper that takes up full size
  */
