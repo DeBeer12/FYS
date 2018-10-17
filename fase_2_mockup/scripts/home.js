@@ -43,22 +43,24 @@ $(document).ready(function () {
         $("." + users[i].id).removeClass("user-card-wrapper-display-none");
         $('#carousel-item-template').attr('id', "template-id-" + users[i].id).removeClass("user-card-wrapper-display-none");
 
-        $("#template-id-" + i + " .user-text-container .user-button #removeItem").on('click', function(){
-            var answer = confirm("Wilt u gebruiker " + users[i].name + " negeren?");
+        $("#template-id-" + i + " .user-text-container .user-buttons #removeItem").on('click', function(){
+            var templateId = $(this).parent().parent().parent().attr('id');
+            var idArr = templateId.split('-');
+
+            var answer = confirm("Wilt u gebruiker " + users[idArr[2] - 1].name + " negeren?");
             if (answer) {
-                $("#template-id-" + i).remove();
+                $("#template-id-" + idArr[2]).remove();
             }
         });
 
-        $("#template-id-" + i + " .user-text-container .user-button #matchItem").on('click', function(){
+        $("#template-id-" + i + " .user-text-container .user-buttons #matchItem").on('click', function(){
+            var templateId = $(this).parent().parent().parent().attr('id');
+            var idArr = templateId.split('-');
 
-            var answer = confirm("Wilt u met " + users[i].name + " matchen?");
+            var answer = confirm("Wilt u met " + users[idArr[2] - 1].name + " matchen?");
             if (answer) {
-                $("#template-id-" + i).remove();
+                $("#template-id-" + idArr[2]).remove();
             }
         });
     }
 });
-
-// wanneer er op die knop wordt gedrukt, kijk je welk id als laatste word ingeladen met een if statement vervolgens .empty() je alles in de flex-wrapper
-// en loop je door de array met een if statement die alleen door laat als het id hoger is dan de laatste id die je eerder al ophaald.
