@@ -14,30 +14,32 @@
     <link rel="stylesheet" href="styles/blocks/header.css">
     <link rel="stylesheet" href="styles/blocks/nav-bar.css">
 
-    <link rel="stylesheet" href="styles/pages/home.css">
+    <link rel="stylesheet" href="styles/pages/index.css">
 
     <link rel="icon" type="images/png" href="images/favicon-32x32.png" sizes="16x16" />
 
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+
 </head>
 
 <body>
 
     <div class="main-header content-wrapper">
-        <a class="main-header" href="home.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
+        <a class="main-header" href="index.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
     </div>
 
     <nav class="nav-bar">
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
+                <li class="nav-bar__link"><a href="index.html">Home</a></li>
+                <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
+                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
+                <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
                 <li class="nav-bar__link"><a href="login.html">Login</a></li>
                 <li class="nav-bar__link"><a href="registration.html">Registratie</a></li>
-                <li class="nav-bar__link"><a href="index.html">Home</a></li>
-                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
-                <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
-                <li class="nav-bar__link"><a href="chat.html">Chat</a></li>
-                <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -63,8 +65,8 @@
                     {{description}}
                 </div>
                 <div class="user-buttons">
-                    <a class="user-button-1" id="matchItem">Match nu</a>
-                    <a class="user-button-2" id="removeItem">Negeren</a>
+                    <a class="user-button-1 pointer" id="matchItem">Match nu</a>
+                    <a class="user-button-2 pointer" id="removeItem">Negeren</a>
                 </div>
             </div>
         </div>
@@ -72,26 +74,29 @@
 
     <div class="content-wrapper">
         <div class="button-wrapper">
-            <a href="javascript:;" class="button" id="relevante-button">
-                Relevante Matches
-            </a>
-            <a href="javascript:;" class="button" id="matches-button">
+            <a href="my_matches.html" class="button" id="matches-button">
                 Mijn Matches
+            </a>
+            <a href="matches.html" class="button pointer" id="relevante-button" style="background-color: #ffc61d;">
+                Relevante Matches
             </a>
         </div>
     </div>
 
     <div class="preface-wrapper">
         <div class="preface-item">
+            <div style="float: right;" id="preface-edit"><i class="far fa-edit fa-2x pointer"></i></div>
             <div class="preface-text-center">
-                <h1>Corendon info</h1>
-                <p>
+                <h1 id="preface-title">Corendon info</h1>
+                <br>
+                <p id="preface-text-area">
                     Op vakantie gaan betekent wat ons betreft gewoon lekker genieten en genieten schrijven we bij Corendon met de hoofdletter G.
                     Het is onze taak om jouw vakantiedromen waar te maken.
                     Die opdracht nemen we heel serieus. Niet voor niets hebben wij voor elke doelgroep een passende vakantie.
                     Of je nu met kids naar een gezinsvriendelijk 4Kids of Aquafun hotel wilt of juist liever met z'n tweetjes naar een Only Adult accommodatie.
                     Super-de-luxe, All Inclusive of juist de vrijheid van een comfortabel appartement? Bij Corendon wordt er naar je geluisterd.
                 </p>
+                <p id="preface-save"></p>
             </div>
         </div>
         <div class="preface-item">
@@ -104,4 +109,4 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="scripts/home.js"></script>
+<script src="scripts/index.js"></script>
