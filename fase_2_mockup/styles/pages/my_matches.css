@@ -16,13 +16,20 @@ div.container {
     height: 100%;
 }
 
+div.match_template {
+    display: none;
+}
+div.match_filters,
+div.match_container {
+    margin: 0px 10%;
+}
+
 div.match {
     border: 3px solid #8e8e8e;
-    width: 80%;
+    width: 100%;
     height: 80px;
     max-height: 80px;
     border-radius: 4px;
-    margin: 0px 10%;
     margin-top: 10px;
 }
 
