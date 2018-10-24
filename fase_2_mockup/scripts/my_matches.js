@@ -79,7 +79,55 @@ function getUsers() {
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
         vacations: ["Rome", "Florence"],
-    }, ];
+    }, {
+        id: 7,
+        age: 18,
+        name: "Mary Monroe",
+        img: "insteek.jpg",
+        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
+        connected_date: new Date("10/10/2018"),
+        vacations: ["Malibu", "Oslo"],
+    }, {
+        id: 8,
+        age: 21,
+        name: "Kimberly Bullock",
+        img: "temp_slider_1.jpg",
+        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
+        connected_date: new Date("6/6/2018"),
+        vacations: ["Bath", "Parijs"],
+    }, {
+        id: 9,
+        age: 31,
+        name: "Elizabeth Traynor",
+        img: "airplaine.jpg",
+        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
+        connected_date: new Date("6/6/2018"),
+        vacations: ["Barcelona", "Dubrovnik"],
+    }, {
+        id: 10,
+        age: 24,
+        name: "Patricia Chamberlain",
+        img: "temp_slider_2.jpg",
+        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
+        connected_date: new Date("6/6/2018"),
+        vacations: ["Cuzco", "Luxor"],
+    }, {
+        id: 11,
+        age: 21,
+        name: "Joseph Garcia",
+        img: "temp_slider_3.jpg",
+        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
+        connected_date: new Date("6/6/2018"),
+        vacations: ["Rome", "Florence"],
+    }, {
+        id: 12,
+        age: 44,
+        name: "Jack Williams",
+        img: "insteek.jpg",
+        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
+        connected_date: new Date("6/6/2018"),
+        vacations: ["Rome", "Florence"],
+    }];
 }
 
 var getVacations = function() {
