@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Corendon!</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Corendon!</title>
 
-        <link rel="stylesheet" href="styles/base/base.css">
-        <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
-        <link rel="stylesheet" href="styles/base/margin-presets.css">
-        <link rel="stylesheet" href="styles/blocks/header.css">
-        <link rel="stylesheet" href="styles/blocks/nav-bar.css">
-        <link rel="stylesheet" href="styles/base/keyframes.css">
-        <link rel="stylesheet" href="styles/base/typography.css">
-        <link rel="stylesheet" href="styles/pages/profile-page.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    </head>
+    <link rel="manifest" href="manifest.json">
 
-    <body>
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
+    <link rel="stylesheet" href="styles/base/margin-presets.css">
+    <link rel="stylesheet" href="styles/blocks/header.css">
+    <link rel="stylesheet" href="styles/blocks/nav-bar.css">
+    <link rel="stylesheet" href="styles/base/keyframes.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/pages/profile-page.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<body>
 
     <div class="main-header content-wrapper">
-    <a class="main-header" href="index.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
+        <a class="main-header" href="index.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
     </div>
 
     <nav class="nav-bar">
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
                 <li class="nav-bar__link"><a href="index.html">Home</a></li>
-                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
                 <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
-                <li class="nav-bar__link"><a href="chat.html">Chat</a></li>
+                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
                 <li class="nav-bar__link"><a href="profile.html">Profiel</a></li>
+                <li class="nav-bar__link"><a href="login.html">Login</a></li>
+                <li class="nav-bar__link"><a href="registration.html">Registratie</a></li>
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -41,7 +44,7 @@
         </div>
     </nav>
 
-     <div id="profile" class="profile content-wrapper">
+    <div id="profile" class="profile content-wrapper">
         <div>
             <div class="profile-img-container">
                 <img src="images/img_avatar.png" class="profile-img"></img>
@@ -54,12 +57,13 @@
                 <textarea></textarea>
                 <p>Over mij:</p>
                 <textarea></textarea>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada sem ac nunc dictum, a pellentesque odio vehicula. In mattis magna sit amet fringilla tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla luctus, massa eget lacinia tempor, ex dolor ultrices lorem, 
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada sem ac nunc dictum, a pellentesque odio vehicula. In mattis magna sit amet fringilla tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                    cubilia Curae; Nulla luctus, massa eget lacinia tempor, ex dolor ultrices lorem,
                 </p>
                 <textarea style="width: 100%;height: 100px;"></textarea>
             </div>
             <div id="profile-interest">
-                
+
             </div>
         </div>
     </div>

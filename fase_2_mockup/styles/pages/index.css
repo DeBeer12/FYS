@@ -9,6 +9,9 @@ html, body{
 body h1{
     color:red;
 }
+body h2{
+    color:red;
+}
 
 /* USER SLIDER */
 
@@ -93,6 +96,10 @@ body h1{
     color: white;
     font-weight: bold;
     padding: 10px;
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 /* END SLIDER*/

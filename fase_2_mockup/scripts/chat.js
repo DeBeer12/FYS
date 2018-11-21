@@ -4,11 +4,11 @@ $(document).ready(function() {
     $(".chat_input").focus(function() {
         $(this).data("hasfocus", true);
     });
-    
+
     $(".chat_input").blur(function() {
         $(this).data("hasfocus", false);
     });
-    
+
     $(document.body).keyup(function(ev) {
         // 13 is ENTER
         if (ev.which === 13 && $(".chat_input").data("hasfocus")) {
@@ -26,11 +26,11 @@ var submit = function() {
 
 var print_chat_message = function(message) {
     if (message.length > 0) {
-        var br_index = getRandomInt(0, 5); 
+        var br_index = getRandomInt(0, 5);
         var bot_response = chat_responses[br_index];
         var message_template = "<p class='chat_message'>" + message + "</p>"
         $(".message_container").append(message_template);
-        if(br_index != 4) {
+        if (br_index != 4) {
 
             var message_match_template = "<p class='chat_message_match'>" + bot_response + "</p>"
             $(".message_container").append(message_match_template);
@@ -45,4 +45,4 @@ var getRandomInt = function(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-  }
+}
