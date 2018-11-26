@@ -1,7 +1,7 @@
 // App dependencies
 var fs = require("fs");
 var express = require("express");
-var mysql = require('mysql');
+var mysql = require("mysql");
 
 // Config files
 var config = require("./appsettings.json")
@@ -10,7 +10,13 @@ var config = require("./appsettings.json")
 var app = express();
 var db = mysql.createConnection(config.databaseRemote);
 
-// Request handler
+// Request handlers
+app.get('/api/', function (req, res) { 
+    var fullUrl = req.originalUrl;
+
+    console.log(fullUrl)
+});
+
 app.get('/*', function (req, res) {
     var fullUrl = "public" + req.originalUrl;
 
@@ -34,7 +40,7 @@ app.get('/*', function (req, res) {
 });
 
 // Start the server 
-var server = app.listen(8081, function (err) {
+var server = app.listen(config.server.port, function (err) {
     if(err) throw err;
     var host = server.address().address;
     var port = server.address().port;
