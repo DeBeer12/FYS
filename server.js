@@ -37,13 +37,13 @@ var server = app.listen(8081, function () {
     console.log("Fys server runnng at http://%s:%s", host, port)
 });
 
-var con = mysql.createConnection(config.database);
+var con = mysql.createConnection(config.databaseRemote);
   
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
     con.query("SELECT * FROM user", function (err, result) {
         if (err) throw err;
-        console.log("Result: " + result);
+        console.log("Result: " + JSON.stringify(result, null, 4));
     });
   });
