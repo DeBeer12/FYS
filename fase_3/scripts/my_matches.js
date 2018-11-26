@@ -20,14 +20,14 @@ $(document).ready(function() {
             filterMatches();
         }
     });
-    var vacations = getVacations();
+    var interests = getinterests();
     var users = getUsers();
     $.each(users, function(key, value) {
         includedMatches.push(value.id)
     })
 
     printMatches(users);
-    printVacationFilters(vacations);
+    printinterestFilters(interests);
 });
 
 function getUsers() {
@@ -38,7 +38,7 @@ function getUsers() {
         img: "insteek.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("10/10/2018"),
-        vacations: ["Malibu", "Oslo"],
+        interests: ["Malibu", "Oslo"],
     }, {
         id: 2,
         age: 21,
@@ -46,7 +46,7 @@ function getUsers() {
         img: "temp_slider_1.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Bath", "Parijs"],
+        interests: ["Bath", "Parijs"],
     }, {
         id: 3,
         age: 31,
@@ -54,7 +54,7 @@ function getUsers() {
         img: "airplaine.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Barcelona", "Dubrovnik"],
+        interests: ["Barcelona", "Dubrovnik"],
     }, {
         id: 4,
         age: 24,
@@ -62,7 +62,7 @@ function getUsers() {
         img: "temp_slider_2.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Cuzco", "Luxor"],
+        interests: ["Cuzco", "Luxor"],
     }, {
         id: 5,
         age: 21,
@@ -70,7 +70,7 @@ function getUsers() {
         img: "temp_slider_3.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Rome", "Florence"],
+        interests: ["Rome", "Florence"],
     }, {
         id: 6,
         age: 66,
@@ -78,7 +78,7 @@ function getUsers() {
         img: "img_avatar.png",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Rome", "Florence"],
+        interests: ["Rome", "Florence"],
     }, {
         id: 7,
         age: 18,
@@ -86,7 +86,7 @@ function getUsers() {
         img: "insteek.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("10/10/2018"),
-        vacations: ["Malibu", "Oslo"],
+        interests: ["Malibu", "Oslo"],
     }, {
         id: 8,
         age: 21,
@@ -94,7 +94,7 @@ function getUsers() {
         img: "temp_slider_1.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Bath", "Parijs"],
+        interests: ["Bath", "Parijs"],
     }, {
         id: 9,
         age: 31,
@@ -102,7 +102,7 @@ function getUsers() {
         img: "airplaine.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Barcelona", "Dubrovnik"],
+        interests: ["Barcelona", "Dubrovnik"],
     }, {
         id: 10,
         age: 24,
@@ -110,7 +110,7 @@ function getUsers() {
         img: "temp_slider_2.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Cuzco", "Luxor"],
+        interests: ["Cuzco", "Luxor"],
     }, {
         id: 11,
         age: 21,
@@ -118,7 +118,7 @@ function getUsers() {
         img: "temp_slider_3.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Rome", "Florence"],
+        interests: ["Rome", "Florence"],
     }, {
         id: 12,
         age: 44,
@@ -126,22 +126,22 @@ function getUsers() {
         img: "insteek.jpg",
         description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
         connected_date: new Date("6/6/2018"),
-        vacations: ["Rome", "Florence"],
+        interests: ["Rome", "Florence"],
     }];
 }
 
-var getVacations = function() {
+var getinterests = function() {
     var users = getUsers();
-    var vacations = [];
+    var interests = [];
 
     $.each(users, function(k, v) {
-        $.each(v.vacations, function(k, v) {
-            if (!vacations.includes(v)) {
-                vacations.push(v);
+        $.each(v.interests, function(k, v) {
+            if (!interests.includes(v)) {
+                interests.push(v);
             }
         })
     })
-    return vacations.sort();
+    return interests.sort();
 }
 
 var deleteMatch = function(elemId) {
@@ -166,14 +166,14 @@ var formatDate = function(date) {
 }
 
 /**
- * check if userVacations array contains any values in checkedBoxValues array
- * @param {Array} userVacations
+ * check if userinterests array contains any values in checkedBoxValues array
+ * @param {Array} userinterests
  * @param {Array} checkedBoxValues
  */
-var checkVacations = function(userVacations, checkedBoxValues) {
+var checkinterests = function(userinterests, checkedBoxValues) {
     var check = false;
     $.each(checkedBoxValues, function(k, v) {
-        if (userVacations.includes(v)) {
+        if (userinterests.includes(v)) {
             check = true;
             return false;
         }
@@ -188,7 +188,7 @@ var filterMatches = function() {
     var ageFilterContainer = $('#filter_age');
     var ageFilter = ageFilterContainer.val();
 
-    var checkedBoxes = $('.match_filter_vacations input[type=checkbox]:checked');
+    var checkedBoxes = $('.match_filter_interests input[type=checkbox]:checked');
     var checkedBoxValues = [];
 
     $.each(checkedBoxes, function(k, v) {
@@ -205,8 +205,8 @@ var filterMatches = function() {
         // else compare the users age to the entered age
         ((ageFilter != '') ? user.age == ageFilter : true) &&
         // When checkedBoxValues array is empty return true to skip this condition 
-        // else check if user vacations contains filter input 
-        ((checkedBoxValues.length > 0) ? checkVacations(user.vacations, checkedBoxValues) : true)
+        // else check if user interests contains filter input 
+        ((checkedBoxValues.length > 0) ? checkinterests(user.interests, checkedBoxValues) : true)
 
     );
 
@@ -232,8 +232,8 @@ var printMatches = function(userArray) {
             .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
             .replace("{{age}}", userArray[i].age + " Jaar")
             .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
-            .replace("{{vacation1}}", userArray[i].vacations[0])
-            .replace("{{vacation2}}", userArray[i].vacations[1])
+            .replace("{{interest1}}", userArray[i].interests[0])
+            .replace("{{interest2}}", userArray[i].interests[1])
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].id + "\"")
             .replaceAll("'{{id}}'", userArray[i].id);
         $('#match_container').append(new_match_item);
@@ -241,14 +241,14 @@ var printMatches = function(userArray) {
     }
 };
 
-var printVacationFilters = function(vacationArray) {
-    var vacation_template = $('input#vacation_template').parent().parent().html();
+var printinterestFilters = function(interestArray) {
+    var interest_template = $('input#interest_template').parent().parent().html();
 
     // Show insert match template 10 times in container
-    for (var i = 0; i < vacationArray.length; i++) {
-        new_vacation_item = (' ' + vacation_template).slice(1);
-        new_vacation_item = new_vacation_item.replaceAll("{{vacation}}", vacationArray[i])
-            .replace("id=\"vacation_template\"", "id=\"vacation_" + vacationArray[i] + "\"");
-        $('.match_filter_vacations ul').append(new_vacation_item);
+    for (var i = 0; i < interestArray.length; i++) {
+        new_interest_item = (' ' + interest_template).slice(1);
+        new_interest_item = new_interest_item.replaceAll("{{interest}}", interestArray[i])
+            .replace("id=\"interest_template\"", "id=\"interest_" + interestArray[i] + "\"");
+        $('.match_filter_interests ul').append(new_interest_item);
     }
 };

@@ -16,7 +16,7 @@ div.container {
     min-height: calc(100vh - 180px);
 }
 
-div.vacation_template,
+div.interest_template,
 div.match_template {
     display: none !important;
 }
@@ -51,19 +51,19 @@ div.match_filters div.match_filter_fields input {
     margin-bottom: 10px;
 }
 
-div.match_filters div.match_filter_vacations {
+div.match_filters div.match_filter_interests {
     overflow-y: auto;
 }
 
-div.match_filters div.match_filter_vacations ul {
+div.match_filters div.match_filter_interests ul {
     list-style: none;
 }
 
-div.match_filters div.match_filter_vacations ul li {
+div.match_filters div.match_filter_interests ul li {
     margin-left: 0px;
 }
 
-div.match_filters div.match_filter_vacations ul li input[type=checkbox] {
+div.match_filters div.match_filter_interests ul li input[type=checkbox] {
     float: right;
 }
 
