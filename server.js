@@ -1,11 +1,18 @@
 var fs = require("fs");
 var express = require("express");
+var mysql = require('mysql');
+
+var config = require("./appsettings.json")
 
 var app = express();
 
 app.get('/*', function (req, res) {
 
     var fullUrl = "public" + req.originalUrl;
+
+    if(fullUrl === "public/"){
+        fullUrl = "public/index.html";
+    }
 
     fs.readFile(fullUrl ,function (err, data){
         if (err){
@@ -24,9 +31,19 @@ app.get('/*', function (req, res) {
 
 });
 
-
 var server = app.listen(8081, function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log("Fys server runnng at http://%s:%s", host, port)
 });
+
+var con = mysql.createConnection(config.database);
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    con.query("SELECT * FROM user", function (err, result) {
+        if (err) throw err;
+        console.log("Result: " + result);
+    });
+  });
