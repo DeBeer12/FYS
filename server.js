@@ -50,7 +50,7 @@ var server = app.listen(config.server.port, function (err) {
     if(err) throw err;
     var host = server.address().address;
     var port = server.address().port;
-    console.log("Fys server runnig at http://%s:%s", host, port)
+    console.log("Fys server running at http://%s:%s", host, port)
 });
 
 var con = mysql.createConnection(config.databaseRemote);
