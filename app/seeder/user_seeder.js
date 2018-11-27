@@ -1,4 +1,7 @@
-var nl = (process.platform === 'win32' ? '\r\n' : '\n');
+/*
+Seeder script to create a query to fill user table
+Need to run the script and then ctr-c and ctr-v in query executer
+ */
 
 function getRandomDate(from, to) {
     from = from.getTime();
@@ -66,7 +69,57 @@ var names = [
     "Francesca Cross",
     "Petronila Kampa",
     "Latricia Brunson",
-    "Florida Kier"
+    "Florida Kier",
+    "Lauretta Infante",
+    "Chung Capo",
+    "Sybil Silber",
+    "Emmie Elvin",
+    "Vergie Rosenzweig",
+    "Barbra Edenfield",
+    "Lavenia Hayne",
+    "Skye Shults",
+    "Tasha Simerly",
+    "Tisha Opp",
+    "Hung Cothran",
+    "Rosio Mau",
+    "Maegan Koeppel",
+    "Margot Tamashiro",
+    "Anamaria Wisener",
+    "Tonya Hillin",
+    "Marna Ewald",
+    "Terra Holstein",
+    "Wilbur Kunzman",
+    "Bennie Steib",
+    "Jacquelyne Krantz",
+    "Coleman Even",
+    "Ciara Hendry",
+    "Tia Sublett",
+    "Candis Wetherington",
+    "Jefferey Lafortune",
+    "Krystle Baptista",
+    "Hyacinth Wardlow",
+    "Cornell Mckain",
+    "Ivan Tinker",
+    "Rosy Cordell",
+    "Muriel Urich",
+    "Willa Linson",
+    "Gilbert Levar",
+    "Janis Jost",
+    "Jenae Hires",
+    "Latrisha Sandoval",
+    "Danyell Huls",
+    "Janey Durkee",
+    "Ervin Selvage",
+    "Bradley Schiel",
+    "Raymon Cuffee",
+    "Reid Dials",
+    "Cedrick Rahm",
+    "Linn Lessig",
+    "Fallon Schooler",
+    "Katie Witham",
+    "Blondell Genna",
+    "Cordelia Vesey",
+    "Cassie Skinner"
 ];
 
 var mails = [
@@ -75,6 +128,8 @@ var mails = [
     "@codacitymail.com",
     "@live.nl",
 ];
+
+var query = "INSERT INTO user (user_firstname, user_mail, user_password, user_birthday, user_lastname, user_name, user_created_at, user_updated_at, user_deleted, user_last_login, role_role_id) VALUES"
 
 for(i = 0; i < names.length; i ++){
 
@@ -90,11 +145,8 @@ for(i = 0; i < names.length; i ++){
     var mail = firstname + lastname + mails[Math.floor(Math.random()*mails.length)];
     var roleId = 1;
 
-
-
-    var query = "INSERT INTO user (user_firstname, user_mail, user_password, user_birthday, user_lastname, user_name, user_created_at, user_updated_at, user_deleted, user_last_login, role_role_id) VALUES" +
-        "('"+firstname+"', '"+mail+"', '"+password+"', "+bday+", '"+lastname+"', '"+username+"', "+createdAt+", "+updatedAt+", false, "+lastLogin+", "+roleId+")";
-
-    console.log(query + "\n");
+    query += "('"+firstname+"', '"+mail+"', '"+password+"', "+bday+", '"+lastname+"', '"+username+"', "+createdAt+", "+updatedAt+", false, "+lastLogin+", "+roleId+"),\n";
 }
+
+console.log(query);
 
