@@ -32,9 +32,9 @@ var users = [{
 
 $(document).ready(function () {
 
-    $.post( "/db", {query:"SELECT * FROM fys_is106_1.user WHERE user.user_firstname = 'Florida';"}).done(function( data ) {
+    $.get( "/db", {query:"SELECT * FROM fys_is106_1.user WHERE user.user_firstname = 'Florida';"}).done(function( data ) {
         console.log(data);
-      });
+    });
 
     var carouselItemTemplate = $('div#carousel-item-template').parent().html();
 

@@ -17,10 +17,14 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 var db = mysql.createConnection(config.databaseRemote);
 
 // Request handlers
-app.post('/db', function (req, res) { 
-    var queryResponse = dbc.query_handler(req.body.query, db);
-    console.log({queryResponse: queryResponse})
-    return queryResponse;
+app.get('/db', function (req, res) { 
+    console.log(req.query.query)
+    var query =req.query.query;
+    dbc.query_handler(query, db, function(queryResponse){
+        console.log({queryResponse: queryResponse})
+        res.send(queryResponse);
+        // return queryResponse;         
+    })
 });
 
 app.get('/*', function (req, res) {
