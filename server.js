@@ -55,8 +55,14 @@ var server = app.listen(config.server.port, function (err) {
     var host = server.address().address;
     var port = server.address().port;
     console.log("Fys server running at http://%s:%s", host, port)
-    
-    db.connect(function (err, r) {
+});
+
+var con = mysql.createConnection(config.databaseRemote);
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    con.query("SELECT * FROM user", function (err, result) {
         if (err) throw err;
         console.log("Connected to %s as %s", config.databaseRemote.database, config.databaseRemote.user);
     });
