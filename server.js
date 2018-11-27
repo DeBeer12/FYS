@@ -1,16 +1,28 @@
 // App dependencies
 var fs = require("fs");
 var express = require("express");
-var mysql = require('mysql');
+var mysql = require("mysql");
+
+// Controllers
+var dbc = require("./controllers/database_controller")
 
 // Config files
 var config = require("./appsettings.json")
 
 // intitalize the app
 var app = express();
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
+
 var db = mysql.createConnection(config.databaseRemote);
 
-// Request handler
+// Request handlers
+app.post('/db', function (req, res) { 
+    var queryResponse = dbc.query_handler(req.body.query, db);
+    console.log({queryResponse: queryResponse})
+    return queryResponse;
+});
+
 app.get('/*', function (req, res) {
     var fullUrl = "public" + req.originalUrl;
 
@@ -27,14 +39,14 @@ app.get('/*', function (req, res) {
             else if (req.originalUrl.includes(".css")) {res.writeHead(200, {'Content-Type': 'text/css'});}
             else if (req.originalUrl.includes(".js")) {res.writeHead(200, {'Content-Type': 'text/javascript'});}
             res.write(data);
-            res.end();
+            res.end();  
         }
     });
 
 });
 
 // Start the server 
-var server = app.listen(8081, function (err) {
+var server = app.listen(config.server.port, function (err) {
     if(err) throw err;
     var host = server.address().address;
     var port = server.address().port;
