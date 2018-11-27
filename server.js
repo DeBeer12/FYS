@@ -3,18 +3,24 @@ var fs = require("fs");
 var express = require("express");
 var mysql = require("mysql");
 
+// Controllers
+var dbc = require("./controllers/database_controller")
+
 // Config files
 var config = require("./appsettings.json")
 
 // intitalize the app
 var app = express();
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
+
 var db = mysql.createConnection(config.databaseRemote);
 
 // Request handlers
-app.get('/api/', function (req, res) { 
-    var fullUrl = req.originalUrl;
-
-    console.log(fullUrl)
+app.post('/db', function (req, res) { 
+    var queryResponse = dbc.query_handler(req.body.query, db);
+    console.log({queryResponse: queryResponse})
+    return queryResponse;
 });
 
 app.get('/*', function (req, res) {
@@ -33,7 +39,7 @@ app.get('/*', function (req, res) {
             else if (req.originalUrl.includes(".css")) {res.writeHead(200, {'Content-Type': 'text/css'});}
             else if (req.originalUrl.includes(".js")) {res.writeHead(200, {'Content-Type': 'text/javascript'});}
             res.write(data);
-            res.end();
+            res.end();  
         }
     });
 
