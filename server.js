@@ -18,12 +18,9 @@ var db = mysql.createConnection(config.databaseRemote);
 
 // Request handlers
 app.get('/db', function (req, res) { 
-    console.log(req.query.query)
-    var query =req.query.query;
+    var query = req.query.query;
     dbc.query_handler(query, db, function(queryResponse){
-        console.log({queryResponse: queryResponse})
         res.send(queryResponse);
-        // return queryResponse;         
     })
 });
 
