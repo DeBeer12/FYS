@@ -66,14 +66,12 @@ app.get('/*', function(req, res) {
         // fs.access(fullUrl, function(err) {
         //     if (err == null) {
         fullUrl = "public/redirect.html";
-        console.log(1)
-            // }
-            // });
+        // }
+        // });
     }
 
     fullUrl = fullUrl.split("?")[0];
     fs.readFile(fullUrl, function(err, data) {
-        console.log(1)
         if (err) {
             res.write("404");
             res.end();
