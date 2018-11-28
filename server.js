@@ -2,6 +2,7 @@
 var fs = require("fs");
 var express = require("express");
 var mysql = require("mysql");
+var bcrypt = require('bcrypt')
 
 // Controllers
 var dbc = require("./controllers/database_controller")
@@ -21,6 +22,18 @@ app.get('/db', function (req, res) {
     var query = req.query.query;
     dbc.query_handler(query, db, function(queryResponse){
         res.send(queryResponse);
+    })
+});
+
+app.post('/login', function (req, res) { 
+    var query = "SELECT * FROM user WHERE user_name = '"+req.body.username+"' && user_password = '"+req.body.password+"';";
+    // res.send(query)
+    dbc.query_handler(query, db, function(queryResponse){
+        if(queryResponse.length > 0) {
+            res.redirect("/index")
+        } else {
+            res.send(queryResponse.length > 0);
+        }
     })
 });
 
@@ -52,14 +65,7 @@ var server = app.listen(config.server.port, function (err) {
     var host = server.address().address;
     var port = server.address().port;
     console.log("Fys server running at http://%s:%s", host, port)
-});
-
-var con = mysql.createConnection(config.databaseRemote);
-  
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-    con.query("SELECT * FROM user", function (err, result) {
+    db.connect(function(err) {
         if (err) throw err;
         console.log("Connected to %s as %s", config.databaseRemote.database, config.databaseRemote.user);
     });

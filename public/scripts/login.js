@@ -1,14 +1,17 @@
+$("#js-login-form").submit(function (e) {
+    e.preventDefault();
 
+    var username = $("#js-login-form #username").val();
+    var password = $("#js-login-form #password").val();
+    console.log(username + "   " + password);
 
-$("#js-login-form").submit(function(e){
+    $.post("/login", {username:username, password:password}).done(function( result ) {
+        if(result){
 
-e.preventDefault();
+        } else {
 
-var username = $("#js-login-form #username").val();
-var password = $("#js-login-form #password").val();
-
-alert(username + "   " + password);
-
+        }
+    });
 });
 
-var query = "SELECT * FROM fys_is106_1.user WITH user.user_name = username AND user.user_password = password;";
+// var query = "SELECT * FROM fys_is106_1.user WITH user.user_name = username AND user.user_password = password;";
