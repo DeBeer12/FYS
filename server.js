@@ -39,6 +39,7 @@ app.post('/login', function (req, res) {
 
 app.get('/*', function (req, res) {
     var fullUrl = "public" + req.originalUrl;
+    fullUrl = fullUrl.split("?")[0];
 
     if (fullUrl === "public/") {
         fullUrl = "public/index.html";
