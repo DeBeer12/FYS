@@ -37,14 +37,13 @@ app.get('/db', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
-    // console.log(req.session)
     var query = "SELECT * FROM user WHERE user_name = '" + req.body.username + "' && user_password = '" + req.body.password + "';";
-    // res.send(query)
+
     dbc.query_handler(query, db, function(queryResponse) {
         if (queryResponse.length > 0) {
             req.session.user = {
+                user_id: queryResponse[0].user_id,
                 username: req.body.username,
-                password: req.body.password
             }
         }
         res.send(queryResponse.length > 0);
@@ -60,14 +59,8 @@ app.get('/logout', function(req, res) {
 
 app.get('/*', function(req, res) {
     var fullUrl = "public" + req.originalUrl;
-
     if (!req.session.user && req.originalUrl != "/login.html" && req.originalUrl != "/registration.html" && req.originalUrl.includes(".html")) {
-        // console.log("geen sessie")
-        // fs.access(fullUrl, function(err) {
-        //     if (err == null) {
         fullUrl = "public/redirect.html";
-        // }
-        // });
     }
 
     fullUrl = fullUrl.split("?")[0];
