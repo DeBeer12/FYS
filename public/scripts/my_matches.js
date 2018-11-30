@@ -1,141 +1,54 @@
 // String replace function for all ocurances in string.prototype
-String.prototype.replaceAll = function(search, replacement) {
+String.prototype.replaceAll = function (search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 var includedMatches = [];
+var users;
+var interests;
 
-$(document).ready(function() {
-    $("#filter_name").focus(function() {
+$(document).ready(function () {
+    $("#filter_name").focus(function () {
         $(this).data("hasfocus", true);
     });
 
-    $("#filter_name").blur(function() {
+    $("#filter_name").blur(function () {
         $(this).data("hasfocus", false);
     });
 
-    $(document.body).keyup(function(ev) {
+    $(document.body).keyup(function (ev) {
         // 13 is ENTER
         if (ev.which === 13 && $("#filter_name").data("hasfocus")) {
             filterMatches();
         }
     });
-    var interests = getinterests();
-    var users = getUsers();
-    $.each(users, function(key, value) {
-        includedMatches.push(value.id)
-    })
 
-    printMatches(users);
-    printinterestFilters(interests);
+    getUsers(function (data) {
+        users = data;
+        // interests = getinterests();
+        
+        console.log(users)
+        // $.each(users, function (key, value) {
+        //     includedMatches.push(value.id)
+        // })
+        
+        // printMatches(users);
+        // printinterestFilters(interests);
+    });
+
 });
 
-function getUsers() {
-    return users = [{
-        id: 1,
-        age: 18,
-        name: "Raguel Romberg",
-        img: "insteek.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("10/10/2018"),
-        interests: ["Malibu", "Oslo"],
-    }, {
-        id: 2,
-        age: 21,
-        name: "Esteban Enderle",
-        img: "temp_slider_1.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Bath", "Parijs"],
-    }, {
-        id: 3,
-        age: 31,
-        name: "Le Leiser",
-        img: "airplaine.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Barcelona", "Dubrovnik"],
-    }, {
-        id: 4,
-        age: 24,
-        name: "Dominic Decamp",
-        img: "temp_slider_2.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Cuzco", "Luxor"],
-    }, {
-        id: 5,
-        age: 21,
-        name: "Connie Coats",
-        img: "temp_slider_3.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Rome", "Florence"],
-    }, {
-        id: 6,
-        age: 66,
-        name: "Glory Gingras",
-        img: "img_avatar.png",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Rome", "Florence"],
-    }, {
-        id: 7,
-        age: 18,
-        name: "Mary Monroe",
-        img: "insteek.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("10/10/2018"),
-        interests: ["Malibu", "Oslo"],
-    }, {
-        id: 8,
-        age: 21,
-        name: "Kimberly Bullock",
-        img: "temp_slider_1.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Bath", "Parijs"],
-    }, {
-        id: 9,
-        age: 31,
-        name: "Elizabeth Traynor",
-        img: "airplaine.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Barcelona", "Dubrovnik"],
-    }, {
-        id: 10,
-        age: 24,
-        name: "Patricia Chamberlain",
-        img: "temp_slider_2.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Cuzco", "Luxor"],
-    }, {
-        id: 11,
-        age: 21,
-        name: "Joseph Garcia",
-        img: "temp_slider_3.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Rome", "Florence"],
-    }, {
-        id: 12,
-        age: 44,
-        name: "Jack Williams",
-        img: "insteek.jpg",
-        description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed.",
-        connected_date: new Date("6/6/2018"),
-        interests: ["Rome", "Florence"],
-    }];
+function getUsers(callback) {
+    $.get("/db", {query: "SELECT * FROM fys_is106_1.user"}).done(function (data) {
+        callback(data);
+    });
 }
 
-var getinterests = function() {
-    var users = getUsers();
+var getinterests = function () {
     var interests = [];
 
-    $.each(users, function(k, v) {
-        $.each(v.interests, function(k, v) {
+    $.each(users, function (k, v) {
+        $.each(v.interests, function (k, v) {
             if (!interests.includes(v)) {
                 interests.push(v);
             }
@@ -144,7 +57,7 @@ var getinterests = function() {
     return interests.sort();
 }
 
-var deleteMatch = function(elemId) {
+var deleteMatch = function (elemId) {
     var answer = confirm("Wilt u Match " + elemId + " echt verwijderen?")
     if (answer) {
         $("#match_" + elemId).remove();
@@ -153,7 +66,7 @@ var deleteMatch = function(elemId) {
     }
 }
 
-var formatDate = function(date) {
+var formatDate = function (date) {
     var timeDiff = Math.abs(new Date().getTime() - date.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     var diffWeeks = Math.round(timeDiff / 1000 / 60 / 60 / 24 / 7);
@@ -170,9 +83,9 @@ var formatDate = function(date) {
  * @param {Array} userinterests
  * @param {Array} checkedBoxValues
  */
-var checkinterests = function(userinterests, checkedBoxValues) {
+var checkinterests = function (userinterests, checkedBoxValues) {
     var check = false;
-    $.each(checkedBoxValues, function(k, v) {
+    $.each(checkedBoxValues, function (k, v) {
         if (userinterests.includes(v)) {
             check = true;
             return false;
@@ -181,7 +94,7 @@ var checkinterests = function(userinterests, checkedBoxValues) {
     return check;
 }
 
-var filterMatches = function() {
+var filterMatches = function () {
     var nameFilterContainer = $('#filter_name');
     var nameFilter = nameFilterContainer.val();
 
@@ -191,11 +104,10 @@ var filterMatches = function() {
     var checkedBoxes = $('.match_filter_interests input[type=checkbox]:checked');
     var checkedBoxValues = [];
 
-    $.each(checkedBoxes, function(k, v) {
+    $.each(checkedBoxes, function (k, v) {
         checkedBoxValues.push($(v).val());
     });
 
-    var users = getUsers();
     var filteredUsers = users.filter(
         user =>
         // When no name is entered return true to skip this condition   
@@ -213,8 +125,7 @@ var filterMatches = function() {
     printMatches(filteredUsers);
 }
 
-var resetMatches = function() {
-    var users = getUsers();
+var resetMatches = function () {
     printMatches(users);
 }
 
@@ -222,7 +133,7 @@ var resetMatches = function() {
  * Print matches based on userArray
  * @param {Array} userArray array with users
  */
-var printMatches = function(userArray) {
+var printMatches = function (userArray) {
     var match_template = $('div#match_template').parent().html();
     $("#match_container").empty();
 
@@ -241,7 +152,7 @@ var printMatches = function(userArray) {
     }
 };
 
-var printinterestFilters = function(interestArray) {
+var printinterestFilters = function (interestArray) {
     var interest_template = $('input#interest_template').parent().parent().html();
 
     // Show insert match template 10 times in container

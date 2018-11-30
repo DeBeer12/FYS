@@ -37,14 +37,27 @@
 
 
 #profile-interest li{
-	list-style-image: url('../../images/iconmonstr-checkbox-6.svg');
-	margin-left: 10px;
-	margin-top: 3px;
+	list-style: none;
+	position: relative;
+	padding-left: 20px;
+	margin-left: 0;
 }
 
-#profile-interest li.active{
-	list-style-image: url('../../images/iconmonstr-checkbox-9.svg');
-	margin-left: 10px;
+#profile-interest li:before{
+	background-image: url('../../images/iconmonstr-checkbox-11-240.png');
+	content: '';
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-size: cover;
+	background-position: center;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#profile-interest li.active:before{
+	background-image: url('../../images/iconmonstr-checkbox-9-240.png');
 }
 
 .cv-image{
