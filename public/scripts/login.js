@@ -6,9 +6,13 @@ $("#js-login-form").submit(function(e) {
     console.log(username + "   " + password);
 
     $.post("/login", { username: username, password: password }).done(function(result) {
-        console.log(result);
-        if (result) {
-            window.location = '/index.html';
+        console.log(result)
+        if (result.validation) {
+            if (result.firstLogin) {
+                window.location = '/profile.html?id=' + result.userId;
+            } else {
+                window.location = '/index.html';
+            }
         } else {
             invalidLogin();
         }
