@@ -3,35 +3,10 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-var users = [{
-    id: "1",
-    name: "User 1",
-    description: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed."
-}, {
-    id: "2",
-    name: "User 2",
-    description: "Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend."
-}, {
-    id: "3",
-    name: "User 3",
-    description: "Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui, Cras ultricies mi eu turpis."
-}, {
-    id: "4",
-    name: "User 4",
-    description: "Pitcher voor weinig"
-}, {
-    id: "5",
-    name: "User 5",
-    description: "Heeft het niet"
-}, {
-    id: "6",
-    name: "User 6",
-    description: "Neeeeee"
-}];
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $.get("/db", { query: "SELECT * FROM fys_is106_1.user WHERE user.user_firstname = 'Florida';" }).done(function(data) {
+    $.get( "/db", {query:"SELECT * FROM fys_is106_1.user WHERE user.user_firstname = 'Florida';"}).done(function( data ) {
         console.log(data);
     });
 
