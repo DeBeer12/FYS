@@ -1,4 +1,5 @@
-var likeAbleUsers = getAllUsers(51);
+var userId = 51;
+var likeAbleUsers = getAllUsers(userId);
 var currentIndex = 0;
 var amountOfLikableUsers = 0;
 
@@ -19,14 +20,24 @@ function nextPerson(like){
     let $newElement =  $(".match-swiper-wrapper:not(.js-active):not(.js-old):not(.js-example)").first();
     let $oldElement = $(".match-swiper-wrapper.js-active:not(.js-example)");
 
+    let likedUserId = $oldElement.data("user-id");
+
 
     $newElement.addClass("js-active");
     $oldElement.addClass("js-old");
     $oldElement.removeClass("js-active");
 
+
+
     if (like === true){
-        $oldElement.css("background-color" , "rgba(0,150,0,0.5)");
-        $oldElement.css("transform" , "scale(3) rotate(-90deg)");
+
+        var query = "INSERT INTO liked (user_user_id_has_liked, user_user_id_liked, like_created_at) values("+userId+", "+likedUserId+", NOW());"
+
+        $.get( "/db", {query:query}).done(function( data ) {
+
+            $oldElement.css("background-color" , "rgba(0,150,0,0.5)");
+            $oldElement.css("transform" , "scale(3) rotate(-90deg)");
+        });
     }
     else{
         $oldElement.css("background-color" , "rgba(150,0,0,0.5)");
@@ -105,6 +116,7 @@ function initWrappers(){
 
         if (currentIndex === 0){
             addWrapper(
+                likeAbleUsers[currentIndex]["user_id"],
                 likeAbleUsers[currentIndex]["user_firstname"] + " " + likeAbleUsers[currentIndex]["user_lastname"],
                 "U heeft 70% gedeelde intresses",
                 likeAbleUsers[currentIndex]["user_about"],
@@ -122,6 +134,7 @@ function initWrappers(){
  */
 function addWraperFromIndex() {
     addWrapper(
+        likeAbleUsers[currentIndex]["user_id"],
         likeAbleUsers[currentIndex]["user_firstname"] + " " + likeAbleUsers[currentIndex]["user_lastname"],
         "U heeft 70% gedeelde intresses",
         likeAbleUsers[currentIndex]["user_about"]
@@ -137,14 +150,17 @@ function addWraperFromIndex() {
  * @param bigText more infromation of the person
  * @param extraClass able to add extra class(es) to the element (main purpose for active class)
  */
-function addWrapper(name, subText, bigText, extraClass){
-
+function addWrapper(id, name, subText, bigText, extraClass){
     $exampleWrapper = $(".js-example").first();
     $clone = $exampleWrapper.clone();
     $clone.removeClass("js-example");
     $clone.addClass(extraClass);
+    $clone.attr("data-user-id" , id);
     $clone.css("display", "block");
     $clone.find(".js-name").html(name);
+
+    let profileUrl = "https://randomuser.me/api/portraits/med/men/"+id+".jpg";
+    $clone.find(".profile-picture").css("background-image", "url("+profileUrl+")");
     $clone.find(".js-sub-text").html(subText);
     if (bigText === "" || bigText === null){
         $clone.find(".js-big-text").html("Geen extra infromatie :(");
