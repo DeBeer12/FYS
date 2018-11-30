@@ -33,10 +33,10 @@ app.get('/db', function(req, res) {
     let userIdPlaceholder = "@user_id";
     var query = req.query.query;
 
-    if(query.match(userIdPlaceholder)) {
+    if (query.match(userIdPlaceholder)) {
         query = query.replace(userIdPlaceholder, req.session.user["user_id"]);
     }
-    
+
     dbc.query_handler(query, db, function(queryResponse) {
         res.send(queryResponse);
     })
@@ -44,6 +44,7 @@ app.get('/db', function(req, res) {
 
 app.post('/login', function(req, res) {
     var query = "SELECT * FROM user WHERE user_name = '" + req.body.username + "' && user_password = '" + req.body.password + "';";
+    var firstLogin;
 
     dbc.query_handler(query, db, function(queryResponse) {
         if (queryResponse.length > 0) {
@@ -51,8 +52,14 @@ app.post('/login', function(req, res) {
                 user_id: queryResponse[0].user_id,
                 username: req.body.username,
             }
+            firstLogin = !!+queryResponse[0].user_first_login;
         }
-        res.send(queryResponse.length > 0);
+
+        res.send({
+            validation: queryResponse.length > 0,
+            firstLogin: firstLogin,
+            userId: queryResponse[0].user_id,
+        });
         res.end();
 
     })
@@ -65,6 +72,7 @@ app.get('/logout', function(req, res) {
 
 app.get('/*', function(req, res) {
     var fullUrl = "public" + req.originalUrl;
+
     if (!req.session.user && req.originalUrl != "/login.html" && req.originalUrl != "/registration.html" && req.originalUrl.includes(".html")) {
         fullUrl = "public/redirect.html";
     }
