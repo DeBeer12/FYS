@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     let user;
 
     function getUrlVars() {
@@ -10,13 +11,15 @@ $(document).ready(function () {
     }
 
     function getUser(callback){
-        $.get( "/db", {query:"select * from user where user_id = " + getUrlVars()["id"]}).done(function( data ) {
+        let getUsersQuery ="select * from user where user_id = " + getUrlVars()["id"];
+        $.get( "/db", {query:getUsersQuery}).done(function( data ) {
             callback(data[0]);
         });
     }
 
     function getUserInterest(callback){
-        $.get( "/db", {query:"select * from user_has_interest left join interest on interest_interest_id = interest_id where user_user_id = " + getUrlVars()["id"]}).done(function( interest_data ) {
+        let getUserInterestQuery = "select * from user_has_interest left join interest on interest_interest_id = interest_id where user_user_id = " + getUrlVars()["id"];
+        $.get( "/db", {query:getUserInterestQuery}).done(function( interest_data ) {
             callback(interest_data);
         });
     }
@@ -37,9 +40,7 @@ $(document).ready(function () {
         age_placeholder.innerHTML =  user[""];
         about_placeholder.innerHTML = user["user_about"];
 
-
         getUserInterest(function (interest_data) {
-            console.log(interest_data);
             var ul_tag = "<ul>";
             for (let i = 0; i < interest_data.length; i++){
                 ul_tag += '<li class="profile-checkbox" data-interests="'+ interest_data[i]["interest_id"] +'">' + interest_data[i]["interest_name"] + '</li>';

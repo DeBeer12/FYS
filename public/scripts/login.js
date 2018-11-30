@@ -6,7 +6,7 @@ $("#js-login-form").submit(function(e) {
     console.log(username + "   " + password);
 
     $.post("/login", { username: username, password: password }).done(function(result) {
-        console.log(result)
+        console.log(result);
         if (result) {
             window.location = '/index.html';
         } else {

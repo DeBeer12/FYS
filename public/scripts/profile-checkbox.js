@@ -1,15 +1,5 @@
-var interests = ["Voetbal", "Zwemmen", "Duiken", "Roeien", "India", "Motorrijden"]
-
-
 $(document).ready(
 	function (){
-	    var m = "<ul>";
-
-		for (i = 0; i < interests.length; i++){
-	        m += '<li class="profile-checkbox" data-interests="'+ interests[i] +'">' + interests[i] + '</li>';
-	    }
-	    m += "</ul>";
-	    document.getElementById('profile-interest').innerHTML =  m;
 
 		 $(".profile-checkbox").click(function () {
 			$(this).toggleClass('active');

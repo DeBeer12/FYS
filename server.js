@@ -24,13 +24,19 @@ app.use(session({
         secure: false,
         maxAge: 900000
     }
-}))
+}));
 
 var db = mysql.createConnection(config.databaseRemote);
 
 // Request handlers
 app.get('/db', function(req, res) {
+    let userIdPlaceholder = "@user_id";
     var query = req.query.query;
+
+    if(query.match(userIdPlaceholder)) {
+        query = query.replace(userIdPlaceholder, req.session.user["user_id"]);
+    }
+    
     dbc.query_handler(query, db, function(queryResponse) {
         res.send(queryResponse);
     })
