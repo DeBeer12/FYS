@@ -4,6 +4,9 @@ var express = require("express");
 var mysql = require("mysql");
 var bcrypt = require('bcrypt');
 var session = require('express-session');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 // Controllers
 var dbc = require("./controllers/database_controller")
@@ -12,7 +15,6 @@ var dbc = require("./controllers/database_controller")
 var config = require("./appsettings.json")
 
 // intitalize the app
-var app = express();
 app.use(express.json()); // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(session({
@@ -104,7 +106,7 @@ app.get('/*', function(req, res) {
 });
 
 // Start the server 
-var server = app.listen(config.server.port, function(err) {
+server.listen(config.server.port, function(err) {
     if (err) throw err;
     var host = server.address().address;
     var port = server.address().port;
@@ -114,3 +116,18 @@ var server = app.listen(config.server.port, function(err) {
         console.log("Connected to %s as %s", config.databaseRemote.database, config.databaseRemote.user);
     });
 });
+
+io.on("connection", function(socket) {
+    app.use(function(req, res, next) {
+        console.log(req.session)
+    })
+    socket.on("send message", function(sent_msg) {
+        console.log(sent_msg)
+        io.sockets.emit("update messages", sent_msg);
+    });
+});
+
+app.use(function(req, res, next) {
+    console.log(req.session.user)
+    return req.session.user;
+})

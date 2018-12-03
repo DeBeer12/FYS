@@ -22,4 +22,3 @@ $("#js-login-form").submit(function(e) {
 function invalidLogin() {
     alert("Username or password is incorrect");
 }
-// var query = "SELECT * FROM fys_is106_1.user WITH user.user_name = username AND user.user_password = password;";

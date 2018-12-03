@@ -1,5 +1,6 @@
-var chat_responses = ["Greetings,", "Hi,", "dududu", "lorem ipsum"];
-
+var chatResponses = ["Greetings,", "Hi,", "dududu", "lorem ipsum"];
+var socket = io.connect('http://localhost:8080');
+var lastMessage = "";
 $(document).ready(function() {
     $(".chat_input").focus(function() {
         $(this).data("hasfocus", true);
@@ -17,23 +18,36 @@ $(document).ready(function() {
     });
 });
 
+socket.on('update messages', function(message) {
+    console.log(message);
+    if (lastMessage != message) {
+        printChatMessage(message, "match");
+    }
+});
+
 var submit = function() {
     var messageContainer = $('.chat_input');
     var message = messageContainer.val();
-    print_chat_message(message);
+    printChatMessage(message, "user");
+    lastMessage = message;
+    socket.emit("send message", message);
+
     messageContainer.val('');
 }
 
-var print_chat_message = function(message) {
+var printChatMessage = function(message, position) {
     if (message.length > 0) {
-        var br_index = getRandomInt(0, 5);
-        var bot_response = chat_responses[br_index];
-        var message_template = "<p class='chat_message'>" + message + "</p>"
-        $(".message_container").append(message_template);
-        if (br_index != 4) {
-
-            var message_match_template = "<p class='chat_message_match'>" + bot_response + "</p>"
-            $(".message_container").append(message_match_template);
+        switch (position) {
+            case "user":
+                var message_template = "<p class='chat_message'>" + message + "</p>"
+                $(".message_container").append(message_template);
+                break;
+            case "match":
+                var message_match_template = "<p class='chat_message_match'>" + message + "</p>"
+                $(".message_container").append(message_match_template);
+                break;
+            default:
+                break;
         }
         $(".message_container").scrollTop($(".message_container")[0].scrollHeight);
     } else {

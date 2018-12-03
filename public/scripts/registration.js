@@ -14,7 +14,7 @@ $("#js-registration-form").submit(function(e) {
     console.log(query);
 
     $.get("/db", { query: query }).done(function(data) {
-        alert("Registrated");
+        alert("Registered");
     });
 
 });
