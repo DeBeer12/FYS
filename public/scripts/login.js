@@ -3,16 +3,17 @@ $("#js-login-form").submit(function(e) {
 
     var username = $("#js-login-form #username").val();
     var password = $("#js-login-form #password").val();
-    console.log(username + "   " + password);
 
     $.post("/login", { username: username, password: password }).done(function(result) {
-        console.log(result)
         if (result.validation) {
-            if (result.firstLogin) {
-                window.location = '/profile.html?id=' + result.userId;
-            } else {
+            $user = {
+                user_id: result.user_id
+            };
+            // if (result.firstLogin) {
+                // window.location = '/profile.html?id=' + $user.user_id;
+            // } else {
                 window.location = '/index.html';
-            }
+            // }
         } else {
             invalidLogin();
         }

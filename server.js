@@ -60,7 +60,6 @@ app.post('/login', function(req, res) {
         res.send({
             validation: queryResponse.length > 0,
             firstLogin: firstLogin,
-            userId: queryResponse[0].user_id,
         });
         res.end();
 
@@ -70,6 +69,13 @@ app.post('/login', function(req, res) {
 app.get('/logout', function(req, res) {
     res.clearCookie('user');
     res.end();
+});
+
+app.get('/getCurrentUserInfo', function(req, res) {
+    if(req.session.user) {
+        res.send(req.session.user)
+        res.end();
+    }
 });
 
 app.get('/*', function(req, res) {
@@ -118,16 +124,7 @@ server.listen(config.server.port, function(err) {
 });
 
 io.on("connection", function(socket) {
-    app.use(function(req, res, next) {
-        console.log(req.session)
-    })
-    socket.on("send message", function(sent_msg) {
-        console.log(sent_msg)
-        io.sockets.emit("update messages", sent_msg);
+    socket.on("send message", function(msg) {
+        io.sockets.emit("update messages", msg);
     });
 });
-
-app.use(function(req, res, next) {
-    console.log(req.session.user)
-    return req.session.user;
-})

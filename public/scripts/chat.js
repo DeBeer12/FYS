@@ -18,10 +18,9 @@ $(document).ready(function() {
     });
 });
 
-socket.on('update messages', function(message) {
-    console.log(message);
-    if (lastMessage != message) {
-        printChatMessage(message, "match");
+socket.on('update messages', function(msg) {
+    if ($user.user_id != msg.user_id) {
+        printChatMessage(msg.message, "match");
     }
 });
 
@@ -30,8 +29,10 @@ var submit = function() {
     var message = messageContainer.val();
     printChatMessage(message, "user");
     lastMessage = message;
-    socket.emit("send message", message);
-
+    socket.emit("send message", {
+        user_id: $user.user_id,
+        message:message
+    });
     messageContainer.val('');
 }
 
