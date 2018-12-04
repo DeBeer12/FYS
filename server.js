@@ -2,7 +2,7 @@
 var fs = require("fs");
 var express = require("express");
 var mysql = require("mysql");
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var session = require('express-session');
 var app = express();
 var server = require('http').createServer(app);
@@ -45,6 +45,11 @@ app.get('/db', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
+    // bcrypt.genSalt(10, function(err, salt) {
+    //     if (err) throw err;
+    //     console.log(salt)
+    // });
+
     var query = "SELECT * FROM user WHERE user_name = '" + req.body.username + "' && user_password = '" + req.body.password + "';";
     var firstLogin;
 
@@ -72,7 +77,7 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/getCurrentUserInfo', function(req, res) {
-    if(req.session.user) {
+    if (req.session.user) {
         res.send(req.session.user)
         res.end();
     }
