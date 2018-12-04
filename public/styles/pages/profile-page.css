@@ -17,8 +17,8 @@
 .profile-bio{
 	vertical-align: top;
 	display: inline-block;
-    padding: 20px;
-	width: 60%;
+	padding: 20px;
+	width: 55%;
 }
 
 .profile-bio p{
@@ -28,11 +28,11 @@
 #profile-interest {
 	vertical-align: top;
 	border-radius: 25px;
-	width: 10%;
+	width: 15%;
 	height: auto;
 	background-color: #E0E0E0;
 	display: inline-block;
-	padding: 20px; 
+	padding: 20px;
 }
 
 
@@ -44,7 +44,6 @@
 }
 
 #profile-interest li:before{
-	background-image: url('../../images/iconmonstr-checkbox-11-240.png');
 	content: '';
 	width: 10px;
 	height: 10px;
@@ -56,45 +55,29 @@
 	transform: translateY(-50%);
 }
 
-#profile-interest li.active:before{
+#profile-interest li.profile-checkbox-checked:before{
 	background-image: url('../../images/iconmonstr-checkbox-9-240.png');
 }
-
-.cv-image{
-	width: 30px;
-	height: auto;
+#profile-interest li.profile-checkbox:before{
+	background-image: url('../../images/iconmonstr-checkbox-11-240.png');
 }
 
 .edit-image{
-	display: block;
+	display: none;
 	margin: 5px auto 0 auto;
 	cursor: pointer;
 }
 
 .save-image{
-	display: block;
+	display: none;
 	margin: 5px auto 0 auto;
 	cursor: pointer;
 }
 
-.profile textarea,.profile .save-image{
-	display: none;
-}
 
-.profile.hide textarea,.profile.hide .save-image{
-	display: block;
-}
 
-.profile p,.profile .edit-image{
-	display: block;
-}
-
-.profile.hide p,.profile.hide .edit-image{
-	display: none;
-}
-
-.profile textarea{
-	margin-top: 5px; 
+.new_interest{
+	margin-top: 5px;
 }
 
 @media screen and (max-width: 600px) {
