@@ -1,5 +1,5 @@
 // String replace function for all ocurances in string.prototype
-String.prototype.replaceAll = function (search, replacement) {
+String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
@@ -7,16 +7,16 @@ var includedMatches = [];
 var users;
 var interests;
 
-$(document).ready(async function () {
-    $("#filter_name").focus(function () {
+$(document).ready(async function() {
+    $("#filter_name").focus(function() {
         $(this).data("hasfocus", true);
     });
 
-    $("#filter_name").blur(function () {
+    $("#filter_name").blur(function() {
         $(this).data("hasfocus", false);
     });
 
-    $(document.body).keyup(function (ev) {
+    $(document.body).keyup(function(ev) {
         // 13 is ENTER
         if (ev.which === 13 && $("#filter_name").data("hasfocus")) {
             filterMatches();
@@ -36,27 +36,34 @@ $(document).ready(async function () {
 });
 
 function getUsers() {
-        return new Promise(resolve => {
-            $.get( "/db", {query:"SELECT user_firstname, user_lastname, user_birthday, interest_interest_id FROM fys_is106_1.user LEFT JOIN user_has_interest ON user_id = user_has_interest.user_user_id;"}).done(function( data ) {
-                resolve(data);
-            });
+    var usersWithInterests = [];
+    return new Promise(resolve => {
+        $.get("/db", { query: "SELECT user_firstname, user_lastname, user_birthday, interest_interest_id FROM fys_is106_1.user LEFT JOIN user_has_interest ON user_id = user_has_interest.user_user_id;" }).done(function(data) {
+            $.each(data, function(key, user) {
+                $.get("/db", { query: "" }).done(function(interests) {
+                    data["interests"] = interests;
+                    usersWithInterests.push(data);
+                })
+            })
+            resolve(usersWithInterests);
         });
-    }
+    });
+}
 
-var getinterests = function () {
+var getinterests = function() {
     var interests = [];
     var query = "SELECT interest_id,interest_name FROM interest;"
     $.get("/db", { query: query }).done(function(data) {
 
-        interests.push(data )
+        interests.push(data)
         console.log(interests)
 
-});
+    });
 
     return interests.sort();
 }
 
-var deleteMatch = function (elemId) {
+var deleteMatch = function(elemId) {
     var answer = confirm("Wilt u Match " + elemId + " echt verwijderen?")
     if (answer) {
         $("#match_" + elemId).remove();
@@ -65,7 +72,7 @@ var deleteMatch = function (elemId) {
     }
 }
 
-var formatDate = function (date) {
+var formatDate = function(date) {
     var timeDiff = Math.abs(new Date().getTime() - date.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     var diffWeeks = Math.round(timeDiff / 1000 / 60 / 60 / 24 / 7);
@@ -82,9 +89,9 @@ var formatDate = function (date) {
  * @param {Array} userinterests
  * @param {Array} checkedBoxValues
  */
-var checkinterests = function (userinterests, checkedBoxValues) {
+var checkinterests = function(userinterests, checkedBoxValues) {
     var check = false;
-    $.each(checkedBoxValues, function (k, v) {
+    $.each(checkedBoxValues, function(k, v) {
         if (userinterests.includes(v)) {
             check = true;
             return false;
@@ -93,7 +100,7 @@ var checkinterests = function (userinterests, checkedBoxValues) {
     return check;
 }
 
-var filterMatches = function () {
+var filterMatches = function() {
     var nameFilterContainer = $('#filter_name');
     var nameFilter = nameFilterContainer.val();
 
@@ -103,7 +110,7 @@ var filterMatches = function () {
     var checkedBoxes = $('.match_filter_interests input[type=checkbox]:checked');
     var checkedBoxValues = [];
 
-    $.each(checkedBoxes, function (k, v) {
+    $.each(checkedBoxes, function(k, v) {
         checkedBoxValues.push($(v).val());
     });
 
@@ -124,7 +131,7 @@ var filterMatches = function () {
     printMatches(filteredUsers);
 }
 
-var resetMatches = function () {
+var resetMatches = function() {
     printMatches(users);
 }
 
@@ -132,16 +139,16 @@ var resetMatches = function () {
  * Print matches based on userArray
  * @param {Array} userArray array with users
  */
-var printMatches = function (userArray) {
+var printMatches = function(userArray) {
     var match_template = $('div#match_template').parent().html();
     $("#match_container").empty();
-console.log(interests)
+    console.log(interests)
     for (var i = 0; i < userArray.length; i++) {
         new_match_item = (' ' + match_template).slice(1);
         new_match_item = new_match_item.replace("{{name}}", userArray[i].user_firstname + " " + userArray[i].user_lastname)
-//            .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
+            //            .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
             .replace("{{age}}", userArray[i].user_birthday)
-//            .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
+            //            .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
             .replace("{{interest1}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
             .replace("{{interest2}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
@@ -151,7 +158,7 @@ console.log(interests)
     }
 };
 
-var printinterestFilters = function (interestArray) {
+var printinterestFilters = function(interestArray) {
     var interest_template = $('input#interest_template').parent().parent().html();
 
     // Show insert match template 10 times in container
