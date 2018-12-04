@@ -38,11 +38,11 @@ $(document).ready(async function() {
 function getUsers() {
     var usersWithInterests = [];
     return new Promise(resolve => {
-        $.get("/db", { query: "SELECT user_firstname, user_lastname, user_birthday, interest_interest_id FROM fys_is106_1.user LEFT JOIN user_has_interest ON user_id = user_has_interest.user_user_id;" }).done(function(data) {
+        $.get("/db", { query: "SELECT * FROM liked as l left join user on l.user_user_id_has_liked = user.user_id where l.user_user_id_liked = "+$user.user_id }).done(function(data) {
             $.each(data, function(key, user) {
-                $.get("/db", { query: "" }).done(function(interests) {
-                    data["interests"] = interests;
-                    usersWithInterests.push(data);
+                $.get("/db", { query: "SELECT interest.interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + $user.user_id}).done(function(interests) {
+                    user["interests"] = interests;
+                    usersWithInterests.push(user);
                 })
             })
             resolve(usersWithInterests);
