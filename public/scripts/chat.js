@@ -1,6 +1,5 @@
-var chatResponses = ["Greetings,", "Hi,", "dududu", "lorem ipsum"];
 var socket = io.connect('http://localhost:8080');
-var lastMessage = "";
+
 $(document).ready(function() {
     $(".chat_input").focus(function() {
         $(this).data("hasfocus", true);
@@ -28,10 +27,9 @@ var submit = function() {
     var messageContainer = $('.chat_input');
     var message = messageContainer.val();
     printChatMessage(message, "user");
-    lastMessage = message;
     socket.emit("send message", {
         user_id: $user.user_id,
-        message:message
+        message: message
     });
     messageContainer.val('');
 }

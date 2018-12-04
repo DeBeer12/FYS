@@ -51,23 +51,20 @@ app.post('/login', function(req, res) {
     // });
 
     var query = "SELECT * FROM user WHERE user_name = '" + req.body.username + "' && user_password = '" + req.body.password + "';";
-    var firstLogin;
-
     dbc.query_handler(query, db, function(queryResponse) {
+        var sendObject = {
+            validation: queryResponse.length > 0
+        };
         if (queryResponse.length > 0) {
             req.session.user = {
                 user_id: queryResponse[0].user_id,
                 username: req.body.username,
             }
-            firstLogin = !!+queryResponse[0].user_first_login;
+            sendObject["firstLogin"] = !queryResponse[0].user_first_login;
+            sendObject["user_id"] = queryResponse[0].user_id;
         }
-
-        res.send({
-            validation: queryResponse.length > 0,
-            firstLogin: firstLogin,
-        });
+        res.send(sendObject);
         res.end();
-
     })
 });
 

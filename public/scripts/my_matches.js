@@ -3,7 +3,6 @@ String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
-var includedMatches = [];
 var users;
 var interests;
 
@@ -22,45 +21,41 @@ $(document).ready(async function() {
             filterMatches();
         }
     });
-    users = await getUsers();
-    console.log(users);
+    getUsers(function(data) {
+        users = data;
+        console.log(users);
+        printMatches(users);
 
-    interests = getinterests();
-
-    $.each(users, function(key, value) {
-        includedMatches.push(value.id)
-    })
-
-    printMatches(users);
-    printinterestFilters(interests);
+    });
+    getinterests(function(data) {
+        interests = data;
+        console.log(interests)
+        printinterestFilters(interests);
+    });
 });
 
-function getUsers() {
-    var usersWithInterests = [];
-    return new Promise(resolve => {
-        $.get("/db", { query: "SELECT * FROM liked as l left join user on l.user_user_id_has_liked = user.user_id where l.user_user_id_liked = "+$user.user_id }).done(function(data) {
-            $.each(data, function(key, user) {
-                $.get("/db", { query: "SELECT interest.interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + $user.user_id}).done(function(interests) {
-                    user["interests"] = interests;
-                    usersWithInterests.push(user);
-                })
+function getUsers(callback) {
+    // return new Promise(resolve => {
+    $.get("/db", { query: "SELECT * FROM liked as l left join user on l.user_user_id_has_liked = user.user_id where l.user_user_id_liked = " + $user.user_id }).done(function(data) {
+        $.each(data, function(key, user) {
+            $.get("/db", { query: "SELECT interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + $user.user_id }).done(function(interests) {
+                data[key]["interests"] = interests;
             })
-            resolve(usersWithInterests);
-        });
+        })
+        callback(data.slice());
     });
+    // });
 }
 
-var getinterests = function() {
+var getinterests = function(callback) {
     var interests = [];
-    var query = "SELECT interest_id,interest_name FROM interest;"
+    var query = "SELECT interest_name FROM interest;"
     $.get("/db", { query: query }).done(function(data) {
-
-        interests.push(data)
-        console.log(interests)
-
+        $.each(data, function(k, v) {
+            interests.push(data[k].interest_name);
+        })
+        callback(interests.sort());
     });
-
-    return interests.sort();
 }
 
 var deleteMatch = function(elemId) {
@@ -142,15 +137,18 @@ var resetMatches = function() {
 var printMatches = function(userArray) {
     var match_template = $('div#match_template').parent().html();
     $("#match_container").empty();
-    console.log(interests)
+    // console.log(interests)
+    // console.log(userArray.length)
+
     for (var i = 0; i < userArray.length; i++) {
+        console.log(userArray[i].interests)
         new_match_item = (' ' + match_template).slice(1);
         new_match_item = new_match_item.replace("{{name}}", userArray[i].user_firstname + " " + userArray[i].user_lastname)
             //            .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
             .replace("{{age}}", userArray[i].user_birthday)
-            //            .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
-            .replace("{{interest1}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
-            .replace("{{interest2}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
+            // .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
+            // .replace("{{interest1}}", userArray[i]["interests"])
+            // .replace("{{interest2}}", userArray[i].interests[1])
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
             .replaceAll("'{{id}}'", userArray[i].user_id);
         $('#match_container').append(new_match_item);

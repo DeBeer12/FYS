@@ -6,11 +6,9 @@ $("#js-login-form").submit(function(e) {
 
     $.post("/login", { username: username, password: password }).done(function(result) {
         if (result.validation) {
-            $user = {
-                user_id: result.user_id
-            };
             if (result.firstLogin) {
-                window.location = '/profile.html?id=' + $user.user_id;
+                firstLogin(result.user_id);
+                window.location = '/profile.html?id=' + result.user_id;
             } else {
                 window.location = '/index.html';
             }
@@ -24,8 +22,8 @@ function invalidLogin() {
     alert("Username or password is incorrect");
 }
 
-function firstLogin() {
-    var query = "UPDATE user SET user_first_login = 1;";
+function firstLogin(id) {
+    var query = "UPDATE user SET user_first_login = 1 WHERE user_id = " + id;
     $.get("/db", { query: query }).done(function(data) {
         alert("Registered");
     });
