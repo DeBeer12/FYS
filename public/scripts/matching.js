@@ -1,8 +1,19 @@
-var userId = 51;
-var likeAbleUsers = getAllUsers(userId);
+var userId;
+var likeAbleUsers;
 var currentIndex = 0;
 var amountOfLikableUsers = 0;
 
+
+
+function checkUserInit() {
+
+    if ($user != null) {
+        userId = $user.user_id;
+        likeAbleUsers = getAllUsers(userId);
+    }
+}
+
+setTimeout(checkUserInit, 100);
 
 
 /**
