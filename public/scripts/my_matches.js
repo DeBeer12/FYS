@@ -7,7 +7,7 @@ var includedMatches = [];
 var users;
 var interests;
 
-$(document).ready(function () {
+$(document).ready(async function () {
     $("#filter_name").focus(function () {
         $(this).data("hasfocus", true);
     });
@@ -22,38 +22,37 @@ $(document).ready(function () {
             filterMatches();
         }
     });
+    users = await getUsers();
+    console.log(users);
 
-    getUsers(function (data) {
-        users = data;
-        // interests = getinterests();
-        
-        console.log(users)
-        // $.each(users, function (key, value) {
-        //     includedMatches.push(value.id)
-        // })
-        
-        // printMatches(users);
-        // printinterestFilters(interests);
-    });
+    interests = getinterests();
 
+    $.each(users, function(key, value) {
+        includedMatches.push(value.id)
+    })
+
+    printMatches(users);
+    printinterestFilters(interests);
 });
 
-function getUsers(callback) {
-    $.get("/db", {query: "SELECT * FROM fys_is106_1.user"}).done(function (data) {
-        callback(data);
-    });
-}
+function getUsers() {
+        return new Promise(resolve => {
+            $.get( "/db", {query:"SELECT user_firstname, user_lastname, user_birthday, interest_interest_id FROM fys_is106_1.user LEFT JOIN user_has_interest ON user_id = user_has_interest.user_user_id;"}).done(function( data ) {
+                resolve(data);
+            });
+        });
+    }
 
 var getinterests = function () {
     var interests = [];
+    var query = "SELECT interest_id,interest_name FROM interest;"
+    $.get("/db", { query: query }).done(function(data) {
 
-    $.each(users, function (k, v) {
-        $.each(v.interests, function (k, v) {
-            if (!interests.includes(v)) {
-                interests.push(v);
-            }
-        })
-    })
+        interests.push(data )
+        console.log(interests)
+
+});
+
     return interests.sort();
 }
 
@@ -136,19 +135,19 @@ var resetMatches = function () {
 var printMatches = function (userArray) {
     var match_template = $('div#match_template').parent().html();
     $("#match_container").empty();
-
+console.log(interests)
     for (var i = 0; i < userArray.length; i++) {
         new_match_item = (' ' + match_template).slice(1);
-        new_match_item = new_match_item.replace("{{name}}", userArray[i].name)
-            .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
-            .replace("{{age}}", userArray[i].age + " Jaar")
-            .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
-            .replace("{{interest1}}", userArray[i].interests[0])
-            .replace("{{interest2}}", userArray[i].interests[1])
-            .replace("id=\"match_template\"", "id=\"match_" + userArray[i].id + "\"")
-            .replaceAll("'{{id}}'", userArray[i].id);
+        new_match_item = new_match_item.replace("{{name}}", userArray[i].user_firstname + " " + userArray[i].user_lastname)
+//            .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
+            .replace("{{age}}", userArray[i].user_birthday)
+//            .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
+            .replace("{{interest1}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
+            .replace("{{interest2}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
+            .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
+            .replaceAll("'{{id}}'", userArray[i].user_id);
         $('#match_container').append(new_match_item);
-        $("div#match_" + userArray[i].id).removeClass("match_template");
+        $("div#match_" + userArray[i].user_id).removeClass("match_template");
     }
 };
 
