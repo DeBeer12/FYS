@@ -37,7 +37,7 @@ $(document).ready(async function () {
 
 function getUsers() {
         return new Promise(resolve => {
-            $.get( "/db", {query:"SELECT user_firstname, user_lastname, user_birthday, interest_id FROM fys_is106_1.user INNER JOIN interest;"}).done(function( data ) {
+            $.get( "/db", {query:"SELECT user_firstname, user_lastname, user_birthday, interest_interest_id FROM fys_is106_1.user LEFT JOIN user_has_interest ON user_id = user_has_interest.user_user_id;"}).done(function( data ) {
                 resolve(data);
             });
         });
@@ -135,15 +135,15 @@ var resetMatches = function () {
 var printMatches = function (userArray) {
     var match_template = $('div#match_template').parent().html();
     $("#match_container").empty();
-
+console.log(interests)
     for (var i = 0; i < userArray.length; i++) {
         new_match_item = (' ' + match_template).slice(1);
         new_match_item = new_match_item.replace("{{name}}", userArray[i].user_firstname + " " + userArray[i].user_lastname)
 //            .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
             .replace("{{age}}", userArray[i].user_birthday)
 //            .replace("{{connected_date}}", formatDate(userArray[i].connected_date))
-            .replace("{{interest1}}", interests.find(x => x.id == userArray[i].intresse_id).intresse_naam)
-            .replace("{{interest2}}", interests.find(x => x.id == userArray[i].intresse_id).intresse_naam)
+            .replace("{{interest1}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
+            .replace("{{interest2}}", interests.find(x => x.interest_id == userArray[i].interest_id).interest_name)
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
             .replaceAll("'{{id}}'", userArray[i].user_id);
         $('#match_container').append(new_match_item);
