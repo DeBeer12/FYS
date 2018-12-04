@@ -6,9 +6,8 @@ String.prototype.replaceAll = function(search, replacement) {
 var users;
 $(document).ready(async function() {
 
-    // async function asyncCall() {
-
     users = await resolveAfter2Seconds();
+
 
     // Carousel template
     var carouselItemTemplate = $('div#carousel-item-template').parent().html();
@@ -20,52 +19,65 @@ $(document).ready(async function() {
     $('div#carousel-item-template').parent().empty();
 
     for (var i = 0; i <= 2; i++) {
-
         // pass user id to array
-        userInArray.push(users[i].id);
+        userInArray.push(users[i].user_id);
 
-        // Add new carousel with data from users array
+        // Add new carousel wih data from users array
         newCarouselItem = (' ' + carouselItemTemplate).slice(1);
-        newCarouselItem = newCarouselItem.replace("{{name}}", users[i].user_name)
+        newCarouselItem = newCarouselItem.replace("{{name}}", users[i].user_firstname + " " + users[i].user_lastname)
             .replace("{{description}}", users[i].user_about);
         $(".flex-wrapper").append(newCarouselItem);
         $("." + users[i].user_id).removeClass("user-card-wrapper-display-none");
         $('#carousel-item-template').attr('id', "template-id-" + users[i].user_id).removeClass("user-card-wrapper-display-none");
-
-        // Ignore user
-        $("#template-id-" + i + " .user-text-container .user-buttons #removeItem").on('click', function() {
-            var templateId = $(this).parent().parent().parent().attr('id');
-            var idArr = templateId.split('-');
-
-            var answer = confirm("Wilt u gebruiker " + users[idArr[2] - 1].user_name + " negeren?");
-            if (answer) {
-                // Remove user from page
-                $("#template-id-" + idArr[2]).remove();
-
-                // Add new carousel with data from users array
-                newCarouselItem = (' ' + carouselItemTemplate).slice(1);
-                newCarouselItem = newCarouselItem.replace("{{name}}", users[i].user_name)
-                    .replace("{{description}}", users[i].user_about);
-                $(".flex-wrapper").append(newCarouselItem);
-                $("." + users[i].user_id).removeClass("user-card-wrapper-display-none");
-                $('#carousel-item-template').attr('id', "template-id-" + users[i].user_id).removeClass("user-card-wrapper-display-none");
-            }
-        });
-
-        // Match user
-        $("#template-id-" + i + " .user-text-container .user-buttons #matchItem").on('click', function() {
-            var templateId = $(this).parent().parent().parent().attr('id');
-            var idArr = templateId.split('-');
-
-            var answer = confirm("Wilt u met " + users[idArr[2] - 1].user_name + " matchen?");
-            if (answer) {
-                // Remove user from page
-                $("#template-id-" + idArr[2]).remove();
-            }
-        });
     }
-    // }
-    // asyncCall();
+
+    // Ignore user
+    $(".user-buttons #removeItem").on('click', function(){
+        var templateId = $(this).parent().parent().parent().attr('id');
+        var idArr = templateId.split('-'); // idArr[2] returns the id of selected user
+
+        var answer = confirm("Wilt u gebruiker " + users[idArr[2] - 51].user_firstname + " " + users[idArr[2] - 51].user_lastname  + " negeren?"); // 51 is hardcoded to get first user fixing this later
+        if (answer) {
+            var lastEl = userInArray.slice(-1)[0];
+
+            // userInArray.push(users[lastEl].user_id);
+
+            // Remove user from page
+            $("#template-id-" + idArr[2]).fadeOut("slow");
+
+            // Add new carousel with data from users array
+            newCarouselItem = (' ' + carouselItemTemplate).slice(1);
+            newCarouselItem = newCarouselItem.replace("{{name}}", users[lastEl].user_firstname + " " + users[lastEl].user_lastname)
+                .replace("{{description}}", users[lastEl].user_about);
+            $(".flex-wrapper").append(newCarouselItem);
+            $("." + users[lastEl].user_id).removeClass("user-card-wrapper-display-none");
+            $('#carousel-item-template').attr('id', "template-id-" + users[lastEl].user_id).removeClass("user-card-wrapper-display-none");
+        }
+    });
+
+    // Match user
+    $(".user-buttons #matchItem").on('click', function(){
+        var templateId = $(this).parent().parent().parent().attr('id');
+        var idArr = templateId.split('-');
+
+        var answer = confirm("Wilt u gebruiker " + users[idArr[2] - 51].user_firstname + " " + users[idArr[2] - 51].user_lastname  + " matchen?"); // 51 is hardcoded to get first user fixing this later
+
+        if (answer) {
+            var lastEl = userInArray.slice(-1)[0];
+
+            // Remove user from page
+            $("#template-id-" + idArr[2]).fadeOut("slow");
+
+            // Add new carousel with data from users array
+            newCarouselItem = (' ' + carouselItemTemplate).slice(1);
+            newCarouselItem = newCarouselItem.replace("{{name}}", users[lastEl].user_firstname + " " + users[lastEl].user_lastname)
+                .replace("{{description}}", users[lastEl].user_about);
+            $(".flex-wrapper").append(newCarouselItem);
+            $("." + users[lastEl].user_id).removeClass("user-card-wrapper-display-none");
+            $('#carousel-item-template').attr('id', "template-id-" + users[lastEl].user_id).removeClass("user-card-wrapper-display-none");
+        }
+    });
+
 });
 
 function resolveAfter2Seconds() {
