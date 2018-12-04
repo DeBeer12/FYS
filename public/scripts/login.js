@@ -9,11 +9,11 @@ $("#js-login-form").submit(function(e) {
             $user = {
                 user_id: result.user_id
             };
-            // if (result.firstLogin) {
-                // window.location = '/profile.html?id=' + $user.user_id;
-            // } else {
+            if (result.firstLogin) {
+                window.location = '/profile.html?id=' + $user.user_id;
+            } else {
                 window.location = '/index.html';
-            // }
+            }
         } else {
             invalidLogin();
         }
@@ -22,4 +22,11 @@ $("#js-login-form").submit(function(e) {
 
 function invalidLogin() {
     alert("Username or password is incorrect");
+}
+
+function firstLogin() {
+    var query = "UPDATE user SET user_first_login = 1;";
+    $.get("/db", { query: query }).done(function(data) {
+        alert("Registered");
+    });
 }
