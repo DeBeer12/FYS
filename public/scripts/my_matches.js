@@ -34,12 +34,15 @@ $(document).ready(async function() {
     });
 });
 
-function getUsers(callback) {
-    // return new Promise(resolve => {
-    $.get("/db", { query: "SELECT * FROM liked as l left join user on l.user_user_id_has_liked = user.user_id where l.user_user_id_liked = " + $user.user_id }).done(function(data) {
-        $.each(data, function(key, user) {
-            $.get("/db", { query: "SELECT interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + $user.user_id }).done(function(interests) {
-                data[key]["interests"] = interests;
+function getUsers() {
+    var usersWithInterests = [];
+    return new Promise(resolve => {
+        $.get("/db", { query: "SELECT * FROM liked as l left join user on l.user_user_id_has_liked = user.user_id where l.user_user_id_liked = " + $user.user_id }).done(function(data) {
+            $.each(data, function(key, user) {
+                $.get("/db", { query: "SELECT interest.interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + $user.user_id}).done(function(interests) {
+                    user["interests"] = interests;
+                    usersWithInterests.push(user);
+                })
             })
         })
         callback(data.slice());
@@ -51,10 +54,10 @@ var getinterests = function(callback) {
     var interests = [];
     var query = "SELECT interest_name FROM interest;"
     $.get("/db", { query: query }).done(function(data) {
-        $.each(data, function(k, v) {
-            interests.push(data[k].interest_name);
-        })
-        callback(interests.sort());
+
+        interests.push(data)
+        console.log(interests)
+
     });
 }
 
