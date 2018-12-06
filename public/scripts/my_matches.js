@@ -32,7 +32,7 @@ $(document).ready(async function() {
         printMatches(globalUsers);
         $('#filter_name').val("");
         $('#filter_age').val("");
-        $('.match_filter_interests input[type=checkbox]:checked').prop("checked", false);;
+        $('.match_filter_interests input[type=checkbox]:checked').prop("checked", false);
     });
 
     // Get your matches from the database
@@ -41,8 +41,9 @@ $(document).ready(async function() {
         for (var i = 0; i < users.length; i++) {
             users[i]["interests"] = await resolveAfter2Seconds(users[i]);
         }
-        // Generate matches on front-end
+        // Add all matches to global variable
         globalUsers = users;
+        // Generate matches on front-end
         printMatches(users);
     });
 
@@ -54,15 +55,29 @@ $(document).ready(async function() {
 });
 
 /**
+ * Removes duplicates in object arrays based on given property
+ * @param {Object Array} Array Array with duplicates
+ * @param {String} prop Property to check for duplicaties
+ */
+function removeDuplicates(Array, prop) {
+    return Array.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+}
+
+/**
  * Get users that are matched with logged in user 
  * @param {function} callback 
  */
 function getUsers(callback) {
     $.get("/db", {
-        //TODO: FIX query to get matches from both columns
-        query: "SELECT * FROM liked AS l LEFT JOIN user ON l.user_user_id_has_liked = user.user_id WHERE l.user_user_id_liked = " + $user.user_id + " AND l.like_deleted = 0"
+        //TODO: FIX query to not include logged in user info and remove duplicates
+        query: "SELECT * FROM liked AS l LEFT JOIN user ON (l.user_user_id_has_liked = user.user_id OR l.user_user_id_liked = user.user_id) WHERE l.user_user_id_liked = " + $user.user_id + " OR l.user_user_id_has_liked = " + $user.user_id
     }).done(function(data) {
-        callback(data);
+        var newData = data.filter(function(element, index, array) {
+            return element.user_id != $user.user_id;
+        })
+        callback(removeDuplicates(newData, 'user_id'));
     });
 }
 
