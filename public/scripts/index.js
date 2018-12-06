@@ -35,12 +35,11 @@ $(document).ready(async function() {
     $(".user-buttons #removeItem").on('click', function(){
         var templateId = $(this).parent().parent().parent().attr('id');
         var idArr = templateId.split('-'); // idArr[2] returns the id of selected user
-
         var answer = confirm("Wilt u gebruiker " + users[idArr[2] - 51].user_firstname + " " + users[idArr[2] - 51].user_lastname  + " negeren?"); // 51 is hardcoded to get first user fixing this later
-        if (answer) {
-            var lastEl = userInArray.slice(-1)[0];
 
-            // userInArray.push(users[lastEl].user_id);
+        if (answer) {
+            var lastEl = userInArray.slice(-1)[0] - 50;
+            userInArray.push(users[lastEl].user_id);
 
             // Remove user from page
             $("#template-id-" + idArr[2]).fadeOut("slow");
@@ -59,11 +58,11 @@ $(document).ready(async function() {
     $(".user-buttons #matchItem").on('click', function(){
         var templateId = $(this).parent().parent().parent().attr('id');
         var idArr = templateId.split('-');
-
         var answer = confirm("Wilt u gebruiker " + users[idArr[2] - 51].user_firstname + " " + users[idArr[2] - 51].user_lastname  + " matchen?"); // 51 is hardcoded to get first user fixing this later
 
         if (answer) {
-            var lastEl = userInArray.slice(-1)[0];
+            var lastEl = userInArray.slice(-1)[0] - 50;
+            userInArray.push(users[lastEl].user_id);
 
             // Remove user from page
             $("#template-id-" + idArr[2]).fadeOut("slow");
