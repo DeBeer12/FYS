@@ -5,7 +5,7 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 // Global variables
-var users = [];
+var globalUsers = [];
 var interests = [];
 
 $(document).ready(async function() {
@@ -21,8 +21,18 @@ $(document).ready(async function() {
     $(document.body).keyup(function(ev) {
         // 13 is ENTER
         if (ev.which === 13 && $("#filter_name").data("hasfocus")) {
-            filterMatches();
+            filterMatches(globalUsers);
         }
+    });
+
+    $("#filter_submit").click(function() {
+        filterMatches(globalUsers);
+    });
+    $("#filter_reset").click(function() {
+        printMatches(globalUsers);
+        $('#filter_name').val("");
+        $('#filter_age').val("");
+        $('.match_filter_interests input[type=checkbox]:checked').prop("checked", false);;
     });
 
     // Get your matches from the database
@@ -32,13 +42,13 @@ $(document).ready(async function() {
             users[i]["interests"] = await resolveAfter2Seconds(users[i]);
         }
         // Generate matches on front-end
+        globalUsers = users;
         printMatches(users);
     });
 
     // Get all interests from the database for interest filter
     getinterests(function(interests) {
-        console.log(interests)
-            //Print interest filter
+        //Print interest filter
         printinterestFilters(interests);
     });
 });
@@ -60,10 +70,13 @@ function getUsers(callback) {
  * @param {Object} user 
  */
 function resolveAfter2Seconds(user) {
+    var userInterests = [];
     return new Promise(resolve => {
         $.get("/db", { query: "SELECT interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + user.user_id }).done(function(data) {
-            // let newUser = user["interests"] = data;
-            resolve(data);
+            for (var i = 0; i < data.length; i++) {
+                userInterests.push(data[i].interest_name)
+            }
+            resolve(userInterests);
         });
     });
 }
@@ -148,7 +161,7 @@ var checkinterests = function(userinterests, checkedBoxValues) {
 /**
  * Filter matches based on user inputs
  */
-var filterMatches = function() {
+var filterMatches = function(users) {
     var nameFilterContainer = $('#filter_name');
     var nameFilter = nameFilterContainer.val();
 
@@ -167,10 +180,10 @@ var filterMatches = function() {
         user =>
         // When no name is entered return true to skip this condition   
         // else compare the users name to the entered name
-        ((nameFilter != '') ? user.name.toLowerCase().includes(nameFilter.toLowerCase()) : true) &&
+        ((nameFilter != '') ? user.user_name.toLowerCase().includes(nameFilter.toLowerCase()) : true) &&
         // When no age is entered return true to skip this condition
         // else compare the users age to the entered age
-        ((ageFilter != '') ? user.age == ageFilter : true) &&
+        ((ageFilter != '') ? calculateAge(user.user_birthday) == ageFilter : true) &&
         // When checkedBoxValues array is empty return true to skip this condition 
         // else check if user interests contains filter input 
         ((checkedBoxValues.length > 0) ? checkinterests(user.interests, checkedBoxValues) : true)
@@ -178,11 +191,6 @@ var filterMatches = function() {
     );
     // Print filtered matches
     printMatches(filteredUsers);
-}
-
-// Reset filter
-var resetMatches = function() {
-    printMatches(users);
 }
 
 /**
@@ -200,8 +208,8 @@ async function printMatches(userArray) {
             // .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
             .replace("{{age}}", calculateAge(userArray[i].user_birthday) + " Jaar oud")
             .replace("{{connected_date}}", formatDate(userArray[i].like_created_at))
-            .replace("{{interest1}}", userArray[i].interests.length > 0 ? userArray[i].interests[0].interest_name : "geen")
-            .replace("{{interest2}}", userArray[i].interests.length > 0 ? userArray[i].interests[1].interest_name : "")
+            .replace("{{interest1}}", userArray[i].interests.length > 0 ? userArray[i].interests[0] : "geen")
+            .replace("{{interest2}}", userArray[i].interests.length > 0 ? userArray[i].interests[1] : "")
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
             .replaceAll("'{{id}}'", userArray[i].user_id);
         $('#match_container').append(new_match_item);
