@@ -5,7 +5,7 @@ $.get("/getCurrentUserInfo").done(function(data) {
 })
 
 function myProfile() {
-    if($user) {
+    if ($user) {
         window.location = "/profile.html?id=" + $user.user_id;
     } else {
         alert("Something went wrong, try to relog.")

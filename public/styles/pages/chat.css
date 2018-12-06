@@ -36,6 +36,21 @@ div.chat div.message_container {
     padding: 5px;
 }
 
+div.chat div.message_container p.chat_message_name,
+div.chat div.message_container p.chat_message_match_name {
+    font-size: 75%;
+    text-decoration: underline;
+    margin-top: 2px;
+}
+
+div.chat div.message_container p.chat_message_name {
+    align-self: flex-end;
+}
+
+div.chat div.message_container p.chat_message_match_name {
+    align-self: flex-start;
+}
+
 div.chat div.message_container p.chat_message,
 div.chat div.message_container p.chat_message_match {
     border: 1px solid rgb(158, 158, 158);

@@ -58,7 +58,7 @@ app.post('/login', function(req, res) {
         if (queryResponse.length > 0) {
             req.session.user = {
                 user_id: queryResponse[0].user_id,
-                username: req.body.username,
+                user_name: req.body.username,
             }
             sendObject["firstLogin"] = !queryResponse[0].user_first_login;
             sendObject["user_id"] = queryResponse[0].user_id;

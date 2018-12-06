@@ -59,6 +59,7 @@ $(document).ready(async function() {
  */
 function getUsers(callback) {
     $.get("/db", {
+        //TODO: FIX query to get matches from both columns
         query: "SELECT * FROM liked AS l LEFT JOIN user ON l.user_user_id_has_liked = user.user_id WHERE l.user_user_id_liked = " + $user.user_id + " AND l.like_deleted = 0"
     }).done(function(data) {
         callback(data);
@@ -211,6 +212,7 @@ async function printMatches(userArray) {
             .replace("{{interest1}}", userArray[i].interests.length > 0 ? userArray[i].interests[0] : "geen")
             .replace("{{interest2}}", userArray[i].interests.length > 0 ? userArray[i].interests[1] : "")
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
+            .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + userArray[i].user_id + "\"")
             .replaceAll("'{{id}}'", userArray[i].user_id);
         $('#match_container').append(new_match_item);
         $("div#match_" + userArray[i].user_id).removeClass("match_template");
