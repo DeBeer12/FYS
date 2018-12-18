@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
+    <link rel="stylesheet" href="styles/margin-presets.css">
+    <link rel="stylesheet" href="styles/blocks/header.css">
+    <link rel="stylesheet" href="styles/blocks/nav-bar.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/pages/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <a class="main-header" href="index.html"><img class="img" src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
+    </div>
+
+    <div class="login-container-wrapper">
+        <form id="js-login-form">
+            <div class="form-container">
+                <label class="inloggen">In loggen</label>
+                <br />
+                <br />
+                <label class="text">Gebruikersaam:</label>
+                <br />
+                <input type="text" id="username" class="inputtext" name="name">
+                <br />
+                <br />
+                <label class="text">Wachtwoord:</label>
+                <br />
+                <input type="password" id="password" class="inputtext" name="password">
+                <br />
+                <input type="submit" class="submit" value="Log in">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/login.js"></script>

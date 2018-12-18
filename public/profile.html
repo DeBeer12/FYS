@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Corendon!</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
+    <link rel="stylesheet" href="styles/base/margin-presets.css">
+    <link rel="stylesheet" href="styles/blocks/header.css">
+    <link rel="stylesheet" href="styles/blocks/nav-bar.css">
+    <link rel="stylesheet" href="styles/base/keyframes.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/pages/profile-page.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="main-header content-wrapper">
+        <a class="main-header" href="index.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
+    </div>
+
+    <nav class="nav-bar">
+        <div class="content-wrapper--full">
+            <ul class="nav-bar__links">
+                <li class="nav-bar__link"><a href="index.html">Home</a></li>
+                <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
+                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
+                <li class="nav-bar__link"><a onclick="myProfile()">Profiel</a></li>
+                <li class="nav-bar__link"><a onclick="logout()">logout</a></li>
+                <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
+                    <path class="line top"
+                          d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
+                    <path class="line middle" d="m 30,50 h 40"></path>
+                    <path class="line bottom"
+                          d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path>
+                </svg>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="profile" class="profile content-wrapper">
+        <div>
+            <div class="profile-img-container">
+                <img src="images/img_avatar.png" class="profile-img"></img>
+                <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
+                <img src="images/save.png" id="save-svg" class="save-image" style="" alt="">
+            </div>
+            <div class="profile-bio">
+                <h4><span id="firstname">Firstname</span> <span id="lastname">Lastname</span></h4>
+                <p id="birthday"></p>
+                <p>Over mij:</p>
+                <p id="about"></p>
+            </div>
+            <div id="profile-interest">
+                <ul id="interest-list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="/scripts/profile.js"></script>
