@@ -1,0 +1,27 @@
+{
+  "name": "fys_1_corendon",
+  "version": "1.0.0",
+  "description": "Fasten your seatbelts project van team 1",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "mysql": "^2.16.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.fdmci.hva.nl:breej4/FYS_1_Corendon.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

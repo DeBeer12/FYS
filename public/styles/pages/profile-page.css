@@ -1,0 +1,85 @@
+/*.profile.content-wrapper{
+	position: relative;
+	height: 100%;
+}*/
+
+.profile-img-container{
+	width: 20%;
+	height: auto;
+	display: inline-block;
+}
+
+.profile-img{
+	max-width: 100%;
+	max-height: auto;
+}
+
+.profile-bio{
+	vertical-align: top;
+	display: inline-block;
+	padding: 20px;
+	width: 55%;
+}
+
+.profile-bio p{
+	margin-top: 5px;
+}
+
+#profile-interest {
+	vertical-align: top;
+	border-radius: 25px;
+	width: 15%;
+	height: auto;
+	background-color: #E0E0E0;
+	display: inline-block;
+	padding: 20px;
+}
+
+
+#profile-interest li{
+	list-style: none;
+	position: relative;
+	padding-left: 20px;
+	margin-left: 0;
+}
+
+#profile-interest li:before{
+	content: '';
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-size: cover;
+	background-position: center;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#profile-interest li.profile-checkbox-checked:before{
+	background-image: url('../../images/iconmonstr-checkbox-9-240.png');
+}
+#profile-interest li.profile-checkbox:before{
+	background-image: url('../../images/iconmonstr-checkbox-11-240.png');
+}
+
+.edit-image{
+	display: none;
+	margin: 5px auto 0 auto;
+	cursor: pointer;
+}
+
+.save-image{
+	display: none;
+	margin: 5px auto 0 auto;
+	cursor: pointer;
+}
+
+
+
+.new_interest{
+	margin-top: 5px;
+}
+
+@media screen and (max-width: 600px) {
+
+}

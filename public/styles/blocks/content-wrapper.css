@@ -1,0 +1,51 @@
+/**
+Default content wrapper to align items
+ */
+.content-wrapper{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.content-wrapper--full-width{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+}
+
+/**
+Content wrapper that takes up full size
+ */
+.content-wrapper--full{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+/**
+Used to align content center in content wrapper
+ */
+.content-wrapper.center{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 1200px) {
+    .content-wrapper{
+        display: block;
+        width: 1050px;
+        margin: 0 auto;
+    }
+
+    .content-wrapper--full{
+        display: block;
+        width: 1050px;
+        margin: 0 auto;
+        height: 100%;
+    }
+}

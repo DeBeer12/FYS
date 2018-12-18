@@ -1,0 +1,21 @@
+{
+    "short_name": "Corendon matching",
+    "name": "Corendon matching",
+    "icons": [{
+            "src": "images/app_logo_48.jpg",
+            "type": "image/jpg",
+            "sizes": "48x48"
+        },
+        {
+            "src": "images/app_logo_96.jpg",
+            "type": "image/jpg",
+            "sizes": "96x96"
+        },
+        {
+            "src": "images/app_logo_192.jpg",
+            "type": "image/jpg",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "index.html"
+}
