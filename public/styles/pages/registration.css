@@ -78,3 +78,11 @@ input{
 label{
   width: 300px;
 }
+a{
+    color: #d81e05;
+    margin: 1;
+}
+a:hover{
+    color: #ffc61d;
+    transition: 0.5s;
+}
