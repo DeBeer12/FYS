@@ -12,11 +12,14 @@ $(document).ready(function() {
 
         getMessageHistory(function(matchHistoryData) {
             matchHistory = matchHistoryData;
-            matchHistoryData.forEach(function(message) {
+            matchHistory.forEach(function(message) {
                 if (message.message_from == $user.user_id) {
-                    printChatMessage(message.message_content, "user")
+                    printChatMessage(message.message_content, "user");
                 } else if (message.message_from == match.user_id) {
-                    printChatMessage(message.message_content, "match")
+                    printChatMessage(message.message_content, "match");
+                    // console.log(message.message_read)
+                    updateUnreadMessages(message);
+                    console.log(message.message_read);
                 }
             });
         })
@@ -74,10 +77,13 @@ function getUsername(callback) {
  * get message history
  * */
 function getMessageHistory(callback) {
-    var getMessageQuery = "SELECT message_content, message_to, message_from FROM message WHERE (message_from = " + match.user_id + " AND message_to = " + $user.user_id + ") OR (message_from = " + $user.user_id + " AND message_to = " + match.user_id + ")";
+    var getMessageQuery = "SELECT message_id, message_content, message_to, message_from, message_read, message_date FROM message WHERE (message_from = " + match.user_id + " AND message_to = " + $user.user_id + ") OR (message_from = " + $user.user_id + " AND message_to = " + match.user_id + ")";
     $.get("/db", {
         query: getMessageQuery
     }).done(function(data) {
+        data = data.sort(function(a, b) {
+            return new Date(b.message_date) - new Date(a.message_date);
+        });
         callback(data);
     });
 }
@@ -91,6 +97,15 @@ function saveMessage(message, callback) {
         query: saveMessageQuery
     }).done(function(data) {
         callback(data);
+    });
+}
+
+function updateUnreadMessages(message) {
+    var getMessageQuery = "UPDATE message SET message_read=1 WHERE message_id =" + message.message_id + ";";
+    $.get("/db", {
+        query: getMessageQuery
+    }).done(function(data) {
+        // callback(data);
     });
 }
 
