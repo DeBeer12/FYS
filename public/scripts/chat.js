@@ -1,15 +1,29 @@
-// Global variables
+// Variables
 var socket = io.connect('http://localhost:8080');
 var match = {};
+var matchHistory = [];
 
 // On page load
 $(document).ready(function() {
     // Get username of match
-    getUsername(function(data) {
-            match = data;
-            $("h2.title")[0].innerHTML = "Chat met " + match.user_firstname + " " + match.user_lastname;
+    getUsername(function(username) {
+        match = username;
+        $("h2.title")[0].innerHTML = "Chat met " + match.user_firstname + " " + match.user_lastname;
+
+        getMessageHistory(function(matchHistoryData) {
+            matchHistory = matchHistoryData;
+            matchHistoryData.forEach(function(message) {
+                if (message.message_from == $user.user_id) {
+                    printChatMessage(message.message_content, "user")
+                } else if (message.message_from == match.user_id) {
+                    printChatMessage(message.message_content, "match")
+                }
+            });
         })
-        // add focus property to chat_input input
+    });
+
+
+    // add focus property to chat_input input
     $(".chat_input").focus(function() {
         $(this).data("hasfocus", true);
     });
@@ -37,8 +51,8 @@ socket.on('update messages', function(msg) {
  * Get variables from url
  * */
 function getUrlVars() {
-    let vars = {};
-    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
         vars[key] = value;
     });
     return vars;
@@ -48,9 +62,35 @@ function getUrlVars() {
  * Get user name info of match from the database
  * */
 function getUsername(callback) {
-    let getUsersQuery = "select user_firstname, user_lastname, user_name from user where user_id = " + getUrlVars()["id"];
-    $.get("/db", { query: getUsersQuery }).done(function(data) {
+    var getUsersQuery = "select user_id, user_firstname, user_lastname, user_name from user where user_id = " + getUrlVars()["id"];
+    $.get("/db", {
+        query: getUsersQuery
+    }).done(function(data) {
         callback(data[0]);
+    });
+}
+
+/*
+ * get message history
+ * */
+function getMessageHistory(callback) {
+    var getMessageQuery = "SELECT message_content, message_to, message_from FROM message WHERE (message_from = " + match.user_id + " AND message_to = " + $user.user_id + ") OR (message_from = " + $user.user_id + " AND message_to = " + match.user_id + ")";
+    $.get("/db", {
+        query: getMessageQuery
+    }).done(function(data) {
+        callback(data);
+    });
+}
+
+/*
+ * Save message in the database for message history
+ * */
+function saveMessage(message, callback) {
+    var saveMessageQuery = "INSERT INTO message(message_content, message_from, message_to, message_date) VALUES('" + message.content + "', " + message.from + ", " + message.to + ", now())";
+    $.get("/db", {
+        query: saveMessageQuery
+    }).done(function(data) {
+        callback(data);
     });
 }
 
@@ -60,11 +100,16 @@ function getUsername(callback) {
 var submit = function() {
     var messageContainer = $('.chat_input');
     var message = messageContainer.val();
-    printChatMessage(message, "user");
+    saveMessage({
+        content: message,
+        from: $user.user_id,
+        to: match.user_id
+    });
     socket.emit("send message", {
         user_id: $user.user_id,
         message: message
     });
+    printChatMessage(message, "user");
     messageContainer.val('');
 }
 
