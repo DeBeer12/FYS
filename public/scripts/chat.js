@@ -45,7 +45,8 @@ $(document).ready(function() {
 
 // When message is received that is not your own print that message
 socket.on('update messages', function(msg) {
-    if ($user.user_id != msg.user_id) {
+    console.log(getUrlVars()["id"], msg.to)
+    if ((msg.user_id != $user.user_id) && (msg.to == $user.user_id) && (msg.user_id == getUrlVars()["id"])) {
         printChatMessage(msg.message, "match");
     }
 });
@@ -77,13 +78,10 @@ function getUsername(callback) {
  * get message history
  * */
 function getMessageHistory(callback) {
-    var getMessageQuery = "SELECT message_id, message_content, message_to, message_from, message_read, message_date FROM message WHERE (message_from = " + match.user_id + " AND message_to = " + $user.user_id + ") OR (message_from = " + $user.user_id + " AND message_to = " + match.user_id + ")";
+    var getMessageQuery = "SELECT message_id, message_content, message_to, message_from, message_read, message_date FROM message WHERE (message_from = " + match.user_id + " AND message_to = " + $user.user_id + ") OR (message_from = " + $user.user_id + " AND message_to = " + match.user_id + ") ORDER BY message_id ASC";
     $.get("/db", {
         query: getMessageQuery
     }).done(function(data) {
-        data = data.sort(function(a, b) {
-            return new Date(b.message_date) - new Date(a.message_date);
-        });
         callback(data);
     });
 }
@@ -91,12 +89,12 @@ function getMessageHistory(callback) {
 /*
  * Save message in the database for message history
  * */
-function saveMessage(message, callback) {
+function saveMessage(message) {
     var saveMessageQuery = "INSERT INTO message(message_content, message_from, message_to, message_date) VALUES('" + message.content + "', " + message.from + ", " + message.to + ", now())";
     $.get("/db", {
         query: saveMessageQuery
     }).done(function(data) {
-        callback(data);
+        // callback(data);
     });
 }
 
@@ -126,6 +124,7 @@ var submit = function() {
     });
     socket.emit("send message", {
         user_id: $user.user_id,
+        to: getUrlVars()["id"],
         message: message
     });
     printChatMessage(message, "user");
