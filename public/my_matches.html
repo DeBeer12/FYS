@@ -29,6 +29,7 @@
     <nav class="nav-bar">
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
+                <li class="nav-bar__link"><a><i class="fas fa fa-comment" title="Ongelezen berichten"><p id="unread_messages">{{MESSAGE_COUNT}}</p></i></a></li>
                 <li class="nav-bar__link"><a href="index.html">Home</a></li>
                 <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
                 <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
@@ -50,17 +51,15 @@
             <div class="match_filter match_filter_fields">
                 <label for="filter_name" class="filter_label">Naam:</label>
                 <input type="text" name="Naam" id="filter_name">
-                <!-- </div>
-            <div class="match_filter"> -->
-                <!-- <span style="float:left;"> -->
+
                 <label style="display: block !important;" for="filter_age" class="filter_label">Leeftijd:</label>
                 <input style="display: block !important;" type="number" name="Leeftijd" id="filter_age">
-                <!-- </span> -->
+
             </div>
             <div class="match_filter match_filter_interests">
                 <label for="filter_interests" class="filter_label">Intresses:</label>
-                <!-- <input type="text" name="Intresses" id="filter_interests"> -->
-                <ul></ul>
+
+                <ul>Loading...</ul>
             </div>
 
             <div class="filter_buttons">
@@ -71,19 +70,8 @@
 
         </div>
         <div id="match_container" class="match_container">
-
+            Loading...
         </div>
-        <!-- TODO implement pagination for matches  -->
-        <!-- <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a href="#" class="active">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
-        </div> -->
     </div>
 
 </body>
@@ -105,7 +93,8 @@
             </ul>
         </div>
         <div class="match_icons">
-            <a href="chat.html?id={{id}}" title="Chat with match {{id}}">
+            <p title="Ongelezen berichten" id="unread_messages_match">{{MESSAGE_COUNT_MATCH}}</p>
+            <a title="Ongelezen berichten" href="chat.html?id={{id}}" title="Chat with match {{id}}">
                 <i id="chat_with_match" class="fas fa-2x fa-comments">
                 </i>
             </a>
@@ -126,4 +115,5 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="scripts/auth.js"></script>
+<script src="scripts/navigation.js"></script>
 <script src="scripts/my_matches.js"></script>

@@ -39,7 +39,8 @@ $(document).ready(async function() {
     getUsers(async function(users) {
         // For every match get their interests from the database
         for (var i = 0; i < users.length; i++) {
-            users[i]["interests"] = await resolveAfter2Seconds(users[i]);
+            users[i]["interests"] = await getUserInterests(users[i]);
+            users[i]["messageCount"] = await getUnreadPrivateMessagesCount(users[i].user_id);
         }
         // Add all matches to global variable
         globalUsers = users;
@@ -85,7 +86,7 @@ function getUsers(callback) {
  * Get the users interests from the database
  * @param {Object} user 
  */
-function resolveAfter2Seconds(user) {
+function getUserInterests(user) {
     var userInterests = [];
     return new Promise(resolve => {
         $.get("/db", { query: "SELECT interest_name FROM user_has_interest INNER JOIN interest ON interest_id = user_has_interest.interest_interest_id WHERE user_has_interest.user_user_id =  " + user.user_id }).done(function(data) {
@@ -178,6 +179,21 @@ var checkinterests = function(userinterests, checkedBoxValues) {
 }
 
 /**
+ * get all unread messages based on userid
+ * @param {int} userId
+ */
+function getUnreadPrivateMessagesCount(userId, callback) {
+    var unreadMessagesCountQuerry = "Select count(message_id) AS count FROM message WHERE message_to = " + $user.user_id + " AND message_from = " + userId + " AND message_read = false";
+    return new Promise(resolve => {
+        $.get("/db", { query: unreadMessagesCountQuerry }).done(function(data) {
+            var messageCount = data[0].count;
+            resolve(messageCount);
+        });
+    });
+
+}
+
+/**
  * Filter matches based on user inputs
  */
 var filterMatches = function(users) {
@@ -231,6 +247,7 @@ async function printMatches(userArray) {
             .replace("{{interest2}}", userArray[i].interests.length > 0 ? userArray[i].interests[1] : "")
             .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
             .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + userArray[i].user_id + "\"")
+            .replace("{{MESSAGE_COUNT_MATCH}}", userArray[i].messageCount ? userArray[i].messageCount : 0)
             .replaceAll("'{{id}}'", userArray[i].user_id);
         $('#match_container').append(new_match_item);
         $("div#match_" + userArray[i].user_id).removeClass("match_template");
@@ -243,7 +260,6 @@ async function printMatches(userArray) {
  */
 var printinterestFilters = function(interestArray) {
     var interest_template = $('input#interest_template').parent().parent().html();
-
     // Show insert match template 10 times in container
     for (var i = 0; i < interestArray.length; i++) {
         new_interest_item = (' ' + interest_template).slice(1);

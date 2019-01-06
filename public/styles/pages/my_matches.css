@@ -81,6 +81,12 @@ div.match_filters div.match_filter input[type=number] {
     /* width: 100%; */
 }
 
+p#unread_messages_match {
+    float: left;
+    padding: 5px;
+    font-size: 15px;
+}
+
 div.filter_buttons {
     margin-top: auto;
     margin-left: auto;

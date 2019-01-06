@@ -19,7 +19,7 @@ $(document).ready(function() {
                     printChatMessage(message.message_content, "match");
                     // console.log(message.message_read)
                     updateUnreadMessages(message);
-                    console.log(message.message_read);
+                    // console.log(message.message_read);
                 }
             });
         })
@@ -100,6 +100,10 @@ function saveMessage(message, callback) {
     });
 }
 
+/**
+ * set read bool to true of specific message
+ * @param {String} message message object
+ */
 function updateUnreadMessages(message) {
     var getMessageQuery = "UPDATE message SET message_read=1 WHERE message_id =" + message.message_id + ";";
     $.get("/db", {
