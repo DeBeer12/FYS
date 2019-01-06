@@ -40,8 +40,8 @@
                 <li class="nav-bar__link"><a href="index.html">Home</a></li>
                 <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
                 <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
-                <li class="nav-bar__link"><a onclick="myProfile()">Profiel</a></li>
-                <li class="nav-bar__link"><a onclick="logout()">logout</a></li>
+                <li class="nav-bar__link"><a class="pointer" onclick="myProfile()">Profiel</a></li>
+                <li class="nav-bar__link"><a class="pointer" onclick="logout()">logout</a></li>
                 <!-- <li class="nav-bar__link"><a href="registration.html">Registratie</a></li> -->
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
@@ -57,8 +57,8 @@
 
     <div class="flex-wrapper">
         <div class="user-card-wrapper user-card-wrapper-display-none" id="carousel-item-template">
-            <div class="user-image-container">
-                <img src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
+            <div class="user-image-container" style="max-width: 200px; max-height: 200px;">
+                {{image}}
             </div>
             <div class="user-text-container">
                 <div class="user-title">
@@ -89,18 +89,16 @@
     <!-- commit test -->
     <div class="preface-wrapper">
         <div class="preface-item">
-            <div style="float: right;" id="preface-edit"><i class="far fa-edit fa-2x pointer"></i></div>
+            <div style="float: right; display: none;" id="preface-edit"><i class="far fa-edit fa-2x pointer"></i></div>
             <div class="preface-text-center">
                 <h1 id="preface-title">
                     Corendon info
-                    <!--{{title}}-->
                 </h1>
                 <br>
                 <p id="preface-text-area">
                     Op vakantie gaan betekent wat ons betreft gewoon lekker genieten en genieten schrijven we bij Corendon met de hoofdletter G. Het is onze taak om jouw vakantiedromen waar te maken. Die opdracht nemen we heel serieus. Niet voor niets hebben wij voor elke
                     doelgroep een passende vakantie. Of je nu met kids naar een gezinsvriendelijk 4Kids of Aquafun hotel wilt of juist liever met z'n tweetjes naar een Only Adult accommodatie. Super-de-luxe, All Inclusive of juist de vrijheid van een
                     comfortabel appartement? Bij Corendon wordt er naar je geluisterd.
-                    <!--{{content}}-->
                 </p>
                 <p id="preface-save"></p>
             </div>

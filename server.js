@@ -7,6 +7,7 @@ var session = require('express-session');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var nodemailer = require('nodemailer');
 
 // Controllers
 var dbc = require("./controllers/database_controller")
