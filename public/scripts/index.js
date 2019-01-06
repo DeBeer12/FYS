@@ -34,8 +34,6 @@ $(document).ready(function () {
      * @param {array} users as data
      */
     getUsers(function (data) {
-       console.log(data);
-
         // Carousel template
         var carouselItemTemplate = $('div#carousel-item-template').parent().html();
 
@@ -66,47 +64,94 @@ $(document).ready(function () {
             var templateId = $(this).parent().parent().parent().attr('id');
             // Seperate the collected value
             var idArr = templateId.split('-'); // idArr[2] returns the id of selected user
+
+            // Get the user credentials based on selected user
+            var selectedUserFirstname, selectedUserLastname, selectedUserId;
+            $.each( data, function( key, value ) {
+                if (value.user_id == idArr[2]){
+                    selectedUserFirstname = value.user_firstname;
+                    selectedUserLastname = value.user_lastname;
+                    selectedUserId = value.user_id;
+                }
+            });
+
             // Confirm if user wants to ignore the current selected user
-            var answer = confirm("Wilt u gebruiker " + data[idArr[2] - 51].user_firstname + " " + data[idArr[2] - 51].user_lastname + " negeren?"); // Not finished yet ***
-
+            var answer = confirm("Wilt u gebruiker " + selectedUserFirstname + " " + selectedUserLastname + " negeren?");
             if (answer) {
-                // Get last element from array - 50 for the actual user
-                var lastEl = userInArray.slice(-1)[0] - 50;
-
-                // Push the user id in userInArray
-                userInArray.push(data[lastEl].user_id);
+                // Get last element from userInArray and + 1 for next user
+                userInArray.sort();
+                var lastEl = userInArray.slice(-1)[0] + 1;
 
                 // Remove user from page
                 $("#template-id-" + idArr[2]).fadeOut("slow");
 
+                // Each through all users, if user_id is equal to lastEl assign values
+                var nextUserFirstname = "Geen", nextUserLastname = "Gebruiker", nextUserAbout = "U heeft geen mogelijke matches meer", nextUserId = 0;
+                $.each( data, function( key, value ) {
+                    if (value.user_id == lastEl){
+                        // Define all values for next user
+                        nextUserFirstname = value.user_firstname;
+                        nextUserLastname = value.user_lastname;
+                        nextUserAbout = value.user_about;
+                        nextUserId = value.user_id;
+
+                        // Push user_id in array
+                        userInArray.push(nextUserId);
+                    }
+                });
+
                 // Add new carousel with data from users array
                 newCarouselItem = (' ' + carouselItemTemplate).slice(1);
-                newCarouselItem = newCarouselItem.replace("{{name}}", data[lastEl].user_firstname + " " + data[lastEl].user_lastname)
-                    .replace("{{description}}", data[lastEl].user_about)
+                newCarouselItem = newCarouselItem.replace("{{name}}", nextUserFirstname + " " + nextUserLastname)
+                    .replace("{{description}}", nextUserAbout)
                     .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
                 $(".flex-wrapper").append(newCarouselItem);
-                $("." + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
-                $('#carousel-item-template').attr('id', "template-id-" + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
+                $("." + nextUserId).removeClass("user-card-wrapper-display-none");
+                $('#carousel-item-template').attr('id', "template-id-" + nextUserId).removeClass("user-card-wrapper-display-none");
             }
         });
 
         // Match user
         $(document).on("click", ".user-buttons #matchItem", function(){
-            // Get the assigned template id of the clicked butt
+            // Get the assigned template id of the clicked button
             var templateId = $(this).parent().parent().parent().attr('id');
             // Seperate the collected value
             var idArr = templateId.split('-');
-            // Confirm if user wants to match the current selected user
-            var answer = confirm("Wilt u gebruiker " + data[idArr[2] - 51].user_firstname + " " + data[idArr[2] - 51].user_lastname + " matchen?"); // 51 is hardcoded to get first user fixing this later
 
+            // Get the user credentials based on selected user
+            var selectedUserFirstname;
+            var selectedUserLastname;
+            $.each( data, function( key, value ) {
+                if (value.user_id == idArr[2]){
+                    selectedUserFirstname = value.user_firstname;
+                    selectedUserLastname = value.user_lastname;
+                }
+            });
+
+            // Confirm if user wants to match the current selected user
+            var answer = confirm("Wilt u gebruiker " + selectedUserFirstname + " " + selectedUserLastname + " matchen?");
             if (answer) {
-                // Get last element from array - 50 for the actual user
-                var lastEl = userInArray.slice(-1)[0] - 50;
-                // Push the user id in userInArray
-                userInArray.push(data[lastEl].user_id);
+                // Get last element from userInArray and + 1 for next user
+                userInArray.sort();
+                var lastEl = userInArray.slice(-1)[0] + 1;
 
                 // Remove user from page
                 $("#template-id-" + idArr[2]).fadeOut("slow");
+
+                // Each through all users, if user_id is equal to lastEl assign values
+                var nextUserFirstname = "Geen", nextUserLastname = "Gebruiker", nextUserAbout = "U heeft geen mogelijke matches meer", nextUserId = 0;
+                $.each( data, function( key, value ) {
+                    if (value.user_id == lastEl){
+                        // Define all values for next user
+                        nextUserFirstname = value.user_firstname;
+                        nextUserLastname = value.user_lastname;
+                        nextUserAbout = value.user_about;
+                        nextUserId = value.user_id;
+
+                        // Push user_id in array
+                        userInArray.push(nextUserId);
+                    }
+                });
 
                 // Create a match based on Auth user and current selected user
                 var createMatchQuery = "INSERT INTO liked (user_user_id_has_liked, user_user_id_liked, like_created_at) values(" + $user.user_id + ", " + idArr[2] + ", NOW());";
@@ -114,12 +159,12 @@ $(document).ready(function () {
 
                 // Add new carousel with data from users array
                 newCarouselItem = (' ' + carouselItemTemplate).slice(1);
-                newCarouselItem = newCarouselItem.replace("{{name}}", data[lastEl].user_firstname + " " + data[lastEl].user_lastname)
-                    .replace("{{description}}", data[lastEl].user_about)
+                newCarouselItem = newCarouselItem.replace("{{name}}", nextUserFirstname + " " +nextUserLastname)
+                    .replace("{{description}}", nextUserAbout)
                     .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
                 $(".flex-wrapper").append(newCarouselItem);
-                $("." + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
-                $('#carousel-item-template').attr('id', "template-id-" + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
+                $("." + nextUserId).removeClass("user-card-wrapper-display-none");
+                $('#carousel-item-template').attr('id', "template-id-" + nextUserId).removeClass("user-card-wrapper-display-none");
             }
         });
     });
