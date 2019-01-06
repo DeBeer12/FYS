@@ -4,6 +4,7 @@ $(document).ready(function() {
         $(this).parent(".nav-bar_links").toggleClass("active");
     });
     getUnreadMessagesCount(function(count) {
+        // Insert count of unread messages in html
         $("#unread_messages")[0].innerHTML = " " + count;
     })
 });

@@ -17,9 +17,7 @@ $(document).ready(function() {
                     printChatMessage(message.message_content, "user");
                 } else if (message.message_from == match.user_id) {
                     printChatMessage(message.message_content, "match");
-                    // console.log(message.message_read)
                     updateUnreadMessages(message);
-                    // console.log(message.message_read);
                 }
             });
         })
@@ -117,6 +115,10 @@ function updateUnreadMessages(message) {
 var submit = function() {
     var messageContainer = $('.chat_input');
     var message = messageContainer.val();
+    if (message.length > 255) {
+        alert("Bericht is te lang");
+        return;
+    };
     saveMessage({
         content: message,
         from: $user.user_id,
