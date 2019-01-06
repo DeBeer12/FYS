@@ -4,6 +4,11 @@ String.prototype.replaceAll = function (search, replacement) {
 };
 
 $(document).ready(function () {
+
+    /**
+     * Get users logged in user
+     * @param {function} callback
+     */
     function authUser(callback){
         var authUserQuery ="SELECT * FROM user WHERE user.user_id =" + $user.user_id + ";";
         $.get("/db", {query:authUserQuery}).done(function(data){
@@ -11,6 +16,10 @@ $(document).ready(function () {
         });
     }
 
+    /**
+     * Get users that are not matched with logged in user
+     * @param {function} callback
+     */
     function getUsers(callback){
         var getUsersQuery = "SELECT * FROM user WHERE user_id NOT IN(SELECT user_user_id_liked FROM liked WHERE user_user_id_has_liked ="+ $user.user_id + ") AND NOT user_id ="+ $user.user_id;
         $.get("/db", {query:getUsersQuery}).done(function (data) {
@@ -18,20 +27,27 @@ $(document).ready(function () {
         });
     }
 
+    /**
+     * Print users based on array of users
+     * Ignore users
+     * Match users
+     * @param {array} users as data
+     */
     getUsers(function (data) {
        console.log(data);
 
         // Carousel template
         var carouselItemTemplate = $('div#carousel-item-template').parent().html();
 
-        // Array for listed users
+        // Define array for listed users
         var userInArray = [];
 
-        // clear template from page
+        // Clear template from page
         $('div#carousel-item-template').parent().empty();
 
+        // Loop for first 3 users in array
         for (var i = 0; i <= 2; i++) {
-            // pass user id to array
+            // pass user_id to array
             userInArray.push(data[i].user_id);
 
             // Add new carousel wih data from users array
@@ -46,12 +62,15 @@ $(document).ready(function () {
 
         // Ignore user
         $(document).on("click", ".user-buttons #removeItem", function(){
+            // Get the assigned template id of the clicked button
             var templateId = $(this).parent().parent().parent().attr('id');
+            // Seperate the collected value
             var idArr = templateId.split('-'); // idArr[2] returns the id of selected user
+            // Confirm if user wants to ignore the current selected user
             var answer = confirm("Wilt u gebruiker " + data[idArr[2] - 51].user_firstname + " " + data[idArr[2] - 51].user_lastname + " negeren?"); // Not finished yet ***
 
             if (answer) {
-                // Get last element from array - 50 to return id usable for collecting new user from users array
+                // Get last element from array - 50 for the actual user
                 var lastEl = userInArray.slice(-1)[0] - 50;
 
                 // Push the user id in userInArray
@@ -63,7 +82,8 @@ $(document).ready(function () {
                 // Add new carousel with data from users array
                 newCarouselItem = (' ' + carouselItemTemplate).slice(1);
                 newCarouselItem = newCarouselItem.replace("{{name}}", data[lastEl].user_firstname + " " + data[lastEl].user_lastname)
-                    .replace("{{description}}", data[lastEl].user_about);
+                    .replace("{{description}}", data[lastEl].user_about)
+                    .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
                 $(".flex-wrapper").append(newCarouselItem);
                 $("." + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
                 $('#carousel-item-template').attr('id', "template-id-" + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
@@ -72,12 +92,15 @@ $(document).ready(function () {
 
         // Match user
         $(document).on("click", ".user-buttons #matchItem", function(){
+            // Get the assigned template id of the clicked butt
             var templateId = $(this).parent().parent().parent().attr('id');
+            // Seperate the collected value
             var idArr = templateId.split('-');
+            // Confirm if user wants to match the current selected user
             var answer = confirm("Wilt u gebruiker " + data[idArr[2] - 51].user_firstname + " " + data[idArr[2] - 51].user_lastname + " matchen?"); // 51 is hardcoded to get first user fixing this later
 
             if (answer) {
-                // Get last element from array - 50 to return id usable for collecting new user from users array
+                // Get last element from array - 50 for the actual user
                 var lastEl = userInArray.slice(-1)[0] - 50;
                 // Push the user id in userInArray
                 userInArray.push(data[lastEl].user_id);
@@ -85,14 +108,15 @@ $(document).ready(function () {
                 // Remove user from page
                 $("#template-id-" + idArr[2]).fadeOut("slow");
 
-                // Create match
+                // Create a match based on Auth user and current selected user
                 var createMatchQuery = "INSERT INTO liked (user_user_id_has_liked, user_user_id_liked, like_created_at) values(" + $user.user_id + ", " + idArr[2] + ", NOW());";
                 $.get("/db", {query: createMatchQuery}).done(function () {});
 
                 // Add new carousel with data from users array
                 newCarouselItem = (' ' + carouselItemTemplate).slice(1);
                 newCarouselItem = newCarouselItem.replace("{{name}}", data[lastEl].user_firstname + " " + data[lastEl].user_lastname)
-                    .replace("{{description}}", data[lastEl].user_about);
+                    .replace("{{description}}", data[lastEl].user_about)
+                    .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
                 $(".flex-wrapper").append(newCarouselItem);
                 $("." + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
                 $('#carousel-item-template').attr('id', "template-id-" + data[lastEl].user_id).removeClass("user-card-wrapper-display-none");
@@ -100,14 +124,19 @@ $(document).ready(function () {
         });
     });
 
+    /**
+     * Show editable button based on role
+     * @param {object} user as data
+     */
     authUser(function(data){
-       if(data.role_role_id = 1){
+        var ADMIN_ROLE = 1;
+        if(data.role_role_id = ADMIN_ROLE){
            $('#preface-edit').show();
-       }
+        }
     });
 });
 
-// $('#preface-edit').on('click', function () {
+// Replace titel and text with editable fields
 $(document).on("click", "#preface-edit", function () {
     $('#preface-title').replaceWith("<h2 id='preface-title-edit-1'>Titel:</h2> <input type='text' id='preface-title-edit-2'><br>");
     $('#preface-text-area').replaceWith("<p id='preface-text-area-edit-1'>Info:</p> <textarea rows='7' cols='65' id='preface-text-area-edit-2'></textarea><br>");
@@ -116,7 +145,8 @@ $(document).on("click", "#preface-edit", function () {
     $('#preface-edit').hide();
 });
 
-$('#preface-save').on('click', function () {
+// Replace editable fields with filled in titel and text
+$(document).on("click", "#preface-save", function () {
     $('#preface-title-edit-2').replaceWith("<h1 id='preface-title'>" + $('#preface-title-edit-2').val() + "</h1>");
     $('#preface-text-area-edit-2').replaceWith("<p id='preface-text-area'>" + $('#preface-text-area-edit-2').val() + "</p>");
 
