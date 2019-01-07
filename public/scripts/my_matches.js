@@ -29,7 +29,11 @@ $(document).ready(async function() {
         filterMatches(globalUsers);
     });
     $("#filter_reset").click(function() {
-        printMatches(globalUsers);
+        $("#match_container").empty();
+        $.each(globalUsers, function(user){
+            // Print matches
+            printMatch(user);
+        });
         $('#filter_name').val("");
         $('#filter_age').val("");
         $('.match_filter_interests input[type=checkbox]:checked').prop("checked", false);
@@ -37,15 +41,17 @@ $(document).ready(async function() {
 
     // Get your matches from the database
     getUsers(async function(users) {
+        $("#match_container").empty();
         // For every match get their interests from the database
         for (var i = 0; i < users.length; i++) {
             users[i]["interests"] = await getUserInterests(users[i]);
             users[i]["messageCount"] = await getUnreadPrivateMessagesCount(users[i].user_id);
+            printMatch(users[i]);
+
         }
         // Add all matches to global variable
         globalUsers = users;
         // Generate matches on front-end
-        printMatches(users);
     });
 
     // Get all interests from the database for interest filter
@@ -224,34 +230,36 @@ var filterMatches = function(users) {
         ((checkedBoxValues.length > 0) ? checkinterests(user.interests, checkedBoxValues) : true)
 
     );
-    // Print filtered matches
-    printMatches(filteredUsers);
+    $("#match_container").empty();
+    $.each(filteredUsers, function(user){
+        // Print filtered matches
+        printMatch(user);
+    })
 }
 
 /**
- * Print matches based on userArray
- * @param {Array} userArray array with users
+ * Print match based on user object data
+ * @param {Object} user Object with user data
  */
-async function printMatches(userArray) {
+async function printMatch(user) {
     var match_template = $('div#match_template').parent().html();
-    $("#match_container").empty();
 
     // Replace template strings with match info
-    for (var i = 0; i < userArray.length; i++) {
+    // for (var i = 0; i < user.length; i++) {
         new_match_item = (' ' + match_template).slice(1);
-        new_match_item = new_match_item.replace("{{name}}", userArray[i].user_firstname + " " + userArray[i].user_lastname)
-            // .replace("src=\"images/img_avatar.png\"", "src=\"images/" + userArray[i].img + "\"")
-            .replace("{{age}}", calculateAge(userArray[i].user_birthday) + " Jaar oud")
-            .replace("{{connected_date}}", formatDate(userArray[i].like_created_at))
-            .replace("{{interest1}}", userArray[i].interests.length > 0 ? userArray[i].interests[0] : "geen")
-            .replace("{{interest2}}", userArray[i].interests.length > 0 ? userArray[i].interests[1] : "")
-            .replace("id=\"match_template\"", "id=\"match_" + userArray[i].user_id + "\"")
-            .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + userArray[i].user_id + "\"")
-            .replace("{{MESSAGE_COUNT_MATCH}}", userArray[i].messageCount ? userArray[i].messageCount : 0)
-            .replaceAll("'{{id}}'", userArray[i].user_id);
+        new_match_item = new_match_item.replace("{{name}}", user.user_firstname + " " + user.user_lastname)
+            // .replace("src=\"images/img_avatar.png\"", "src=\"images/" + user.img + "\"")
+            .replace("{{age}}", calculateAge(user.user_birthday) + " Jaar oud")
+            .replace("{{connected_date}}", formatDate(user.like_created_at))
+            .replace("{{interest1}}", user.interests.length > 0 ? user.interests[0] : "geen")
+            .replace("{{interest2}}", user.interests.length > 1 ? user.interests[1] : "")
+            .replace("id=\"match_template\"", "id=\"match_" + user.user_id + "\"")
+            .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + user.user_id + "\"")
+            .replace("{{MESSAGE_COUNT_MATCH}}", user.messageCount ? user.messageCount : 0)
+            .replaceAll("'{{id}}'", user.user_id);
         $('#match_container').append(new_match_item);
-        $("div#match_" + userArray[i].user_id).removeClass("match_template");
-    }
+        $("div#match_" + user.user_id).removeClass("match_template");
+    // }
 };
 
 /**
