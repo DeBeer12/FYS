@@ -25,7 +25,7 @@ var emailAdresses = [];
 }
 
 
-
+//get form variables
 $("#js-registration-form").submit(async function(e) {
     e.preventDefault();
 //variables of input fields
@@ -35,7 +35,6 @@ $("#js-registration-form").submit(async function(e) {
     var email = $("#js-registration-form #email").val();
     var password = $("#js-registration-form #password").val();
     var birthday = $("#js-registration-form #birthday").val();
-
 
     var   usernameArray = await getUsernames();
     var emailArray = await getEmailAdresses();
@@ -58,32 +57,10 @@ $("#js-registration-form").submit(async function(e) {
 
         console.log(query);
 
-        $.get("/db", { query: query }).done(function(data) {
+        $.post("/register", { query: query, email: email }).done(function(data) {
         alert("Registered");
-
-        //Email verzenden
-        var nodemailer = require('nodemailer');
-        nodemailer.createTestAccount((err, account)=> {
-            let transporter = nodemailer.createTransport({
-            service: "Gmail",
-            auth:{
-                user: 'Corendon.HvA.IS106@gmail.com',
-                pass: 'Codacity106'
-            }
-            });
-
-            let mailOptions = {from: '"Corenedon"<EMAIL>',
-            to: email,
-            subject: 'Registratie Corendon',
-            html: '<h1>U bent geregistreerd.</h1><p>Log nu in om uw vakantie partner te ontmoeten.</p>'
-            };
-
-            transporter.sendMail(mailOptions, (error, info) => {
-                if(error){return console.log(error)
-                }
-                console.log("Message send: %s", info.messageId);
-                });
-            });
+        //link to login
+        window.location = "/login.html";
         });
     }
 });
