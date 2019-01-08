@@ -1,3 +1,6 @@
+//System variables
+var SYSTEM_VARIABLES = require("./SYSTEM_VARIABLES.js")
+
 // App dependencies
 var fs = require("fs");
 var express = require("express");
@@ -44,6 +47,36 @@ app.get('/db', function(req, res) {
         res.send(queryResponse);
     })
 });
+app.post('/register', function(req, res) {
+    var email = req.body.email;
+    dbc.query_handler(req.body.query, db, function(queryResponse) {
+     nodemailer.createTestAccount((err, account)=> {
+          let transporter = nodemailer.createTransport({
+              host: 'smtp.gmail.com',
+              port: 587,
+              secure: false, // upgrade later with STARTTLS
+              auth: {
+                  user: 'Corendon.HvA.IS106@gmail.com',
+                  pass: 'Codacity106'
+              }
+          });
+          let mailOptions = {from: '"Corenedon"<EMAIL>',
+          to: email,
+          subject: 'Registratie Corendon',
+          html: '<h1>U bent geregistreerd.</h1><p>Log nu in om uw vakantie partner te ontmoeten.</p>'
+          };
+          transporter.sendMail(mailOptions, (error, info) => {
+          if(error){return console.log(error)
+          }
+          console.log("Message send: %s", info.messageId);
+          });
+     });
+          res.send(queryResponse);
+          res.end();
+    })
+});
+
+
 
 app.post('/login', function(req, res) {
     // bcrypt.genSalt(10, function(err, salt) {
