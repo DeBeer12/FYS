@@ -68,7 +68,7 @@ app.post('/register', function(req, res) {
           let mailOptions = {from: '"Corenedon"<EMAIL>',
           to: email,
           subject: 'Registratie Corendon',
-          html: '<img src="cid:logo@cid.nl"/><h1>U bent geregistreerd<h1><a href="http://localhost:8080/login.html"><p>Log nu in om uw vakantie partner te ontmoeten.</p></a>',
+          html: '<img src="cid:logo@cid.nl"/><h1>U bent geregistreerd<h1><a href="req.protocol + ://' + req.get('host') + "/login.html"><p>Log nu in om uw vakantie partner te ontmoeten.</p></a>',
                          attachments:[{filename: 'app_logo_192.png',
                                    path: 'public/images/app_logo_192.jpg',
                                    cid: 'logo@cid.nl'
