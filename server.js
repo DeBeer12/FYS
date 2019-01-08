@@ -48,22 +48,30 @@ app.get('/db', function(req, res) {
     })
 });
 app.post('/register', function(req, res) {
+    //variable for email adress
     var email = req.body.email;
+
     dbc.query_handler(req.body.query, db, function(queryResponse) {
      nodemailer.createTestAccount((err, account)=> {
+          //details of sending email adress and port
           let transporter = nodemailer.createTransport({
               host: 'smtp.gmail.com',
               port: 587,
               secure: false, // upgrade later with STARTTLS
               auth: {
-                  user: 'Corendon.HvA.IS106@gmail.com',
+                  user: 'corendon.is106.2@gmail.com',
                   pass: 'Codacity106'
               }
           });
+          //body of the email
           let mailOptions = {from: '"Corenedon"<EMAIL>',
           to: email,
           subject: 'Registratie Corendon',
-          html: '<h1>U bent geregistreerd.</h1><p>Log nu in om uw vakantie partner te ontmoeten.</p>'
+          html: '<img src="cid:logo@cid.nl"/><h1>U bent geregistreerd<h1><a href="http://localhost:8080/login.html"><p>Log nu in om uw vakantie partner te ontmoeten.</p></a>',
+                         attachments:[{filename: 'app_logo_192.png',
+                                   path: 'public/images/app_logo_192.jpg',
+                                   cid: 'logo@cid.nl'
+                                   }]
           };
           transporter.sendMail(mailOptions, (error, info) => {
           if(error){return console.log(error)

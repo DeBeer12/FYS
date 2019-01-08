@@ -25,7 +25,7 @@ var emailAdresses = [];
 }
 
 
-
+//get form variables
 $("#js-registration-form").submit(async function(e) {
     e.preventDefault();
 //variables of input fields
@@ -35,7 +35,6 @@ $("#js-registration-form").submit(async function(e) {
     var email = $("#js-registration-form #email").val();
     var password = $("#js-registration-form #password").val();
     var birthday = $("#js-registration-form #birthday").val();
-
 
     var   usernameArray = await getUsernames();
     var emailArray = await getEmailAdresses();
@@ -60,9 +59,8 @@ $("#js-registration-form").submit(async function(e) {
 
         $.post("/register", { query: query, email: email }).done(function(data) {
         alert("Registered");
+        //link to login
         window.location = "/login.html";
-
-
         });
     }
 });
