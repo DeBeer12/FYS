@@ -108,6 +108,7 @@ app.post('/login', function(req, res) {
         if (queryResponse.length > 0) {
             req.session.user = {
                 user_id: queryResponse[0].user_id,
+                rol: queryResponse[0].role_role_id,
                 user_name: req.body.username,
             }
 

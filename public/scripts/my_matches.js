@@ -30,7 +30,7 @@ $(document).ready(async function() {
     });
     $("#filter_reset").click(function() {
         $("#match_container").empty();
-        $.each(globalUsers, function(user){
+        $.each(globalUsers, function(key, user){
             // Print matches
             printMatch(user);
         });
@@ -78,7 +78,6 @@ function removeDuplicates(Array, prop) {
  */
 function getUsers(callback) {
     $.get("/db", {
-        //TODO: FIX query to not include logged in user info and remove duplicates
         query: "SELECT user_id, user_name, user_firstname, user_lastname, user_birthday, user_user_id_liked, user_user_id_has_liked, like_created_at, like_deleted FROM liked INNER JOIN user ON liked.user_user_id_has_liked = user.user_id WHERE user_user_id_liked = " + $user.user_id + " AND EXISTS (SELECT user_user_id_has_liked from liked where user_user_id_has_liked = " + $user.user_id + ") AND like_deleted = 0"
     }).done(function(data) {
         callback(data);
@@ -227,7 +226,7 @@ var filterMatches = function(users) {
 
     );
     $("#match_container").empty();
-    $.each(filteredUsers, function(user){
+    $.each(filteredUsers, function(key, user){
         // Print filtered matches
         printMatch(user);
     })
@@ -251,6 +250,7 @@ async function printMatch(user) {
             .replace("{{interest2}}", user.interests.length > 1 ? user.interests[1] : "")
             .replace("id=\"match_template\"", "id=\"match_" + user.user_id + "\"")
             .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + user.user_id + "\"")
+            .replace("\"profile.html?id={{id}}\"", "\"profile.html?id=" + user.user_id + "\"")
             .replace("{{MESSAGE_COUNT_MATCH}}", user.messageCount ? user.messageCount : 0)
             .replaceAll("'{{id}}'", user.user_id);
         $('#match_container').append(new_match_item);
