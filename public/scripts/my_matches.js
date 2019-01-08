@@ -79,12 +79,9 @@ function removeDuplicates(Array, prop) {
 function getUsers(callback) {
     $.get("/db", {
         //TODO: FIX query to not include logged in user info and remove duplicates
-        query: "SELECT * FROM liked AS l LEFT JOIN user ON (l.user_user_id_has_liked = user.user_id OR l.user_user_id_liked = user.user_id) WHERE l.user_user_id_liked = " + $user.user_id + " OR l.user_user_id_has_liked = " + $user.user_id + " AND l.like_deleted = 0"
+        query: "SELECT user_id, user_name, user_firstname, user_lastname, user_birthday, user_user_id_liked, user_user_id_has_liked, like_created_at, like_deleted FROM liked INNER JOIN user ON liked.user_user_id_has_liked = user.user_id WHERE user_user_id_liked = " + $user.user_id + " AND EXISTS (SELECT user_user_id_has_liked from liked where user_user_id_has_liked = " + $user.user_id + ") AND like_deleted = 0"
     }).done(function(data) {
-        var newData = data.filter(function(element, index, array) {
-            return element.user_id != $user.user_id && element.like_deleted == 0;
-        })
-        callback(removeDuplicates(newData, 'user_id'));
+        callback(data);
     });
 }
 
@@ -128,7 +125,7 @@ var getinterests = function(callback) {
 var deleteMatch = function(elemId) {
     var answer = confirm("Wilt u Match " + elemId + " echt verwijderen?")
     if (answer) {
-        $.get("/db", { query: "UPDATE liked SET like_deleted = 1 WHERE user_user_id_has_liked = " + elemId + " AND user_user_id_liked = " + $user.user_id }).done(function(data) {
+        $.get("/db", { query: "UPDATE liked SET like_deleted = 1 WHERE user_user_id_liked = " + $user.user_id + " AND user_user_id_has_liked = " + elemId }).done(function(data) {
             $("#match_" + elemId).remove();
         });
         $.get("/db", { query: "UPDATE liked SET like_deleted = 1 WHERE user_user_id_liked = " + elemId + " AND user_user_id_has_liked = " + $user.user_id }).done(function(data) {
@@ -196,7 +193,6 @@ function getUnreadPrivateMessagesCount(userId, callback) {
             resolve(messageCount);
         });
     });
-
 }
 
 /**
