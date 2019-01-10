@@ -99,6 +99,13 @@ Naast de gekozen oplossing zijn er verschillende alternatieven voor het oplossen
 | EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
 | EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
 | EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
 
 ## Globale planning
 
