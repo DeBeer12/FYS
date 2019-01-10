@@ -48,10 +48,11 @@ $(document).ready(function () {
             // pass user_id to array
             userInArray.push(data[i].user_id);
 
+
             // Add new carousel wih data from users array
             newCarouselItem = (' ' + carouselItemTemplate).slice(1);
             newCarouselItem = newCarouselItem.replace("{{name}}", data[i].user_firstname + " " + data[i].user_lastname)
-                .replace("{{description}}", data[i].user_about)
+                .replace("{{description}}", ((data[i].user_about != null) ? data[i].user_about : 'Gebruiker heeft geen beschrijving'))
                 .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
             $(".flex-wrapper").append(newCarouselItem);
             $("." + data[i].user_id).removeClass("user-card-wrapper-display-none");
@@ -103,7 +104,7 @@ $(document).ready(function () {
                 // Add new carousel with data from users array
                 newCarouselItem = (' ' + carouselItemTemplate).slice(1);
                 newCarouselItem = newCarouselItem.replace("{{name}}", nextUserFirstname + " " + nextUserLastname)
-                    .replace("{{description}}", nextUserAbout)
+                    .replace("{{description}}", ((nextUserAbout != null) ? nextUserAbout : 'Gebruiker heeft geen beschrijving'))
                     .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
                 $(".flex-wrapper").append(newCarouselItem);
                 $("." + nextUserId).removeClass("user-card-wrapper-display-none");
@@ -160,7 +161,7 @@ $(document).ready(function () {
                 // Add new carousel with data from users array
                 newCarouselItem = (' ' + carouselItemTemplate).slice(1);
                 newCarouselItem = newCarouselItem.replace("{{name}}", nextUserFirstname + " " +nextUserLastname)
-                    .replace("{{description}}", nextUserAbout)
+                    .replace("{{description}}", ((nextUserAbout != null) ? nextUserAbout : 'Gebruiker heeft geen beschrijving'))
                     .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
                 $(".flex-wrapper").append(newCarouselItem);
                 $("." + nextUserId).removeClass("user-card-wrapper-display-none");
