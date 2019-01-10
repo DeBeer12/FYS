@@ -2,9 +2,25 @@
 
 Fasten your seatbelts project van team 1
 
+Naam: Codacity
+
 Teamleden:
 Jesse, Bob, Danny, Mike & Richard
 
+## Installatie
+1. Zorg dat Nodejs en NPM is geinstalleerd op de machine!
+2. Open het project in intelij of een andere IDE met een terminal
+3. Open de terminal van intelij en zorg dat het pad wijst naar de map van het project
+   Bijvoorbeeld: /z/projects/FYS_1_Corendon>
+4. Installeer de benodigde packages door middel van "npm install" in te voeren in de terminal
+5. Wacht tot dat stap 4 klaar is
+6. Om de server te starten voer "node server.js" in de terminal
+7. In de browser ga naar http://localhost:8080/login.html
+8. Login met de volgende gegevens:
+   
+   Naam: test123
+
+   Wachtwoord: test123
 
 ## Samenvatting
 In dit document gaan we kijken of het product wat onze groep bedacht heeft voor de opdracht van corendon een reëel product is en of dit voldoet aan wat corendon hun verwachting is. De doelgroep van corendon zijn alleenstaande vakantiegangers die elkaar zoeken om activiteiten te gaan doen op vakantie. Het product dat onze groep voor ogen heeft is een website waar alleenstaande vakantiegangers elkaar kunnen vinden op gemeenschappelijke interesses.
@@ -75,6 +91,14 @@ Naast de gekozen oplossing zijn er verschillende alternatieven voor het oplossen
         </ul>
     </li>
 </ol>
+
+## Requirements
+
+| Eis-nummer    | Eis           | Prioriteit |
+| ------------- | ------------- | ---------- |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
 
 ## Globale planning
 
