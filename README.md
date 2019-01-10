@@ -94,18 +94,26 @@ Naast de gekozen oplossing zijn er verschillende alternatieven voor het oplossen
 
 ## Requirements
 
-| Eis-nummer    | Eis           | Prioriteit |
-| ------------- | ------------- | ---------- |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
-| EIS-01 | Er moet een profielpagina zijn voor de gebruikers | 1 |
+| Functioneel / Niet Functioneel | Eis-nummer | Eis | Prioriteit |
+| ------------- | ------------- | ------------- | ---------- |
+| Functioneel | EIS-01 | Er moet een profielpagina zijn voor de gebruikers | Must have |
+| Functioneel | EIS-02 | Gebruikers moeten hun profiel kunnen bewerken | Must have |
+| Functioneel | EIS-03 | Er moet een match systeem aanwezig zijn die gebruikers met elkaar koppelt op basis van hun interesses | Must have |
+| Functioneel | EIS-04 | Elke gebruiker kan meerdere interesses selecteren die uit een static list komen | Must have |
+| Functioneel | EIS-05 | Voor elke gebruiker moet een list met matches gegenereerd worden op basis van hun vakantie en interesses | Must have |
+| Functioneel | EIS-06 | De gebruiker moet kunnen inloggen met zijn of haar gegevens | Must have |
+| Functioneel | EIS-07 | Elke gebruiker kan 1 of meerdere vakanties opgeven | Should have |
+| Functioneel | EIS-08 | Het systeem kan mails sturen voor het aanmelden van een nieuwe gebruiker of nieuwe matches | Should have |
+| Niet Functioneel | EIS-09 | De site moet responsive zijn voor de meeste devices | Should have |
+| Niet Functioneel | EIS-10 | Gebruikers moeten een profielfoto kunnen uploaden | Could have |
+| Niet Functioneel | EIS-11 | De site moet multilanguage zijn | Could have |
+| Functioneel | EIS-12 | Er moet een chatsysteem aanwezig zijn voor de gebruikers | Could have |
+| Niet Functioneel | EIS-13 | Gebruikers kunnen zich samen inschrijven voor een vakantie | Could have |
+| Niet Functioneel | EIS-14 | Er moet op gps locatie gekoppeld kunnen worden | Could have |
+| Functioneel | EIS-15 | Er zijn moderator tools aanwezig met meer rechten | Could have |
+| Functioneel | EIS-16 | Er moet een CMS aanwezig zijn | Could have |
+| Niet Functioneel | EIS-17 | Er zijn tablet icons aanwezig | Could have |
+| Niet Functioneel | EIS-18 | Koppeling met Corendon website/api | Would be nice to have |
 
 ## Globale planning
 
