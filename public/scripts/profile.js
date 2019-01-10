@@ -79,6 +79,7 @@ $(document).ready(function () {
         let lastname_placeholder = document.getElementById("lastname");
         let age_placeholder = document.getElementById("birthday");
         let about_placeholder = document.getElementById("about");
+        let profile_image = document.getElementById("profile-image");
 
         console.log(user);
         let splitBirthday =  user["user_birthday"].split("-");
@@ -93,6 +94,7 @@ $(document).ready(function () {
         lastname_placeholder.innerHTML = user["user_lastname"];
         age_placeholder.innerHTML =  newBirthday;
         about_placeholder.innerHTML = user["user_about"];
+        profile_image.src = "images/profile-image-" + getUrlVars()["id"];
 
         getUserSameInterest(function (interestSame_data) {
             let ul = document.getElementById("interest-list");
@@ -106,20 +108,11 @@ $(document).ready(function () {
             }
         });
 
-        getUserDiffInterest(function (interestDiff_data) {
-            let ul = document.getElementById("interest-list");
 
-            for (let i = 0; i < interestDiff_data.length; i++){
-                let li = document.createElement("li");
-                li.className = "profile-checkbox";
-                li.setAttribute("interest", interestDiff_data[i]["interest_id"]);
-                li.appendChild(document.createTextNode(interestDiff_data[i]["interest_name"]));
-                ul.appendChild(li);
-            }
-        });
-
+        //checken of de 
         checkOwnProfilePage(function (data) {
             if(getUrlVars()["id"] == data){
+                document.getElementById("uploadForm").action = "/upload?id=" + $user.user_id;
                 let save_button = document.getElementById("save-svg");
                 let edit_button = document.getElementById("edit-svg");
                 edit_button.style.display = "block";
@@ -171,7 +164,7 @@ $(document).ready(function () {
                 };
 
 
-                    getNotUsedInterest(function (notUsedData) {
+                getNotUsedInterest(function (notUsedData) {
                     let ul = document.getElementById("interest-list");
                     let select = document.createElement("SELECT");
                     select.className = "new_interest";
@@ -198,6 +191,15 @@ $(document).ready(function () {
                         });
                     }
                 });
+
+                if(document.getElementById("interest-list") == null){
+                    document.getElementById("interest-list").innerHTML = "Geen intresses";
+                }
+            } else{
+                document.getElementById("uploadForm").style.display = "none";
+                if(document.getElementById("interest-list").innerHTML == ""){
+                    document.getElementById("interest-list").innerHTML = "<p style='text-align: center'>Geen intresses</p>";
+                }
             }
         })
     });

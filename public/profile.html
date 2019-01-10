@@ -49,20 +49,26 @@
     <div id="profile" class="profile content-wrapper">
         <div>
             <div class="profile-img-container">
-                <img src="images/img_avatar.png" class="profile-img"></img>
-                <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
-                <img src="images/save.png" id="save-svg" class="save-image" style="" alt="">
+                <img id="profile-image" onerror="this.src='images/img_avatar.png'" class="profile-img"></img>
+                <form ref='uploadForm'
+                target="_self"
+                id='uploadForm'
+                method='post'
+                encType="multipart/form-data">
+                <input type="file" name="sampleFile" />
+                <input type='submit' value='Upload!' />
+                </form>
             </div>
             <div class="profile-bio">
                 <h4><span id="firstname">Firstname</span> <span id="lastname">Lastname</span></h4>
                 <p id="birthday"></p>
                 <p>Over mij:</p>
                 <p id="about"></p>
+                <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
+                <img src="images/save.png" id="save-svg" class="save-image" style="" alt="">
             </div>
             <div id="profile-interest">
-                <ul id="interest-list">
-
-                </ul>
+                <ul id="interest-list"></ul>
             </div>
         </div>
     </div>

@@ -11,6 +11,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var nodemailer = require('nodemailer');
+const fileUpload = require('express-fileupload');
+
 
 // Controllers
 var dbc = require("./controllers/database_controller")
@@ -31,6 +33,8 @@ app.use(session({
         maxAge: 900000
     }
 }));
+app.use(fileUpload());
+
 
 // Connect to the database
 var db = mysql.createConnection(config.databaseRemote);
@@ -171,6 +175,28 @@ app.get('/*', function(req, res) {
         }
     });
 });
+
+
+
+app.post('/upload', function(req, res) {
+    let sampleFile;
+    let uploadPath;
+
+
+    sampleFile = req.files.sampleFile;
+
+    uploadPath = __dirname + '/public/images/profile-image-' +  req.session.user.user_id;
+
+    sampleFile.mv(uploadPath, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/profile.html?id=" + req.session.user.user_id);
+        }
+
+    });
+});
+
 
 // Start the server 
 server.listen(config.server.port, function(err) {
