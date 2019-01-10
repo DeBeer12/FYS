@@ -43,7 +43,6 @@ $(document).ready(function() {
 
 // When message is received that is not your own print that message
 socket.on('update messages', function(msg) {
-    console.log(getUrlVars()["id"], msg.to)
     if ((msg.user_id != $user.user_id) && (msg.to == $user.user_id) && (msg.user_id == getUrlVars()["id"])) {
         printChatMessage(msg.message, "match");
     }
