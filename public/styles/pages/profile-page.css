@@ -88,8 +88,29 @@
 	margin-top: 5px;
 }
 
-input[type='file']{
-    color: transparent;
+.inputfile, #upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload_form{
+    margin-top: 10px;
+}
+.upload_button{
+    background-color: #d81e05;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 @media screen and (max-width: 600px) {

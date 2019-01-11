@@ -47,13 +47,11 @@ $(document).ready(function () {
         for (var i = 0; i <= 2; i++) {
             // pass user_id to array
             userInArray.push(data[i].user_id);
-
-
             // Add new carousel wih data from users array
             newCarouselItem = (' ' + carouselItemTemplate).slice(1);
             newCarouselItem = newCarouselItem.replace("{{name}}", data[i].user_firstname + " " + data[i].user_lastname)
-                .replace("{{description}}", ((data[i].user_about != null) ? data[i].user_about : 'Gebruiker heeft geen beschrijving'))
-                .replace("{{image}}", "<img id='theImg' src='images/img_avatar.png' style='width: 150px; height: 100%;'/>");
+                .replace("{{description}}", data[i].user_about)
+                .replace("{{image}}", "<img id='theImg' onerror={this.src='images/img_avatar.png'} src='images/profile-image-"+ $user.user_id +".png' style='width: 150px; height: 100%;'/>");
             $(".flex-wrapper").append(newCarouselItem);
             $("." + data[i].user_id).removeClass("user-card-wrapper-display-none");
             $('#carousel-item-template').attr('id', "template-id-" + data[i].user_id).removeClass("user-card-wrapper-display-none");
