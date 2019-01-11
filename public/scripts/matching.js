@@ -31,6 +31,8 @@ function nextPerson(like){
     let $oldElement = $(".match-swiper-wrapper.js-active:not(.js-example)");
 
     let likedUserId = $oldElement.data("user-id");
+    let likedUserName = $oldElement.data("name");
+    let likedUserImageUrl = $oldElement.find(".profile-picture").attr("src");
 
 
     $newElement.addClass("js-active");
@@ -40,6 +42,10 @@ function nextPerson(like){
 
 
     if (like === true){
+
+        if (isMatch(likedUserId)){
+            showMatchMessage(likedUserName, likedUserImageUrl);
+        }
 
         var query = "INSERT INTO liked (user_user_id_has_liked, user_user_id_liked, like_created_at) values("+userId+", "+likedUserId+", NOW());"
 
@@ -72,12 +78,9 @@ function isMatch(likedId) {
         "where user_user_id_liked = "+likedId+" and user_user_id_has_liked = " + userId +
         ") as `isMatch`";
 
-    console.log(query);
-
     $.get( "/db", {query:query}).done(function( data ) {
 
-        console.log("hiero!" + data);
-
+        return data[0]["isMatch"] === 1;
     });
 
 
@@ -195,9 +198,13 @@ function addWrapper(id, name, subText, bigText, extraClass){
     $clone.attr("data-user-id" , id);
     $clone.css("display", "block");
     $clone.find(".js-name").html(name);
+    $clone.attr("data-name", name);
+    // $clone.find(".profile-picture").css("background-image", "url('images/profile-images/profile-image-" + id + ".jpg')");
+    $clone.find(".profile-picture").attr("src", "images/profile-images/profile-image-" + id + ".jpg");
 
-    let profileUrl = "https://randomuser.me/api/portraits/med/men/"+id+".jpg";
-    $clone.find(".profile-picture").css("background-image", "url("+profileUrl+")");
+    // let profileUrl = "https://randomuser.me/api/portraits/med/men/"+id+".jpg";
+    //     // $clone.find(".profile-picture").css("background-image", "url("+profileUrl+")");
+
     $clone.find(".js-sub-text").html(subText);
     if (bigText === "" || bigText === null){
         $clone.find(".js-big-text").html("Geen extra infromatie :(");
@@ -208,6 +215,17 @@ function addWrapper(id, name, subText, bigText, extraClass){
 
     $clone.appendTo(".js-matches-wrapper");
 }
+
+function loadImage()
+{
+    alert("Image is loaded");
+}
+function errorImage()
+{
+    alert("Image not loaded");
+}
+
+
 
 /**
  * Function that removes the last match wrapper from the dom
@@ -230,7 +248,7 @@ function showMatchMessage(name, profileUrl){
     let $wrapper = $(".match-message-wrapper");
     $wrapper.removeClass("--hidden");
     $wrapper.find(".first-message .name").html(name);
-    $wrapper.find(".image").css("background-image" , "url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg'")
+    $wrapper.find(".image").attr("src", profileUrl);
 
 }
 
