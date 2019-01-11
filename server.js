@@ -153,6 +153,10 @@ app.get('/*', function(req, res) {
         fullUrl = "public/redirect.html";
     }
 
+    if(req.originalUrl == "/") {
+        fullUrl = "public/redirect.html";
+    }
+
     fullUrl = fullUrl.split("?")[0];
     fs.readFile(fullUrl, function(err, data) {
         if (err) {
