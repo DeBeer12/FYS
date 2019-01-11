@@ -84,7 +84,7 @@ $(document).ready(function () {
             .replace("{{birthday}}", dateFormatter(user["user_birthday"]))
             .replace("{{about}}", user["user_about"]);
         profile_div.html(profile);
-        document.getElementById("profile-image").src = "images/profile-image-" + getUrlVars()["id"] + ".jpg";
+        document.getElementById("profile-image").src = "images/profile-images/profile-image-" + getUrlVars()["id"] + ".jpg";
 
         //de intresses van de gebruiker die overeenkomen met de andere gebruiker ophalen en aan de list toevoegen
         getUserSameInterest(function (interestSame_data) {

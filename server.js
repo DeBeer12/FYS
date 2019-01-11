@@ -188,7 +188,7 @@ app.post('/upload', function(req, res) {
 
     sampleFile = req.files.sampleFile;
 
-    uploadPath = __dirname + '/public/images/profile-image-' +  req.session.user.user_id + ".jpg";
+    uploadPath = __dirname + '/public/images/profile-images/profile-image-' +  req.session.user.user_id + ".jpg";
 
     sampleFile.mv(uploadPath, function(err) {
         if (err) {
