@@ -6,7 +6,6 @@ var amountOfLikableUsers = 0;
 
 
 function checkUserInit() {
-
     if ($user != null) {
         userId = $user.user_id;
         likeAbleUsers = getAllUsers(userId);
@@ -25,7 +24,7 @@ function fixHeight(){
 }
 
 /**Function to trigger animation if liked or not
- * @param like if the user chose to like whether or not
+ * @param boolean - like if the user chose to like whether or not
  */
 function nextPerson(like){
     let $newElement =  $(".match-swiper-wrapper:not(.js-active):not(.js-old):not(.js-example)").first();
@@ -63,6 +62,29 @@ function nextPerson(like){
 }
 
 /**
+ * Function that returns a bool if there's a match or not
+ * @param likedId
+ */
+function isMatch(likedId) {
+
+    var query = "SELECT EXISTS("+
+        "SELECT * FROM liked "+
+        "where user_user_id_liked = "+likedId+" and user_user_id_has_liked = " + userId +
+        ") as `isMatch`";
+
+    console.log(query);
+
+    $.get( "/db", {query:query}).done(function( data ) {
+
+        console.log("hiero!" + data);
+
+    });
+
+
+
+}
+
+/**
  * Creates all needed click events for the dom
  */
 function createClickEvents(){
@@ -85,6 +107,10 @@ function createClickEvents(){
 
     $(".js-more-info-toggle").click(function () {
         $(".js-more-info").slideToggle(300);
+    });
+
+    $(".match-message-wrapper .next-btn ").click(function () {
+        $(".match-message-wrapper").addClass("--hidden");
     });
 }
 
@@ -191,6 +217,21 @@ function removeLastWrapper(){
     if ($elementToDelete.length > 1){
         $elementToDelete[0].remove();
     }
+}
+
+/**
+ * Function that shows match message
+ *
+ * @param name name of the person who has a macht with current userId
+ * @param profileUrl url of the person who has a macht with current userId
+ */
+function showMatchMessage(name, profileUrl){
+
+    let $wrapper = $(".match-message-wrapper");
+    $wrapper.removeClass("--hidden");
+    $wrapper.find(".first-message .name").html(name);
+    $wrapper.find(".image").css("background-image" , "url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg'")
+
 }
 
 
