@@ -1,9 +1,9 @@
 ## ST_001 - Gebruiker inloggen
-**Test Case ID:** ST_002
-**Test Case Titel:** Chatten met een match
+**Test Case ID:** ST_002  
+**Test Case Titel:** Chatten met een match  
 **Test Prioriteit (Hoog/Gemiddeld/Laag):** Gemiddeld  
-**Gerelateerde requirements:** EIS-11
-**Pre-condities:** De testdatabase moet gevult zijn met testgegevens, er moet ingelogd zijn met de testgebruiker 
+**Gerelateerde requirements:** EIS-11  
+**Pre-condities:** De testdatabase moet gevult zijn met testgegevens, er moet ingelogd zijn met de testgebruiker  
 
 ### Main Scenario
 | Stap | Omschrijving | Invoer |  Verwacht resultaat |
