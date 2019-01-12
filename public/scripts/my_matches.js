@@ -245,6 +245,7 @@ async function printMatch(user) {
         new_match_item = new_match_item.replace("{{name}}", user.user_firstname + " " + user.user_lastname)
             // .replace("src=\"images/img_avatar.png\"", "src=\"images/" + user.img + "\"")
             .replace("{{age}}", calculateAge(user.user_birthday) + " Jaar oud")
+            .replace("{{image}}", "'images/profile-images/profile-image-"+ $user.user_id +".jpg'")
             .replace("{{connected_date}}", formatDate(user.like_created_at))
             .replace("{{interest1}}", user.interests.length > 0 ? user.interests[0] : "geen")
             .replace("{{interest2}}", user.interests.length > 1 ? user.interests[1] : "")

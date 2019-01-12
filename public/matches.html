@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
     <link rel="stylesheet" href="styles/base/margin-presets.css">
     <link rel="stylesheet" href="styles/blocks/header.css">
+    <link rel="stylesheet" href="styles/sass/match-message.css">
     <link rel="stylesheet" href="styles/blocks/nav-bar.css">
     <link rel="stylesheet" href="styles/base/keyframes.css">
     <link rel="stylesheet" href="styles/base/typography.css">
@@ -19,6 +20,8 @@
     <link rel="stylesheet" href="styles/blocks/match-block.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
+
 
 <body style="padding-bottom: 0">
 
@@ -53,7 +56,7 @@
 
 
         <div style="display: none" class="match-swiper-wrapper mt3 js-example" data-user-id="0">
-            <div class="profile-picture" style="background-image: url('https://www.papaverdelft.nl/wp-content/uploads/2017/03/Bewerkte-foto-van-de-wilde-eend.-690x459.jpg')"></div>
+            <img class="profile-picture" onerror="this.src='images/img_avatar.png'" />
             <div class="intro-text mt2 js-more-info-toggle">
                 <div class="main-text">
                     <h2 class="js-name"></h2>
@@ -81,6 +84,14 @@
         </div>
 
 
+    </div>
+
+    <div class="match-message-wrapper --hidden">
+        <div class="match-message">
+            <span class="first-message">Jij en <span class="name">Peter</span> zijn een match!</span>
+            <img onerror="this.src='images/img_avatar.png'" class="image" />
+            <div class="next-btn">Sluit</div>
+        </div>
     </div>
 
 

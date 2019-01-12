@@ -3,21 +3,33 @@ $("#js-login-form").submit(function(e) {
 //get form variables
     var username = $("#js-login-form #username").val();
     var password = $("#js-login-form #password").val();
-//sent variables to backend for verifying
-    $.post("/login", { username: username, password: password }).done(function(result) {
-        if (result.validation) {
-            if (result.firstLogin) {
-                firstLogin(result.user_id);
-                window.location = '/profile.html?id=' + result.user_id;
+    console.log(username.length + " Pass: " + password.length)
+    
+    // Check if input fields are not empty
+    if(username.length == 0 && password.length == 0){
+        alert("Gebruikersnaam en wachtwoord zijn verplichte velden");
+    } else if(username.length == 0){
+        alert("Gebruikersnaam is een verplicht veld");
+    } else if(password.length == 0) {
+        alert("Wachtwoord is een verplicht veld");
+    } else if(username.length > 0 && password.length > 0) {
+        // Send user input to database for verification
+        $.post("/login", { username: username, password: password }).done(function(result) {
+            if (result.validation) {
+                if (result.firstLogin) {
+                    firstLogin(result.user_id);
+                    window.location = '/profile.html?id=' + result.user_id;
+                } else {
+                    window.location = '/index.html';
+                }
             } else {
-                window.location = '/index.html';
+                invalidLogin();
             }
-        } else {
-            invalidLogin();
-        }
-    });
+        });
+    }
 });
-//alert wrong input
+
+// Alert user for wrong input
 function invalidLogin() {
     alert("Username or password is incorrect");
 }

@@ -49,20 +49,30 @@
     <div id="profile" class="profile content-wrapper">
         <div>
             <div class="profile-img-container">
-                <img src="images/img_avatar.png" class="profile-img"></img>
+                <img id="profile-image" onerror="this.src='images/img_avatar.png'" class="profile-img">
+                <form ref='uploadForm'
+                target="_self"
+                id='uploadForm'
+                method='post'
+                class="upload_form"
+                encType="multipart/form-data">
+                <input type="file" class="inputfile" id="file" name="sampleFile" />
+                <label class="upload_button" for="file">Kies een foto</label>
+                <input type='submit' id="upload" value='Upload!' />
+                <label class="upload_button" for="upload">Upload</label>
+
+                </form>
+            </div>
+            <div class="profile-bio">
+                <h4><span id="firstname">{{firstname}}</span> <span id="lastname">{{lastname}}</span></h4>
+                <p id="birthday">{{birthday}}</p>
+                <p>Over mij:</p>
+                <p id="about">{{about}}</p>
                 <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
                 <img src="images/save.png" id="save-svg" class="save-image" style="" alt="">
             </div>
-            <div class="profile-bio">
-                <h4><span id="firstname">Firstname</span> <span id="lastname">Lastname</span></h4>
-                <p id="birthday"></p>
-                <p>Over mij:</p>
-                <p id="about"></p>
-            </div>
             <div id="profile-interest">
-                <ul id="interest-list">
-
-                </ul>
+                <ul id="interest-list"></ul>
             </div>
         </div>
     </div>
