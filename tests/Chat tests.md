@@ -1,9 +1,9 @@
 ## ST_001 - Gebruiker inloggen
-**Test Case ID:** ST_002
-**Test Case Titel:** Chatten met een match
+**Test Case ID:** ST_002  
+**Test Case Titel:** Chatten met een match  
 **Test Prioriteit (Hoog/Gemiddeld/Laag):** Gemiddeld  
-**Gerelateerde requirements:** EIS-11
-**Pre-condities:** De testdatabase moet gevult zijn met testgegevens, er moet ingelogd zijn met de testgebruiker 
+**Gerelateerde requirements:** EIS-11  
+**Pre-condities:** De testdatabase moet gevult zijn met testgegevens, er moet ingelogd zijn met de testgebruiker  
 
 ### Main Scenario
 | Stap | Omschrijving | Invoer |  Verwacht resultaat |
@@ -12,7 +12,7 @@
 | 2 | De gebruiker vult bij het naamfilter de naam in van de gematchde testpersoon en klikt op zoeken | Naam = testMatch | Website toont alleen de match testMatch |
 | 3 | De gebruiker klikt op het chaticoon in het vak van testMatch | - | De website verwijst naar de chat pagina waarin gechat kan worden met testMatch |
 | 4 | De gebruiker vult onderin de pagina een bericht in | bericht = "Test bericht naar testMatch" | Rechts boven in het chat vak verschijnt de tekst in een groene blak met de gebruikersnaam Test123 erboven |
-| 5 | Login uit met het account testgebruiker |-|  |
+| 5 | Log uit met het account testgebruiker d.m.v. op de knop loguit te drukken in de navigatiebalk |-| er wordt doorverwijsd naar de loginpagina |
 | 5 | Login met het account testMatch en ga naar de chat met testgebruiker |-| In de chat staat het bericht "Test bericht naar testMatch" met daarboven de naam van de testgebruiker |
 
 ### Extensie Scenario - 2A - Verkeerde gegevens invullen
