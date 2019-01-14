@@ -8,7 +8,7 @@ $(document).ready(function() {
     // Get username of match
     getUsername(function(username) {
         match = username;
-        $("h2.title")[0].innerHTML = "Chat met " + match.user_firstname + " " + match.user_lastname;
+        $("h2.title p.matchname")[0].innerHTML = match.user_firstname + " " + match.user_lastname;
 
         getMessageHistory(function(matchHistoryData) {
             matchHistory = matchHistoryData;
@@ -141,11 +141,11 @@ var printChatMessage = function(message, position) {
     if (message.length > 0) {
         switch (position) {
             case "user":
-                var message_template = "<p class='chat_message_name'>" + $user.user_name + "<p class='chat_message'>" + message + "</p>"
+                var message_template = "<p class='chat_message_name notranslate'>" + $user.user_name + "<p class='chat_message notranslate'>" + message + "</p>"
                 $(".message_container").append(message_template);
                 break;
             case "match":
-                var message_match_template = "<p class='chat_message_match_name'>" + match.user_name + "</p><p class='chat_message_match'>" + message + "</p>"
+                var message_match_template = "<p class='chat_message_match_name notranslate'>" + match.user_name + "</p><p class='chat_message_match notranslate'>" + message + "</p>"
                 $(".message_container").append(message_match_template);
                 break;
             default:

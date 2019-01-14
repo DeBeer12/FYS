@@ -24,25 +24,28 @@
     <div class="login-container-wrapper">
         <form id="js-login-form">
             <div class="form-container">
-                <label class="inloggen">In loggen</label>
+                <label class="inloggen" data-content="login_title"></label>
                 <br />
                 <br />
-                <label class="text">Gebruikersaam:</label>
+                <label class="text" data-content="login_username"></label>
                 <br />
                 <input type="text" id="username" class="inputtext" name="name">
                 <br />
                 <br />
-                <label class="text">Wachtwoord:</label>
+                <label class="text" data-content="login_password"></label>
                 <br />
                 <input type="password" id="password" class="inputtext" name="password">
                 <br />
                 <input type="submit" class="submit" value="Log in">
             </div>
-            <a href="./registration.html"></br><p>Geen account registreer hier in</p></a>
+            <a href="./registration.html"><br />
+                <p data-content="login_register_link"></p>
+            </a>
         </form>
     </div>
 </body>
 
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts/content-init.js"></script>
 <script src="scripts/login.js"></script>

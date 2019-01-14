@@ -24,7 +24,12 @@
     <div id="google_translate_element"></div>
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'nl', includedLanguages: 'en,nl', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+            new google.translate.TranslateElement({
+                pageLanguage: 'nl',
+                includedLanguages: 'en,nl',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -39,11 +44,23 @@
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
                 <li class="nav-bar__link"><a><i class="fas fa fa-comment" title="Ongelezen berichten"><p id="unread_messages"></p></i></a></li>
-                <li class="nav-bar__link"><a class="notranslate" href="index.html">Home</a></li>
-                <li class="nav-bar__link"><a class="notranslate"href="my_matches.html">Mijn Matches</a></li>
-                <li class="nav-bar__link"><a class="notranslate" href="matches.html">Matches</a></li>
-                <li class="nav-bar__link"><a class="pointer notranslate" onclick="myProfile()">Profiel</a></li>
-                <li class="nav-bar__link"><a class="pointer notranslate" onclick="logout()">logout</a></li>
+                <li class="nav-bar__link">
+                    <a class="notranslate" href="index.html" data-content="nav_bar_1"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="notranslate" href="my_matches.html" data-content="nav_bar_2"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="notranslate" href="matches.html" data-content="nav_bar_3"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="pointer notranslate" onclick="myProfile()" data-content="nav_bar_4"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="pointer notranslate" onclick="logout()" data-content="nav_bar_6"></a>
+                </li>
+
+
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -58,17 +75,17 @@
     <div class="container content-wrapper">
         <div id="match_filters" class="match_filters">
             <div class="match_filter match_filter_fields">
-                <label for="filter_name" class="filter_label">Naam:</label>
+                <label for="filter_name" class="filter_label" data-content="my_matches_filter_name"></label>
                 <input type="text" name="Naam" id="filter_name">
 
-                <label style="display: block !important;" for="filter_age" class="filter_label">Leeftijd:</label>
+                <label style="display: block !important;" for="filter_age" class="filter_label" data-content="my_matches_filter_age"></label>
                 <input style="display: block !important;" type="number" name="Leeftijd" id="filter_age">
 
             </div>
             <div class="match_filter match_filter_interests">
-                <label for="filter_interests" class="filter_label">Intresses:</label>
+                <label for="filter_interests" class="filter_label" data-content="my_matches_filter_interests"></label>
 
-                <ul>Loading...</ul>
+                <ul></ul>
             </div>
 
             <div class="filter_buttons">
@@ -88,41 +105,43 @@
 <!-- Match Template -->
 <div id="match_template_container" class="match match_template">
     <div id="match_template" class="match match_template">
-        <div class="match_picture">
-            <img src="{{image}}"  alt="Match Picture"> </div>
-        <div class="match_info">
-            <p class="match_name"><a href="profile.html?id={{id}}">{{name}}</a></p>
-            <p class="match_age">{{age}}</p>
-            <p class="match_date">{{connected_date}}</p>
+        <div class="match_picture notranslate">
+            <img class="notranslate" src="{{image}}" alt="Match Picture"> </div>
+        <div class="match_info notranslate">
+            <p class="match_name notranslate"><a href="profile.html?id={{id}}">{{name}}</a></p>
+            <p class="match_age notranslate">{{age}}</p>
+            <p class="match_date notranslate">{{connected_date}}</p>
         </div>
         <div class="match_tags_container">
-            <ul class="match_tags"> Intresses:
-                <li class="match_tag">{{interest1}}</li>
-                <li class="match_tag">{{interest2}}</li>
+            <ul class="match_tags">
+                <p data-content="my_matches_match_interests"></p>
+                <li class="match_tag notranslate">{{interest1}}</li>
+                <li class="match_tag notranslate">{{interest2}}</li>
             </ul>
         </div>
-        <div class="match_icons">
-            <p title="Ongelezen berichten" id="unread_messages_match">{{MESSAGE_COUNT_MATCH}}</p>
-            <a title="Ongelezen berichten" href="chat.html?id={{id}}" title="Chat with match {{id}}">
+        <div class="match_icons notranslate">
+            <p title="Ongelezen berichten" class="notranslate" id="unread_messages_match">{{MESSAGE_COUNT_MATCH}}</p>
+            <a title="Ongelezen berichten" class="notranslate" href="chat.html?id={{id}}" title="Chat with match {{id}}">
                 <i id="chat_with_match" class="fas fa-2x fa-comments">
                 </i>
             </a>
-            <i id="delete_match" onclick="deleteMatch('{{id}}')" class="fas fa-2x fa-trash"></i>
+            <i id="delete_match" onclick="deleteMatch('{{id}}')" class="fas fa-2x fa-trash notranslate"></i>
         </div>
     </div>
 </div>
 
 <!-- checkbox template -->
-<div class="interest_template">
-    <li>
-        <label>{{interest}}</label>
-        <input type="checkbox" name="{{interest}}" value="{{interest}}" id="interest_template">
+<div class="interest_template notranslate">
+    <li class="notranslate">
+        <label class="notranslate">{{interest}}</label>
+        <input class="notranslate" type="checkbox" name="{{interest}}" value="{{interest}}" id="interest_template">
     </li>
 </div>
 
 </html>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts/content-init.js"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/navigation.js"></script>
 <script src="scripts/my_matches.js"></script>
