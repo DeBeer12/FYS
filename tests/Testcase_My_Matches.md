@@ -1,4 +1,4 @@
-##Test Case ID:
+##Test Case ID:ST_006
 ##Test Case Titel: My Matches
 ##Test Prioriteit(Hoog/Gemiddeld/Laag): Hoog
 ##Gerelateerde requirements:

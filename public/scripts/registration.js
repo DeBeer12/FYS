@@ -39,10 +39,11 @@ $("#js-registration-form").submit(async function(e) {
 
     var usernameArray = await getUsernames();
     var emailArray = await getEmailAdresses();
-
+console.log(userData)
     //check if the username and/or email already exists
+if(userData.first_name == ""&& userData.last_name =="",userData.user_name=="",userData.email=="",userData.password=="",userData.birthday==""){alert("Vul alle velden in!!")}
 
-    if (usernameArray.includes(userData.user_name) && emailArray.includes(userData.email)) {
+    else if (usernameArray.includes(userData.user_name) && emailArray.includes(userData.email)) {
         alert("De door jouw gekozen gebruikersnaam en e-mail zijn al in gebruik");
     } else if (usernameArray.includes(userData.user_name)) {
         alert("De door jouw gekozen gebruikersnaam is al in geburik");
