@@ -119,6 +119,7 @@ $(document).ready(function () {
 
             let save_button = document.getElementById("save-svg");
             let edit_button = document.getElementById("edit-svg");
+            let choose_image = document.getElementById("choose-image")
 
             edit_button.style.display = "block";
             edit_button.onclick = function () {
@@ -137,17 +138,26 @@ $(document).ready(function () {
                 }
             };
 
+
+
+            choose_image.onclick = function () {
+                choose_image.innerHTML = "Kies een andere foto";
+            };
+
+
             save_button.onclick = function () {
-                save_button.style.display = "none";
-                edit_button.style.display = "block";
-                let formatBirthday = document.getElementById("birthday").innerHTML.split("-");
-                let birthday = formatBirthday[2] + "-" + formatBirthday[1] + "-" + formatBirthday[0];
-                var elements = [
-                    document.getElementById("about"),
-                    document.getElementById("firstname"),
-                    document.getElementById("lastname"),
-                    document.getElementById("birthday")
-                ];
+            save_button.style.display = "none";
+            edit_button.style.display = "block";
+            let formatBirthday = document.getElementById("birthday").innerHTML.split("-");
+            let birthday = formatBirthday[2] + "-" + formatBirthday[1] + "-" + formatBirthday[0];
+            var elements = [
+                document.getElementById("about"),
+                document.getElementById("firstname"),
+                document.getElementById("lastname"),
+                document.getElementById("birthday")
+            ];
+
+
 
                 var query = "update user set ";
 
