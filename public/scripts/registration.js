@@ -47,7 +47,7 @@ $("#js-registration-form").submit(async function(e) {
     } else if (usernameArray.includes(userData.user_name)) {
         alert("De door jouw gekozen gebruikersnaam is al in geburik");
     } else if (emailArray.includes(userData.email)) {
-        alert("De door gekozen e-mail is al in gebruik");
+        alert("De door jouw gekozen e-mail is al in gebruik");
     } else {
         $.post("/register", { user: userData }).done(function(data) {
             alert("Registered");

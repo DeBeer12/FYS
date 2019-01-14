@@ -1,5 +1,5 @@
 #google_translate_element {
-    position: absolute;
+    position: fixed;
     bottom: calc(53px + 16px);
     right: 16px !important;
 }
@@ -30,9 +30,12 @@
     color: #fff !important;
 }
 
+.goog-te-gadget-simple .goog-te-menu-value span{
+    color: white !important;
+}
+
 .goog-te-menu-value span:nth-child(3) {
     border: none !important;
-    font-family: 'Material Icons';
 }
 
 .goog-te-gadget-icon {
