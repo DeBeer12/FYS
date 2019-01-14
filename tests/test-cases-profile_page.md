@@ -9,7 +9,7 @@
 | Stap | Omschrijving | Invoer |  Verwacht resultaat |
 |-|-|-|-|
 | 1 | Gebruiker wilt persoonlijke data aan passen | Klikt op het icoon om aan te passen | - | De tekst velden veranderen naar input |
-| 2 | Gebruiker past een veld aan | past 1 van de velden aan met de nieuw gewilde informatie | - | -- |
+| 2 | Gebruiker past een veld aan | past 1 van de velden aan met de nieuw gewilde informatie | - | - |
 | 3 | Gebruiker slaat de nieuwe data op | Klikt op het icoon om op te slaan | - | Pagina herlaad en de nieuwe data staat op het profiel van de gebruiker |
 
 
