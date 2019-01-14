@@ -20,11 +20,18 @@
 
     <link rel="icon" type="images/png" href="images/favicon-32x32.png" sizes="16x16" />
 
-
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
 
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'nl', includedLanguages: 'en,nl', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <link rel="stylesheet" href="styles/blocks/translate-button.css">
 </head>
 
 <body>
@@ -37,12 +44,11 @@
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
                 <li class="nav-bar__link"><a><i class="fas fa fa-comment" title="Ongelezen berichten"><p id="unread_messages"></p></i></a></li>
-                <li class="nav-bar__link"><a href="index.html">Home</a></li>
-                <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
-                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
-                <li class="nav-bar__link"><a class="pointer" onclick="myProfile()">Profiel</a></li>
-                <li class="nav-bar__link"><a class="pointer" onclick="logout()">logout</a></li>
-                <!-- <li class="nav-bar__link"><a href="registration.html">Registratie</a></li> -->
+                <li class="nav-bar__link"><a class="notranslate" href="index.html">Home</a></li>
+                <li class="nav-bar__link"><a class="notranslate"href="my_matches.html">Mijn Matches</a></li>
+                <li class="nav-bar__link"><a class="notranslate" href="matches.html">Matches</a></li>
+                <li class="nav-bar__link"><a class="pointer notranslate" onclick="myProfile()">Profiel</a></li>
+                <li class="nav-bar__link"><a class="pointer notranslate" onclick="logout()">logout</a></li>
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -53,7 +59,6 @@
             </ul>
         </div>
     </nav>
-
 
     <div class="flex-wrapper">
         <div class="user-card-wrapper user-card-wrapper-display-none" id="carousel-item-template">
@@ -107,12 +112,11 @@
             <img class="preface-image" src="images/airplaine.jpg">
         </div>
     </div>
-
 </body>
-
 </html>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/navigation.js"></script>
 <script src="scripts/index.js"></script>
+<script src="scripts/translate-button.js"></script>

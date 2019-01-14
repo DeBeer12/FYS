@@ -1,4 +1,4 @@
-##Test Case ID:
+##Test Case ID:ST_005
 ##Test Case Titel: Registratie
 ##Test Prioriteit(Hoog/Gemiddeld/Laag): Hoog
 ##Gerelateerde requirements:

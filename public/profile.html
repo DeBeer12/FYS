@@ -18,6 +18,14 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="styles/blocks/translate-button.css">
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'nl', includedLanguages: 'en,nl', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
@@ -30,11 +38,11 @@
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
                 <li class="nav-bar__link"><a><i class="fas fa fa-comment" title="Ongelezen berichten"><p id="unread_messages"></p></i></a></li>
-                <li class="nav-bar__link"><a href="index.html">Home</a></li>
-                <li class="nav-bar__link"><a href="my_matches.html">Mijn Matches</a></li>
-                <li class="nav-bar__link"><a href="matches.html">Matches</a></li>
-                <li class="nav-bar__link"><a onclick="myProfile()">Profiel</a></li>
-                <li class="nav-bar__link"><a onclick="logout()">logout</a></li>
+                <li class="nav-bar__link"><a class="notranslate" href="index.html">Home</a></li>
+                <li class="nav-bar__link"><a class="notranslate"href="my_matches.html">Mijn Matches</a></li>
+                <li class="nav-bar__link"><a class="notranslate" href="matches.html">Matches</a></li>
+                <li class="nav-bar__link"><a class="pointer notranslate" onclick="myProfile()">Profiel</a></li>
+                <li class="nav-bar__link"><a class="pointer notranslate" onclick="logout()">logout</a></li>
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -56,7 +64,7 @@
                 method='post'
                 class="upload_form"
                 encType="multipart/form-data">
-                <input type="file" class="inputfile" id="file" name="sampleFile" />
+                <input required type="file" class="inputfile" accept="image/x-png,image/gif,image/jpeg" id="file" name="sampleFile" />
                 <label class="upload_button" id="choose-image" for="file">Kies een foto</label>
                 <input type='submit' id="upload" value='Upload!' />
                 <label class="upload_button" for="upload">Upload</label>
@@ -68,6 +76,7 @@
                 <p id="birthday">{{birthday}}</p>
                 <p>Over mij:</p>
                 <p id="about">{{about}}</p>
+                <p style="color: red" id="error-message"></p>
                 <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
                 <img src="images/save.png" id="save-svg" class="save-image" style="" alt="">
             </div>
@@ -85,3 +94,4 @@
 <script src="scripts/auth.js"></script>
 <script src="scripts/navigation.js"></script>
 <script src="/scripts/profile.js"></script>
+<script src="scripts/translate-button.js"></script>

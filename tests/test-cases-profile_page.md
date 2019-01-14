@@ -1,4 +1,4 @@
-## ST_001 - Gebruiker inloggen
+## ST_008 - Gegevens aanpassen
 **Test Case ID:** 1  
 **Test Case Titel:** Gegevens aanpassen van profiel
 **Test Prioriteit (Hoog/Gemiddeld/Laag):** Hoog  
@@ -20,7 +20,7 @@
 | 2A.2 | Gebruiker wilt nieuwe data opslaan | Klikt op het icoon om op te slaan | Er komt een foutmelding |
 
 
-## 2: profiel foto aanpassen
+## ST_009 - profiel foto aanpassen
 **Test Case ID:** 2  
 **Test Case Titel:** profiel foto aanpassen 
 **Test Prioriteit (Hoog/Gemiddeld/Laag):** gemiddeld  
@@ -34,12 +34,12 @@
 | 2 | Gebruiker kiest een foto van zijn pc | kiest een juiste foto | - |
 | 3 | Gebruiker upload de foto door op het icoon te klikken | - | profiel fot is veranderd | 
 
-### Extensie Scenario - 2.1 - kiest geen nieuwe profiel foto
+### Extensie Scenario - 2A - kiest geen nieuwe profiel foto
 | Branch Stap | Omschrijving | Invoer |  Verwacht resultaat |
 |-|-|-|-|
 | 2.1 | gebruiker kiest geen foto | er word geen foto gekozen| komt een melding dat er eerst een foto moet worden gekozen voor het uploaden |
 
-### Extensie Scenario - 3.1 - vekeerde bestandstype
+### Extensie Scenario - 3A - vekeerde bestandstype
 | Branch Stap | Omschrijving | Invoer |  Verwacht resultaat |
 |-|-|-|-|
 | 3.1 | gebruiker kiest een foto dat niet het goede formaat is | er word een foto gekozen met het vekeerde formaat | komt een melding dat het niet het juiste bestandstype is |
