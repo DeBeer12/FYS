@@ -8,16 +8,16 @@
 ### Main Scenario
 | Stap | Omschrijving | Invoer |  Verwacht resultaat |
 |-|-|-|-|
-| 1 | Gebruiker wilt persoonlijke data aan passen | Klikt op het icoon om aan te passen | - | De tekst velden veranderen naar input |
-| 2 | Gebruiker past een veld aan | past 1 van de velden aan met de nieuw gewilde informatie | - | - |
-| 3 | Gebruiker slaat de nieuwe data op | Klikt op het icoon om op te slaan | - | Pagina herlaad en de nieuwe data staat op het profiel van de gebruiker |
+| 1 | Gebruiker wilt persoonlijke data aan passen | Klikt op het icoon om aan te passen | De tekst velden veranderen naar input |
+| 2 | Gebruiker past een veld aan | past 1 van de velden aan met de nieuw gewilde informatie | - |
+| 3 | Gebruiker slaat de nieuwe data op | Klikt op het icoon om op te slaan | Pagina herlaad en de nieuwe data staat op het profiel van de gebruiker |
 
 
 ### Extensie Scenario - 2A - Verkeerde gegevens invullen
 | Branch Stap | Omschrijving | Invoer |  Verwacht resultaat |
 |-|-|-|-|
-| 2A.1 | Gebruiker wilt data aanpassen maar vergeet een veld | gebruiker vult 1 veld niet in | - | -- |
-| 2A.2 | Gebruiker wilt nieuwe data opslaan | Klikt op het icoon om op te slaan | - | Er komt een foutmelding |
+| 2A.1 | Gebruiker wilt data aanpassen maar vergeet een veld | gebruiker vult 1 veld niet in | - |
+| 2A.2 | Gebruiker wilt nieuwe data opslaan | Klikt op het icoon om op te slaan | Er komt een foutmelding |
 
 
 ## 2: profiel foto aanpassen
