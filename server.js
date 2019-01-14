@@ -113,7 +113,7 @@ app.post('/login', function(req, res) {
     var sendObject = {};
     var saltQuery = "SELECT user_salt FROM user WHERE user_name = '" + req.body.username + "';"
     dbc.query_handler(saltQuery, db, function(salt) {
-        var user_salt = salt[0].user_salt
+        var user_salt = salt.length > 0 ? salt[0].user_salt : undefined;
         if (user_salt == undefined || user_salt == '') {
             sendObject.validation = false;
             res.send(sendObject);
