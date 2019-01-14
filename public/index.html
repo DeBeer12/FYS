@@ -27,7 +27,12 @@
     <div id="google_translate_element"></div>
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'nl', includedLanguages: 'en,nl', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+            new google.translate.TranslateElement({
+                pageLanguage: 'nl',
+                includedLanguages: 'en,nl',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -73,8 +78,8 @@
                     {{description}}
                 </div>
                 <div class="user-buttons">
-                    <a class="user-button-1 pointer" id="matchItem">Like</a>
-                    <a class="user-button-2 pointer" id="removeItem">Negeren</a>
+                    <a class="user-button-1 pointer" id="matchItem" data-content="home_user_button_1"></a>
+                    <a class="user-button-2 pointer" id="removeItem" data-content="home_user_button_2"></a>
                 </div>
             </div>
         </div>
@@ -82,29 +87,18 @@
 
     <div class="content-wrapper">
         <div class="button-wrapper">
-            <a href="my_matches.html" class="button" id="matches-button">
-                Mijn Matches
-            </a>
-            <a href="matches.html" class="button pointer" id="relevante-button" style="background-color: #ffc61d;">
-                Relevante Matches
-            </a>
+            <a href="my_matches.html" class="button" id="matches-button" data-content="home_button_1"></a>
+            <a href="matches.html" class="button pointer" id="relevante-button" style="background-color: #ffc61d;" data-content="home_button_2"></a>
         </div>
     </div>
 
     <!-- commit test -->
     <div class="preface-wrapper">
         <div class="preface-item">
-            <div style="float: right; display: none;" id="preface-edit"><i class="far fa-edit fa-2x pointer"></i></div>
             <div class="preface-text-center">
-                <h1 id="preface-title">
-                    Corendon info
-                </h1>
+                <h1 id="preface-title" data-content="home_preface_title"></h1>
                 <br>
-                <p id="preface-text-area">
-                    Op vakantie gaan betekent wat ons betreft gewoon lekker genieten en genieten schrijven we bij Corendon met de hoofdletter G. Het is onze taak om jouw vakantiedromen waar te maken. Die opdracht nemen we heel serieus. Niet voor niets hebben wij voor elke
-                    doelgroep een passende vakantie. Of je nu met kids naar een gezinsvriendelijk 4Kids of Aquafun hotel wilt of juist liever met z'n tweetjes naar een Only Adult accommodatie. Super-de-luxe, All Inclusive of juist de vrijheid van een
-                    comfortabel appartement? Bij Corendon wordt er naar je geluisterd.
-                </p>
+                <p id="preface-text-area" data-content="home_preface_text"></p>
                 <p id="preface-save"></p>
             </div>
         </div>
@@ -120,3 +114,4 @@
 <script src="scripts/navigation.js"></script>
 <script src="scripts/index.js"></script>
 <script src="scripts/translate-button.js"></script>
+<script src="scripts/content-init.js"></script>

@@ -179,24 +179,3 @@ $(document).ready(function () {
         }
     });
 });
-
-// Replace titel and text with editable fields
-$(document).on("click", "#preface-edit", function () {
-    $('#preface-title').replaceWith("<h2 id='preface-title-edit-1'>Titel:</h2> <input type='text' id='preface-title-edit-2'><br>");
-    $('#preface-text-area').replaceWith("<p id='preface-text-area-edit-1'>Info:</p> <textarea rows='7' cols='65' id='preface-text-area-edit-2'></textarea><br>");
-    $('#preface-save').append('<i class="far fa-save fa-2x pointer" id="preface-save-icon"></i>');
-
-    $('#preface-edit').hide();
-});
-
-// Replace editable fields with filled in titel and text
-$(document).on("click", "#preface-save", function () {
-    $('#preface-title-edit-2').replaceWith("<h1 id='preface-title'>" + $('#preface-title-edit-2').val() + "</h1>");
-    $('#preface-text-area-edit-2').replaceWith("<p id='preface-text-area'>" + $('#preface-text-area-edit-2').val() + "</p>");
-
-    $('#preface-title-edit-1').remove();
-    $('#preface-text-area-edit-1').remove();
-
-    $('#preface-save-icon').remove();
-    $('#preface-edit').show();
-});
