@@ -146,36 +146,42 @@ $(document).ready(function () {
 
 
             save_button.onclick = function () {
-            save_button.style.display = "none";
-            edit_button.style.display = "block";
-            let formatBirthday = document.getElementById("birthday").innerHTML.split("-");
-            let birthday = formatBirthday[2] + "-" + formatBirthday[1] + "-" + formatBirthday[0];
-            var elements = [
-                document.getElementById("about"),
-                document.getElementById("firstname"),
-                document.getElementById("lastname"),
-                document.getElementById("birthday")
-            ];
+                let input_birthday = document.getElementById("birthday").innerHTML;
+                console.log(input_birthday);
+                if (input_birthday.match(/^\d{1,2}-\d{1,2}-\d{4}$/)) {
+                    save_button.style.display = "none";
+                    edit_button.style.display = "block";
+                    let formatBirthday = input_birthday.split("-");
+                    let birthday = formatBirthday[2] + "-" + formatBirthday[1] + "-" + formatBirthday[0];
+                    var elements = [
+                        document.getElementById("about"),
+                        document.getElementById("firstname"),
+                        document.getElementById("lastname"),
+                        document.getElementById("birthday")
+                    ];
 
 
+                    var query = "update user set ";
 
-                var query = "update user set ";
-
-                for (let i = 0; elements.length > i; i++) {
-                    elements[i].contentEditable = false;
-                    elements[i].style.border = "none";
-                    if (i + 1 === elements.length) {
-                        query += "user_" + elements[i].getAttribute("id") + " = '" + birthday + "' ";
-                    } else {
-                        query += "user_" + elements[i].getAttribute("id") + " = '" + elements[i].innerHTML + "', ";
+                    for (let i = 0; elements.length > i; i++) {
+                        elements[i].contentEditable = false;
+                        elements[i].style.border = "none";
+                        if (i + 1 === elements.length) {
+                            query += "user_" + elements[i].getAttribute("id") + " = '" + birthday + "' ";
+                        } else {
+                            query += "user_" + elements[i].getAttribute("id") + " = '" + elements[i].innerHTML + "', ";
+                        }
                     }
-                }
 
-                query += "where user_id = @user_id";
-                console.log(query);
-                $.get("/db", {query: query}).done(function (data) {
-                    location.reload();
-                });
+                    query += "where user_id = @user_id";
+                    console.log(query);
+                    $.get("/db", {query: query}).done(function (data) {
+                        location.reload();
+                    });
+                } else {
+                    console.log("test 123");
+                    document.getElementById("error-message").innerHTML = "Geen goede geboortedatum";
+                }
             };
 
             //het ophalen van de intresses die nog niet geselecteerd

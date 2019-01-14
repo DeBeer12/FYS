@@ -71,3 +71,14 @@ Hieronder volgen de resultaten van een aantal iteraties van de System Tests.
 |[ST_006_6]|[Leeftijd filter]|Pass|...|...|
 |[ST_006_7]|[Naam en leeftijd filter]|Pass|...|...|
 |[ST_006_8]|[Reset filters]|Pass|...|...|
+
+## [14-01-2019 14:30]
+**Uitgevoerd door:** [Broersen, Bob]
+---
+| Test Case ID | Test Case Titel / Extensie Titel | Pass / Fail |  Fail Stap | Fail Opmerking |
+|-|-|-|-|-|
+| [ST_008] | [Gegevens aanpassen] | Pass | ... | ... |
+| [ST_008_2A] | [Verkeerde gegevens invullen] | pass | ... | ... |
+| [ST_009] | [profiel foto aanpassen] | Pass | ... | ... |
+| [ST_009_2A] | [kiest geen nieuwe profiel foto] | Pass | ... | ... |
+| [ST_009_3A] | [vekeerde bestandstype] | fail | 3.1 | upload het bestand gewoon |

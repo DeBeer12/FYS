@@ -64,7 +64,7 @@
                 method='post'
                 class="upload_form"
                 encType="multipart/form-data">
-                <input required type="file" class="inputfile" id="file" name="sampleFile" />
+                <input required type="file" class="inputfile" accept="image/x-png,image/gif,image/jpeg" id="file" name="sampleFile" />
                 <label class="upload_button" id="choose-image" for="file">Kies een foto</label>
                 <input type='submit' id="upload" value='Upload!' />
                 <label class="upload_button" for="upload">Upload</label>
@@ -76,6 +76,7 @@
                 <p id="birthday">{{birthday}}</p>
                 <p>Over mij:</p>
                 <p id="about">{{about}}</p>
+                <p style="color: red" id="error-message"></p>
                 <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
                 <img src="images/save.png" id="save-svg" class="save-image" style="" alt="">
             </div>
