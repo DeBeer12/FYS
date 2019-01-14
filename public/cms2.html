@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Corendon!</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/base/keyframes.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/base/margin-presets.css">
+
+    <link rel="stylesheet" href="styles/blocks/content-wrapper.css">
+    <link rel="stylesheet" href="styles/blocks/header.css">
+    <link rel="stylesheet" href="styles/blocks/nav-bar.css">
+    <link rel="stylesheet" href="styles/sass/cms.css">
+
+    <link rel="stylesheet" href="styles/pages/cms.css">
+
+    <link rel="icon" type="images/png" href="images/favicon-32x32.png" sizes="16x16" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="main-header content-wrapper">
+        <a class="main-header" href="index.html"><img src="images/main_logo.jpg" alt="" class="main-header__logo"></a>
+    </div>
+
+
+
+    <div class="container content-wrapper">
+
+        <ul class="cms-header js-cms-header">
+            <!--<li data-page-id="1" class="cms-header__item">ExamplePage</li>-->
+        </ul>
+
+        <ul class="cms-fields-wrapper js-cms-fields-wrapper">
+
+            <!--Example below-->
+            <!--<li data-header-parent-id="1" class="cms-field js-cms-field">-->
+                <!--<form class="js-save-form" action="post">-->
+                    <!--<input style="display: none;" type="text" name="content-id" value="1">-->
+                    <!--<input class="field-name" name="field-name" type="text" value="omg hi">-->
+                    <!--<textarea class="field-value" name="field-value" id="" cols="30" rows="10">omg yes</textarea>-->
+                    <!--<input class="field-submit" type="submit" value="Opslaan">-->
+                    <!--<input class="field-delete" type="submit" value="Verwijder">-->
+                <!--</form>-->
+            <!--</li>-->
+
+        </ul>
+
+        <div class="cms-add-field">
+            <span>Voeg veld toe</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/cms2.js"></script>
+<script src="scripts/content-init.js"></script>

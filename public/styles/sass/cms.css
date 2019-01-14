@@ -1,0 +1,79 @@
+.cms-header {
+  width: 100%;
+  height: 50px;
+  display: flex; }
+  .cms-header .cms-header__item {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: all .3s;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 10px; }
+    .cms-header .cms-header__item:hover {
+      background-color: rgba(0, 0, 0, 0.2); }
+    .cms-header .cms-header__item.--active {
+      background-color: #4CAF50; }
+
+.cms-fields-wrapper {
+  width: 100%;
+  list-style-type: none; }
+  .cms-fields-wrapper .cms-field {
+    margin-left: 0;
+    margin-top: 50px; }
+    .cms-fields-wrapper .cms-field.--hidden {
+      display: none; }
+    .cms-fields-wrapper .cms-field form {
+      display: flex;
+      align-items: center; }
+    .cms-fields-wrapper .cms-field .field-name {
+      height: 50px;
+      margin-right: 10px; }
+    .cms-fields-wrapper .cms-field .field-value {
+      height: 50px;
+      margin-right: 10px; }
+    .cms-fields-wrapper .cms-field .field-submit {
+      width: 100px;
+      height: 50px;
+      padding: 0;
+      border: none;
+      background: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: all .3s;
+      margin-right: 10px; }
+      .cms-fields-wrapper .cms-field .field-submit:hover {
+        transform: scale(1.05); }
+    .cms-fields-wrapper .cms-field .field-delete {
+      width: 100px;
+      height: 50px;
+      padding: 0;
+      border: none;
+      background: none;
+      background-color: #DD3F2A;
+      color: white;
+      cursor: pointer;
+      transition: all .3s; }
+      .cms-fields-wrapper .cms-field .field-delete:hover {
+        transform: scale(1.05); }
+
+.cms-add-field {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  background-color: #4CAF50;
+  cursor: pointer;
+  transition: all .3s; }
+  .cms-add-field span {
+    text-align: center;
+    color: white; }
+  .cms-add-field:hover {
+    transform: scale(1.05); }
