@@ -15,15 +15,6 @@
 | 5 | Log uit met het account testgebruiker d.m.v. op de knop loguit te drukken in de navigatiebalk |-| er wordt doorverwijsd naar de loginpagina |
 | 5 | Login met het account testMatch en ga naar de chat met testgebruiker |-| In de chat staat het bericht "Test bericht naar testMatch" met daarboven de naam van de testgebruiker |
 
-### Extensie Scenario - 2A - Verkeerde gegevens invullen
-| Branch Stap | Omschrijving | Invoer |  Verwacht resultaat |
-|-|-|-|-|
-| 2A.1 | Vul geen gegevens in en drukt op de knop "Zoeken" | - | De "Mijn matches" pagina filterd niet en de gebruiker moet zelf zoeken in de lijst naar testMatch|
-| 2A.2 | De gebruiker klikt op de knop Reset Filters | - | Alle matches worden weergegeven |
-| 2A.3 | De gebruiker vult bij het naamfilter de naam in van de gematchde testpersoon en klikt op zoeken | Naam = MatchBestaatNiet | Website geen matches |
-
-Ga verder met stap 2
-
 ### Extensie Scenario - 4A - Verkeerde gegevens invullen
 | Branch Stap | Omschrijving | Invoer |  Verwacht resultaat |
 |-|-|-|-|
