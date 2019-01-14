@@ -168,14 +168,11 @@ $(document).ready(function () {
         });
     });
 
-    /**
-     * Show editable button based on role
-     * @param {object} user as data
-     */
-    authUser(function(data){
-        var ADMIN_ROLE = 1;
-        if(data.role_role_id = ADMIN_ROLE){
-           $('#preface-edit').show();
-        }
-    });
+
+    // Show CMS in navbar if user has admin role
+    var ADMIN_ROLE = 1; // 1 is equal to admin role in DB
+    if ($user.rol != ADMIN_ROLE){
+        $('#cms_navbar').remove();
+    }
+
 });
