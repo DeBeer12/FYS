@@ -14,7 +14,6 @@ function checkUserInit() {
 
 setTimeout(checkUserInit, 100);
 
-
 /**
  * Dom manipulation to fix height for overflow
  */
@@ -82,16 +81,12 @@ function isMatch(likedId) {
 
         return data[0]["isMatch"] === 1;
     });
-
-
-
 }
 
 /**
  * Creates all needed click events for the dom
  */
 function createClickEvents(){
-
     $( "*").unbind( "click" );
 
     /**
@@ -122,7 +117,6 @@ function createClickEvents(){
  * @param currentUserId current user id
  */
 function getAllUsers(currentUserId){
-
     var query = "SELECT * " +
         "FROM user " +
         "WHERE user_id NOT IN( " +
@@ -142,18 +136,13 @@ function getAllUsers(currentUserId){
         initWrappers();
         createClickEvents();
     });
-
-
-
 }
 
 /**
  * Adss the 4 first wrappers to start the "liking" process
  */
 function initWrappers(){
-
     for (currentIndex; currentIndex < 4; currentIndex++){
-
         if (currentIndex === 0){
             addWrapper(
                 likeAbleUsers[currentIndex]["user_id"],
@@ -167,6 +156,7 @@ function initWrappers(){
             addWraperFromIndex();
         }
     }
+    fixHeight();
 }
 
 /**
@@ -216,17 +206,6 @@ function addWrapper(id, name, subText, bigText, extraClass){
     $clone.appendTo(".js-matches-wrapper");
 }
 
-function loadImage()
-{
-    alert("Image is loaded");
-}
-function errorImage()
-{
-    alert("Image not loaded");
-}
-
-
-
 /**
  * Function that removes the last match wrapper from the dom
  */
@@ -251,7 +230,6 @@ function showMatchMessage(name, profileUrl){
     $wrapper.find(".image").attr("src", profileUrl);
 
 }
-
 
 $( document ).ready(function () {
     fixHeight();
