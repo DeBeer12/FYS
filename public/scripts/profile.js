@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     let user;
 
     /**
@@ -6,7 +6,7 @@ $(document).ready(function () {
      * */
     function getUrlVars() {
         let vars = {};
-        let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
             vars[key] = value;
         });
         return vars;
@@ -26,7 +26,7 @@ $(document).ready(function () {
      * */
     function getUser(callback) {
         let getUsersQuery = "select * from user where user_id = " + getUrlVars()["id"];
-        $.get("/db", {query: getUsersQuery}).done(function (data) {
+        $.get("/db", { query: getUsersQuery }).done(function(data) {
             callback(data[0]);
         });
     }
@@ -35,12 +35,12 @@ $(document).ready(function () {
      * haalt de intresses op die overeenkomen met de bekeken gebruiker en de ingelogde gebruiker
      * */
     function getUserSameInterest(callback) {
-        let getUserInterestQuery = "select * from user_has_interest left join interest inte_2 on interest_interest_id = inte_2.interest_id "
-            + "where user_user_id = " + getUrlVars()["id"]
-            + " AND EXISTS ( 	select * from user_has_interest us1 "
-            + "left join interest inte1 on us1.interest_interest_id = inte1.interest_id "
-            + "where us1.user_user_id = @user_id AND inte1.interest_id = inte_2.interest_id) ";
-        $.get("/db", {query: getUserInterestQuery}).done(function (interestSame_data) {
+        let getUserInterestQuery = "select * from user_has_interest left join interest inte_2 on interest_interest_id = inte_2.interest_id " +
+            "where user_user_id = " + getUrlVars()["id"] +
+            " AND EXISTS ( 	select * from user_has_interest us1 " +
+            "left join interest inte1 on us1.interest_interest_id = inte1.interest_id " +
+            "where us1.user_user_id = @user_id AND inte1.interest_id = inte_2.interest_id) ";
+        $.get("/db", { query: getUserInterestQuery }).done(function(interestSame_data) {
             callback(interestSame_data);
         });
     }
@@ -49,12 +49,12 @@ $(document).ready(function () {
      * haalt de intresses op die niet overeenkomen met de bekeken gebruiker en de ingelogde gebruiker
      * */
     function getUserDiffInterest(callback) {
-        let getUserDiffInterestQuery = "SELECT * from user_has_interest left join interest inte_2 on interest_interest_id = inte_2.interest_id "
-            + "where user_user_id = " + getUrlVars()["id"]
-            + " AND not EXISTS ( 	select * from user_has_interest us1 "
-            + "left join interest inte1 on us1.interest_interest_id = inte1.interest_id "
-            + "where us1.user_user_id = @user_id AND inte1.interest_id = inte_2.interest_id)";
-        $.get("/db", {query: getUserDiffInterestQuery}).done(function (interestDiff_data) {
+        let getUserDiffInterestQuery = "SELECT * from user_has_interest left join interest inte_2 on interest_interest_id = inte_2.interest_id " +
+            "where user_user_id = " + getUrlVars()["id"] +
+            " AND not EXISTS ( 	select * from user_has_interest us1 " +
+            "left join interest inte1 on us1.interest_interest_id = inte1.interest_id " +
+            "where us1.user_user_id = @user_id AND inte1.interest_id = inte_2.interest_id)";
+        $.get("/db", { query: getUserDiffInterestQuery }).done(function(interestDiff_data) {
             callback(interestDiff_data);
         });
     }
@@ -65,7 +65,7 @@ $(document).ready(function () {
     function getNotUsedInterest(callback) {
         let getNotUsedInterestQuery = "SELECT interest_id, interest_name FROM interest where interest_id not in " +
             "(select interest_interest_id from user_has_interest where user_user_id = @user_id)";
-        $.get("/db", {query: getNotUsedInterestQuery}).done(function (notUsed_data) {
+        $.get("/db", { query: getNotUsedInterestQuery }).done(function(notUsed_data) {
             callback(notUsed_data);
         });
     }
@@ -73,7 +73,7 @@ $(document).ready(function () {
     /**
      * Het ophalen van een user en op de pagina plaatsen
      */
-    getUser(function (data) {
+    getUser(function(data) {
         user = data;
 
         //user data ophalen en op de website zetten
@@ -87,7 +87,7 @@ $(document).ready(function () {
         document.getElementById("profile-image").src = "images/profile-images/profile-image-" + getUrlVars()["id"] + ".jpg";
 
         //de intresses van de gebruiker die overeenkomen met de andere gebruiker ophalen en aan de list toevoegen
-        getUserSameInterest(function (interestSame_data) {
+        getUserSameInterest(function(interestSame_data) {
             let ul = document.getElementById("interest-list");
 
             for (let i = 0; i < interestSame_data.length; i++) {
@@ -100,7 +100,7 @@ $(document).ready(function () {
         });
 
         //niet overeenkomende intresses ophalen en toevoegen aan de list
-        getUserDiffInterest(function (interestDiff_data) {
+        getUserDiffInterest(function(interestDiff_data) {
             let ul = document.getElementById("interest-list");
 
             for (let i = 0; i < interestDiff_data.length; i++) {
@@ -122,7 +122,7 @@ $(document).ready(function () {
             let choose_image = document.getElementById("choose-image")
 
             edit_button.style.display = "block";
-            edit_button.onclick = function () {
+            edit_button.onclick = function() {
                 edit_button.style.display = "none";
                 save_button.style.display = "block";
                 let elements = [
@@ -140,12 +140,12 @@ $(document).ready(function () {
 
 
 
-            choose_image.onclick = function () {
+            choose_image.onclick = function() {
                 choose_image.innerHTML = "Kies een andere foto";
             };
 
 
-            save_button.onclick = function () {
+            save_button.onclick = function() {
                 let input_birthday = document.getElementById("birthday").innerHTML;
                 console.log(input_birthday);
                 if (input_birthday.match(/^\d{1,2}-\d{1,2}-\d{4}$/)) {
@@ -175,7 +175,7 @@ $(document).ready(function () {
 
                     query += "where user_id = @user_id";
                     console.log(query);
-                    $.get("/db", {query: query}).done(function (data) {
+                    $.get("/db", { query: query }).done(function(data) {
                         location.reload();
                     });
                 } else {
@@ -185,12 +185,12 @@ $(document).ready(function () {
             };
 
             //het ophalen van de intresses die nog niet geselecteerd
-            getNotUsedInterest(function (notUsedData) {
+            getNotUsedInterest(function(notUsedData) {
                 let ul = document.getElementById("interest-list");
                 let select = document.createElement("SELECT");
                 select.className = "new_interest";
                 let defaultOption = document.createElement("option");
-                defaultOption.text = "Kies meer intresses";
+                defaultOption.text = cms.find(f => f.content_name == "profile_interests_placeholder").content_text;
                 select.appendChild(defaultOption);
                 for (let i = 0; notUsedData.length > i; i++) {
                     let option = document.createElement("option");
@@ -203,12 +203,11 @@ $(document).ready(function () {
                 ul.appendChild(select);
 
                 //invoeren van de gekozen intresse in de db
-                select.onchange = function () {
+                select.onchange = function() {
                     var query = "INSERT INTO user_has_interest (user_user_id, interest_interest_id) VALUES (@user_id, " + select.value + ");";
 
-                    console.log(query);
 
-                    $.get("/db", {query: query}).done(function (data) {
+                    $.get("/db", { query: query }).done(function(data) {
                         location.reload();
                     });
                 }

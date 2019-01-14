@@ -30,7 +30,7 @@ $(document).ready(async function() {
     });
     $("#filter_reset").click(function() {
         $("#match_container").empty();
-        $.each(globalUsers, function(key, user){
+        $.each(globalUsers, function(key, user) {
             // Print matches
             printMatch(user);
         });
@@ -147,9 +147,9 @@ var formatDate = function(date) {
     var diffWeeks = Math.round(timeDiff / 1000 / 60 / 60 / 24 / 7);
 
     if (diffDays < 20) {
-        return (diffDays) + " dagen geleden gematched";
+        return (diffDays) + " " + cms.find(f => f.content_name == "my_matches_match_days").content_text;
     } else {
-        return (diffWeeks) + " weken geleden gematched";
+        return (diffWeeks) + " " + cms.find(f => f.content_name == "my_matches_match_weeks").content_text;
     }
 }
 
@@ -226,7 +226,7 @@ var filterMatches = function(users) {
 
     );
     $("#match_container").empty();
-    $.each(filteredUsers, function(key, user){
+    $.each(filteredUsers, function(key, user) {
         // Print filtered matches
         printMatch(user);
     })
@@ -241,21 +241,21 @@ async function printMatch(user) {
 
     // Replace template strings with match info
     // for (var i = 0; i < user.length; i++) {
-        new_match_item = (' ' + match_template).slice(1);
-        new_match_item = new_match_item.replace("{{name}}", user.user_firstname + " " + user.user_lastname)
-            // .replace("src=\"images/img_avatar.png\"", "src=\"images/" + user.img + "\"")
-            .replace("{{age}}", calculateAge(user.user_birthday) + " Jaar oud")
-            .replace("{{image}}", "'images/profile-images/profile-image-"+ $user.user_id +".jpg'")
-            .replace("{{connected_date}}", formatDate(user.like_created_at))
-            .replace("{{interest1}}", user.interests.length > 0 ? user.interests[0] : "geen")
-            .replace("{{interest2}}", user.interests.length > 1 ? user.interests[1] : "")
-            .replace("id=\"match_template\"", "id=\"match_" + user.user_id + "\"")
-            .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + user.user_id + "\"")
-            .replace("\"profile.html?id={{id}}\"", "\"profile.html?id=" + user.user_id + "\"")
-            .replace("{{MESSAGE_COUNT_MATCH}}", user.messageCount ? user.messageCount : 0)
-            .replaceAll("'{{id}}'", user.user_id);
-        $('#match_container').append(new_match_item);
-        $("div#match_" + user.user_id).removeClass("match_template");
+    new_match_item = (' ' + match_template).slice(1);
+    new_match_item = new_match_item.replace("{{name}}", user.user_firstname + " " + user.user_lastname)
+        // .replace("src=\"images/img_avatar.png\"", "src=\"images/" + user.img + "\"")
+        .replace("{{age}}", calculateAge(user.user_birthday) + " " + cms.find(f => f.content_name == "my_matches_match_age").content_text)
+        .replace("{{image}}", "'images/profile-images/profile-image-" + $user.user_id + ".jpg'")
+        .replace("{{connected_date}}", formatDate(user.like_created_at))
+        .replace("{{interest1}}", user.interests.length > 0 ? user.interests[0] : "geen")
+        .replace("{{interest2}}", user.interests.length > 1 ? user.interests[1] : "")
+        .replace("id=\"match_template\"", "id=\"match_" + user.user_id + "\"")
+        .replace("\"chat.html?id={{id}}\"", "\"chat.html?id=" + user.user_id + "\"")
+        .replace("\"profile.html?id={{id}}\"", "\"profile.html?id=" + user.user_id + "\"")
+        .replace("{{MESSAGE_COUNT_MATCH}}", user.messageCount ? user.messageCount : 0)
+        .replaceAll("'{{id}}'", user.user_id);
+    $('#match_container').append(new_match_item);
+    $("div#match_" + user.user_id).removeClass("match_template");
     // }
 };
 

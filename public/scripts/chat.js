@@ -8,7 +8,7 @@ $(document).ready(function() {
     // Get username of match
     getUsername(function(username) {
         match = username;
-        $("h2.title p.matchname")[0].innerHTML = match.user_firstname + " " + match.user_lastname;
+        $("h2.title p.matchname")[0].innerHTML = cms.find(f => f.content_name == "chat_title").content_text + " " + match.user_firstname + " " + match.user_lastname;
 
         getMessageHistory(function(matchHistoryData) {
             matchHistory = matchHistoryData;

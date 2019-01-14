@@ -22,7 +22,12 @@
     <div id="google_translate_element"></div>
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'nl', includedLanguages: 'en,nl', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+            new google.translate.TranslateElement({
+                pageLanguage: 'nl',
+                includedLanguages: 'en,nl',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -38,11 +43,21 @@
         <div class="content-wrapper--full">
             <ul class="nav-bar__links">
                 <li class="nav-bar__link"><a><i class="fas fa fa-comment" title="Ongelezen berichten"><p id="unread_messages"></p></i></a></li>
-                <li class="nav-bar__link"><a class="notranslate" href="index.html">Home</a></li>
-                <li class="nav-bar__link"><a class="notranslate"href="my_matches.html">Mijn Matches</a></li>
-                <li class="nav-bar__link"><a class="notranslate" href="matches.html">Matches</a></li>
-                <li class="nav-bar__link"><a class="pointer notranslate" onclick="myProfile()">Profiel</a></li>
-                <li class="nav-bar__link"><a class="pointer notranslate" onclick="logout()">logout</a></li>
+                <li class="nav-bar__link">
+                    <a class="notranslate" href="index.html" data-content="nav_bar_1"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="notranslate" href="my_matches.html" data-content="nav_bar_2"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="notranslate" href="matches.html" data-content="nav_bar_3"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="pointer notranslate" onclick="myProfile()" data-content="nav_bar_4"></a>
+                </li>
+                <li class="nav-bar__link">
+                    <a class="pointer notranslate" onclick="logout()" data-content="nav_bar_6"></a>
+                </li>
                 <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -58,23 +73,18 @@
         <div>
             <div class="profile-img-container">
                 <img id="profile-image" onerror="this.src='images/img_avatar.png'" class="profile-img">
-                <form ref='uploadForm'
-                target="_self"
-                id='uploadForm'
-                method='post'
-                class="upload_form"
-                encType="multipart/form-data">
-                <input required type="file" class="inputfile" accept="image/x-png,image/gif,image/jpeg" id="file" name="sampleFile" />
-                <label class="upload_button" id="choose-image" for="file">Kies een foto</label>
-                <input type='submit' id="upload" value='Upload!' />
-                <label class="upload_button" for="upload">Upload</label>
+                <form ref='uploadForm' target="_self" id='uploadForm' method='post' class="upload_form" encType="multipart/form-data">
+                    <input required type="file" class="inputfile" accept="image/x-png,image/gif,image/jpeg" id="file" name="sampleFile" />
+                    <label class="upload_button" id="choose-image" for="file" data-content="profile_image_choose_text"></label>
+                    <input type='submit' id="upload" value='Upload!' />
+                    <label class="upload_button" for="upload" data-content="profile_image_upload"></label>
 
                 </form>
             </div>
             <div class="profile-bio">
                 <h4><span id="firstname">{{firstname}}</span> <span id="lastname">{{lastname}}</span></h4>
                 <p id="birthday">{{birthday}}</p>
-                <p>Over mij:</p>
+                <p data-content="profile_about"></p>
                 <p id="about">{{about}}</p>
                 <p style="color: red" id="error-message"></p>
                 <img src="images/edit.png" id="edit-svg" class="edit-image" alt="">
@@ -91,6 +101,7 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts/content-init.js"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/navigation.js"></script>
 <script src="/scripts/profile.js"></script>
