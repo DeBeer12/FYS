@@ -24,41 +24,41 @@
     <div class="registration-container-wrapper">
         <form id="js-registration-form" action="index.html">
             <div class="form-container">
-                <label class="registeren">Registreren</label>
+                <label class="registeren" data-content="register_title"></label>
                 <br/>
                 <br/>
-                <label class="text" for="first_name">Voornaam:</label>
+                <label class="text" for="first_name" data-content="register_first_name"></label>
                 <br/>
                 <input type="text" id="first_name" class="inputtext" name="name">
                 <br/>
                 <br/>
-                <label class="text" for="last_name">Achternaam:</label>
+                <label class="text" for="last_name" data-content="register_last_name"></label>
                 <br/>
                 <input type="text" id="last_name" class="inputtext" name="name">
                 <br/>
                 <br/>
-                <label class="text" for="user_name">Gebruikersnaam:</label>
+                <label class="text" for="user_name" data-content="register_user_name"></label>
                 <br/>
                 <input type="text" id="user_name" class="inputtext" name="name">
                 <br/>
                 <br/>
-                <label class="text" for="email">E-mail:</label>
+                <label class="text" for="email" data-content="register_email"></label>
                 <br/>
                 <input type="email" id="email" class="inputtext" name="email">
                 <br/>
                 <br/>
-                <label class="text" for="password">Wachtwoord:</label>
+                <label class="text" for="password" data-content="register_password"></label>
                 <br/>
                 <input type="password" id="password" class="inputtext" name="password">
                 <br/>
                 <br/>
-                <label class="text" for="birthday">Geboortedatum:</label>
+                <label class="text" for="birthday" data-content="register_birthday"></label>
                 <br/>
                 <input type="date" id="birthday" class="inputtext" name="birthdate">
                 <br/>
-                <input type="submit" class="submit" value="Registeren">
+                <input type="submit" class="submit" value= "Registreren">
             </div>
-            <a href="./login.html"></br><p>Al een account log hier in</p></a>
+            <a href="./login.html"></br><p data-content="register_link"></p></a>
         </form>
     </div>
 </body>
@@ -66,3 +66,4 @@
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="scripts/registration.js"></script>
+<script src="scripts/content-init.js"></script>
