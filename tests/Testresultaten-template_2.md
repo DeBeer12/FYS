@@ -6,7 +6,7 @@
 **Teamleden**:
 - [500801975], [Fels, Mike]
 - [500801418], [Jesse van Bree]
-- [Studentnummer], [Naam]
+- [500802156], [Bob Broersen]
 - [Studentnummer], [Naam]
 - [500800871], [Winkelaar, Richard]
 
@@ -22,6 +22,8 @@ Onderstaande tabel geeft een samenvatting van de resultaten van alle tests die h
 | [14-01-2019] | [Text bewerken] | [Fels, Mike] | 1 | 0 |
 | [14-01-2019] | [Gebruiker inloggen] | [van Bree, Jesse] | 2 | 1 |
 | [14-01-2019] | [Chatten met een match] | [van Bree, Jesse] | 2 | 0 |
+| [14-01-2019] | [Gegevens aanpassen] | [Broersen, Bob] | 2 | 0 |
+| [14-01-2019] | [Profiel foto aanpassen] | [Broersen, Bob] | 2 | 1 |
 
 # System Tests
 Hieronder volgen de resultaten van een aantal iteraties van de System Tests.
