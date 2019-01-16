@@ -7,7 +7,7 @@
 - [500801975], [Fels, Mike]
 - [500801418], [Jesse van Bree]
 - [500802156], [Bob Broersen]
-- [Studentnummer], [Naam]
+- [500802010], [Danny Huigen]
 - [500800871], [Winkelaar, Richard]
 
 # Inleiding
@@ -24,6 +24,8 @@ Onderstaande tabel geeft een samenvatting van de resultaten van alle tests die h
 | [14-01-2019] | [Chatten met een match] | [van Bree, Jesse] | 2 | 0 |
 | [14-01-2019] | [Gegevens aanpassen] | [Broersen, Bob] | 2 | 0 |
 | [14-01-2019] | [Profiel foto aanpassen] | [Broersen, Bob] | 2 | 1 |
+| [16-01-2019] | [Persoon liken] | [Huigen, Danny] | 2 | 0 |
+| [16-01-2019] | [Persoon disliken] | [Huigen, Danny] | 2 | 1 
 
 # System Tests
 Hieronder volgen de resultaten van een aantal iteraties van de System Tests.
@@ -74,6 +76,7 @@ Hieronder volgen de resultaten van een aantal iteraties van de System Tests.
 |[ST_006_7]|[Naam en leeftijd filter]|Pass|...|...|
 |[ST_006_8]|[Reset filters]|Pass|...|...|
 
+
 ## [14-01-2019 14:30]
 **Uitgevoerd door:** [Broersen, Bob]
 ---
@@ -84,3 +87,15 @@ Hieronder volgen de resultaten van een aantal iteraties van de System Tests.
 | [ST_009] | [profiel foto aanpassen] | Pass | ... | ... |
 | [ST_009_2A] | [kiest geen nieuwe profiel foto] | Pass | ... | ... |
 | [ST_009_3A] | [vekeerde bestandstype] | fail | 3.1 | upload het bestand gewoon |
+
+## [16-1-2019 12:30]
+**Uitgevoerd door:** [Broersen, Bob]
+---
+| Test Case ID | Test Case Titel / Extensie Titel | Pass / Fail |  Fail Stap | Fail Opmerking |
+|-|-|-|-|-|
+| [ST_009_1] | [Gebruiker klikt op 'like'] | Pass | ... | ... |
+| [ST_009_2] | [Gebruiker klikt op 'like' maar de persoon heeft de liker al geliked] | pass | ... | ... |
+| [ST_010_1] | [Gebruiker klikt op 'dislike' knop] | Pass | ... | ... |
+
+
+
