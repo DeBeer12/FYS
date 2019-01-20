@@ -4,18 +4,6 @@ String.prototype.replaceAll = function (search, replacement) {
 };
 
 $(document).ready(function () {
-
-    /**
-     * Get users logged in user
-     * @param {function} callback
-     */
-    function authUser(callback){
-        var authUserQuery ="SELECT * FROM user WHERE user.user_id =" + $user.user_id + ";";
-        $.get("/db", {query:authUserQuery}).done(function(data){
-            callback(data[0]);
-        });
-    }
-
     /**
      * Get users that are not matched with logged in user
      * @param {function} callback
@@ -168,11 +156,9 @@ $(document).ready(function () {
         });
     });
 
-
     // Show CMS in navbar if user has admin role
     var ADMIN_ROLE = 1; // 1 is equal to admin role in DB
     if ($user.rol != ADMIN_ROLE){
         $('#cms_navbar').remove();
     }
-
 });
